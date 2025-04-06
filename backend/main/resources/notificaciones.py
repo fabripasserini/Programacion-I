@@ -1,11 +1,15 @@
 from flask_restful import Resource
 from flask import request
 
-notificaciones = {}
+notificaciones = {
+    1:{'destinatario':'juan','mensaje':'hola'},
+    2:{'destinatario':'admin','mensaje':'hola2'}
+
+}
 
 class Notificacion(Resource):
     def get(self):
-        return notificaciones
+        return notificaciones,200
     
     def post(self):
         data = request.get_json()

@@ -11,13 +11,14 @@ def create_app():
     load_dotenv()#cargar variables de entorno
     #inicializar restful
     api=Api(app)
-    api.add_resource(resources.ClienteResource,'/cliente/<int:id>')#agregar recurso animal
-    api.add_resource(resources.ClientesResource,'/clientes')#agregar recurso animales
+    api.add_resource(resources.UsuarioResource,'/usuario/<int:id>')#agregar recurso animal
+    api.add_resource(resources.UsuariosResource,'/usuarios')#agregar recurso animales
     api.add_resource(resources.ProductoResource,'/producto/<int:id>')#agregar recurso animal
     api.add_resource(resources.ProductosResource,'/productos')#agregar recurso animales
     api.add_resource(resources.PedidoResource,'/pedido/<int:id>')#agregar recurso animal
     api.add_resource(resources.PedidosResource,'/pedidos')#agregar recurso animales
-    api.add_resource(resources.ValoracionResource, '/valoracion')
+    api.add_resource(resources.ValoracionResource, '/valoracion/<int:id>')
+    api.add_resource(resources.ValoracionesResource, '/valoraciones')
     api.add_resource(resources.NotificacionResource, '/notificacion')
 
     api.init_app(app)#inicializar api
