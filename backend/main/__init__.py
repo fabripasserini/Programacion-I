@@ -17,5 +17,8 @@ def create_app():
     api.add_resource(resources.ProductosResource,'/productos')#agregar recurso animales
     api.add_resource(resources.PedidoResource,'/pedido/<int:id>')#agregar recurso animal
     api.add_resource(resources.PedidosResource,'/pedidos')#agregar recurso animales
+    api.add_resource(resources.ValoracionResource, '/valoracion')
+    api.add_resource(resources.NotificacionResource, '/notificacion')
+
     api.init_app(app)#inicializar api
     return app
