@@ -1,35 +1,44 @@
 from flask_restful import Resource
 from flask import request
-pedidos={
-
-    1:{'nombre':'pedido uno','direccion':'los peralitos','informacion':'a la pancheria'},
-    2:{'nombre':'test','direccion':'los peralitos 1600 cp:5505 casa: 11B','informacion':'casa'},
-
-}
-
+from flask import jsonify
+from main.models import PedidosModel
+from main.__init__ import db
 class Pedido(Resource):
     def get(self,id):
-        if id in pedidos:
-            return pedidos[id],200 #no hace falta especificar el 200
-        return {'error':'No existe ese '},404
+        pedido=db.session.query(PedidosModel).get_or_404(id)
+        return pedido.to_json_complete()
     def delete(self,id):
-        if id in pedidos:
-            del pedidos[id]
-            return {'mensaje':'pedido eliminado'},204
-        return {'error':'No existe ese pedido'},404
+        pedido=db.session.query(PedidosModel).get_or_404(id)
+        db.session.delete(pedido)
+        db.session.commit()
+        return 'Pedido eliminado',200
     def put(self,id):
-        if id in pedidos:
-            data=request.get_json()
-            pedidos[id].update(data)
-            return {'mensaje':'pedido actualizado'},200
-        return {'error':'No existe ese pedido'},404
+        pedido=db.session.query(PedidosModel).get_or_404(id)
+        data=request.get_json().items()
+        for key,value in data:
+            setattr(pedido,key,value) # ver que hace esto
+        db.session.add(pedido)
+        db.session.commit()
+        return 'Pedido actualizado',200
+    
+        #pedido = db.session.query(Pedido.model).get_or_404(id)
+        # data = request.get_json().items()
+        # for key, value in data
+        #   setattr(pedido, key, value)
+        # db.session.add(pedido)
+        # de.session.commit()
+        # return animal.to_json(), 201
     
 class Pedidos(Resource):
     def get(self):
-        return pedidos,200
+        pedidos=db.session.query(PedidosModel).all()
+        return [pedido.to_json_complete() for pedido in pedidos],200
     def post(self):
-        data = request.get_json()
-        # Aquí creamos un nuevo id automáticamente
-        id = max(pedidos.keys()) + 1  # generamos el siguiente id disponible
-        pedidos[id] = data
-        return {'mensaje': 'pedido creado', 'id': id}, 201
+        data_pedido=PedidosModel.from_json(request.get_json())
+        db.session.add(data_pedido)
+        db.session.commit()
+        return 'Pedido creado', 201
+    
+
+
+# el fileter sirve para ver si existe el id, despues sino sdevuelve todo (historias clinicas get)

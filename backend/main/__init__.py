@@ -4,10 +4,10 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 import os
 import main.resources as resources
-
+from flask_migrate import Migrate
 # Inicializar SQLAlchemy
 db = SQLAlchemy()
-
+migrate=Migrate()
 def create_app():
     app = Flask(__name__)
     load_dotenv()
@@ -21,12 +21,15 @@ def create_app():
     os.makedirs(db_path, exist_ok=True) 
 
     # Configuración de la base de datos
+    if not os.path.exists(os.getenv('PATH_DB')+os.getenv('NAME_DB')):
+        os.mknod(os.getenv('PATH_DB')+os.getenv('NAME_DB'))
+
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{full_path}"
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////'+os.getenv('PATH_DB')+os.getenv('NAME_DB')
 
     # Inicializar SQLAlchemy con la app
     db.init_app(app)
-
+    migrate.init_app(app, db)
     # Inicializar API
     api = Api(app)
     api.add_resource(resources.UsuarioResource, '/usuario/<int:id>')
@@ -35,8 +38,10 @@ def create_app():
     api.add_resource(resources.ProductosResource, '/productos')
     api.add_resource(resources.PedidoResource, '/pedido/<int:id>')
     api.add_resource(resources.PedidosResource, '/pedidos')
-    api.add_resource(resources.ValoracionResource, '/valoracion/<int:id>')
-    api.add_resource(resources.ValoracionesResource, '/valoraciones')
-    api.add_resource(resources.NotificacionResource, '/notificacion')
-
+    api.add_resource(resources.CalificacionResource, '/calificacion/<int:id>')
+    api.add_resource(resources.CalificacionesResource, '/calificaciones')
+    api.add_resource(resources.NotificacionResource, '/notificacion/<int:id>')
+    api.add_resource(resources.NotificacionesResource, '/notificaciones')
+    api.add_resource(resources.CategoriaResource, '/categoria/<int:id>')
+    api.add_resource(resources.CategoriasResource, '/categorias')
     return app

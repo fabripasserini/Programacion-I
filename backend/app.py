@@ -1,4 +1,4 @@
-from main import create_app, db
+from main.__init__ import create_app, db
 import os
 from dotenv import load_dotenv
 load_dotenv()

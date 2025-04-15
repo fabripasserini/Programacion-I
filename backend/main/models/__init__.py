@@ -1,6 +1,6 @@
-from .usuarios import Usuario as UsuarioModel
-from .calificaciones import Clasificacion as ClasificacionModel
-from .categorias import Categoria as CategoriaModel
-from .pedidos import Pedido as PedidoModel
-from .productos import Producto as ProductoModel
-from .notificaciones import Notificacion as NotificacionModel       
+from .usuarios import Usuarios as UsuariosModel
+from .calificaciones import Calificaciones as CalificacionesModel
+from .categorias import Categorias as CategoriasModel
+from .pedidos import Pedidos as PedidosModel
+from .productos import Productos as ProductosModel
+from .notificaciones import Notificaciones as NotificacionesModel       
