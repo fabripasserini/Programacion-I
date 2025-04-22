@@ -1,18 +1,20 @@
 from main.__init__ import db
 from datetime import datetime
-from .pedidos_productos import pedidos_productos
+from .pedidos_productos_intermedia import PedidosProductos
 #de muchos a muchos no hace falta hacer esto---> intermedias
 
 
 class Productos(db.Model):
+    __tablename__ = 'productos'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), nullable=False)
     descripcion = db.Column(db.String(50), nullable=False)
     precio = db.Column(db.Float, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
-    categoria = db.relationship('Categorias', back_populates="producto")
-    pedidos = db.relationship('Pedidos', secondary=pedidos_productos, back_populates='productos')  # Relación muchos a muchos
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    id_categoria = db.Column(db.Integer, db.ForeignKey('categorias.id'), nullable=False)
+    categoria = db.relationship('Categorias', back_populates='producto')
+    intermedia_productos = db.relationship('Pedidos', secondary='pedidos_productos', back_populates='intermedia_pedidos')  # Relación muchos-a-muchos # Relación muchos a muchos
     calificacion = db.relationship('Calificaciones', back_populates="producto", cascade="all, delete-orphan")  # Relación uno-a-muchos
     id_categoria=db.Column(db.Integer,db.ForeignKey('categorias.id'),nullable=False)
 

@@ -3,6 +3,7 @@ from datetime import datetime
 
 #de muchos a muchos no hace falta hacer esto
 class Calificaciones(db.Model):
+    __tablename__= 'calificaciones'
     id = db.Column(db.Integer, primary_key=True)
     id_producto = db.Column(db.Integer, db.ForeignKey('productos.id'), nullable=False)
     id_usuario = db.Column(db.Integer,db.ForeignKey('usuarios.id'), nullable=False)

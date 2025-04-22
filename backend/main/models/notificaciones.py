@@ -3,6 +3,7 @@ from datetime import datetime
 
 #de muchos a muchos no hace falta hacer esto
 class Notificaciones(db.Model):
+    __tablename__= 'notificaciones'
     id = db.Column(db.Integer, primary_key=True)
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'),nullable=False)
     informacion = db.Column(db.String(50), nullable=False)

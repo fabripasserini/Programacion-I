@@ -1,8 +1,9 @@
 from main.__init__ import db
 from datetime import datetime
-from .pedidos_productos import pedidos_productos 
+from .pedidos_productos_intermedia import PedidosProductos
 #de muchos a muchos no hace falta hacer esto---> intermedias
 class Pedidos(db.Model):
+    __tablename__= 'pedidos'
     id = db.Column(db.Integer, primary_key=True)
    # id_categoria=db.Column(db.Integer, nullable=False)
    #id_=db.Column(db.Integer, nullable=False)
@@ -11,7 +12,10 @@ class Pedidos(db.Model):
     direccion = db.Column(db.String(50), nullable=False)
     precio= db.Column(db.Float, nullable=False)
     created_at=db.Column(db.DateTime,nullable=False,default=datetime.utcnow) 
-    productos = db.relationship('Productos', secondary=pedidos_productos, back_populates='pedidos')  # para establecer la relacion
+    intermedia_pedidos = db.relationship('Productos', secondary='pedidos_productos', back_populates='intermedia_productos') #secondary sirve para que se haga la
+    #relacion con la intermedia(apunta al nombre de la clase y no al nombre del archivo)
+   
+    #productos = db.relationship('Productos', secondary=pedidos_productos, back_populates='pedidos')  # Relación muchos a muchos
     usuario=db.relationship('Usuarios',back_populates="pedido") # no va el cascade porque es la
     def __repr__(self):
         pedido_json = {
@@ -43,7 +47,7 @@ class Pedidos(db.Model):
     
     def to_json_complete(self):
         usuario=self.usuario.to_json()
-        pedidos_productos=[pedidos_productos for i in pedidos_productos]
+        #pedidos_productos=[pedidos_productos for i in pedidos_productos]
         #usuario=[usuario.to_json() for usuario in self.usuario]
         pedido_json = {
             'id': self.id,
@@ -51,7 +55,7 @@ class Pedidos(db.Model):
             'direccion': self.direccion,
             'precio': self.precio,
             'created_at': str(self.created_at),
-            'usuario': usuario,
-            'pedidos_productos': pedidos_productos
+            'usuario': usuario
+           # 'pedidos_productos': pedidos_productos
         }
         return pedido_json

@@ -2,6 +2,7 @@ from main.__init__ import db
 
 #de muchos a muchos no hace falta hacer esto
 class Categorias(db.Model):
+    __tablename__= 'categorias'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), nullable=False)
     producto=db.relationship('Productos',back_populates="categoria")
