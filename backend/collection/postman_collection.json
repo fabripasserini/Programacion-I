@@ -1,0 +1,717 @@
+{
+	"info": {
+		"_postman_id": "62b28b90-7c8c-4764-97b6-fea1b63286e6",
+		"name": "C1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43534135",
+		"_collection_link": "https://emanuel-2501405.postman.co/workspace/emanuel's-Workspace~650b36c6-832c-45e2-8471-24e9def97a2f/collection/43534135-62b28b90-7c8c-4764-97b6-fea1b63286e6?action=share&source=collection_link&creator=43534135"
+	},
+	"item": [
+		{
+			"name": "usuarios",
+			"item": [
+				{
+					"name": "usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/usuarios",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"messasdfsadffsdafir\",\n  \"apellido\": \"messiii\",\n  \"email\":\"a@a.com\",\n  \"password\":\"teging\",\n  \"rol\":\"admin\", \n  \"dni\":\"453434345\"\n\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/usuarios",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/usuario/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"usuario",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apellido\":\"aquarius\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/usuario/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/usuario/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "productos",
+			"item": [
+				{
+					"name": "productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/productos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "productos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_categoria\":1,\n    \"nombre\":\"test\",\n    \"descripcion\":\"con carne\",\n    \"precio\":3.00,\n    \"stock\":4\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/productos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/producto/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"producto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"pancho\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/producto/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"producto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/producto/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"producto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pedidos",
+			"item": [
+				{
+					"name": "pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/pedidos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedidos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_usuario\":1,\n    \"descripcion\":\"Testing\",\n    \"direccion\":\"suipacha\",\n    \"precio\":19.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/pedidos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/pedido/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"direccion\":\"suipacha\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/pedido/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/pedido/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notificaciones",
+			"item": [
+				{
+					"name": "notificacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/notificacion/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"notificacion",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notificaciones",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_usuario\":1,\n    \"informacion\":\"mensaje 2\"\n    \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/notificaciones",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notificaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/notificaciones",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "calificaciones",
+			"item": [
+				{
+					"name": "calificaciones",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_producto\": 1,\n    \"id_usuario\": 1,\n    \"descripcion\": \"Excelente producto\",\n    \"estrellas\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/calificaciones",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"calificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calificacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/calificacion/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"calificacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calificaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/calificaciones",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"calificaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categorias",
+			"item": [
+				{
+					"name": "categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/categoria/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"categoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/categoria/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"categoria",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"pescado\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/categoria/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"categoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:1234/categorias",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categorias",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":2,\n    \"nombre\":\"entrada\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:1234/categorias",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1234",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
