@@ -175,7 +175,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_categoria\":1,\n    \"nombre\":\"test\",\n    \"descripcion\":\"con carne\",\n    \"precio\":3.00,\n    \"stock\":4\n\n}",
+							"raw": "{\n    \"id_categoria\":1,\n    \"nombre\":\"dfffddsf\",\n    \"descripcion\":\"con carne\",\n    \"precio\":3.00,\n    \"stock\":4\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -311,7 +311,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_usuario\":1,\n    \"descripcion\":\"Testing\",\n    \"direccion\":\"suipacha\",\n    \"precio\":19.5,\n    \"id_productos\":1\n}",
+							"raw": "{\n    \"id_usuario\":1,\n    \"descripcion\":\"Testing\",\n    \"direccion\":\"suipacha\",\n    \"precio\":19.5,\n    \"productos\":[1,2]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -365,7 +365,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"direccion\":\"suipacha\"\n}",
+							"raw": "{\n    \"direccion\":\"suipacha2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -396,7 +396,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedido/1",
+							"raw": "http://127.0.0.1:1234/pedido/25",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -407,7 +407,7 @@
 							"port": "1234",
 							"path": [
 								"pedido",
-								"1"
+								"25"
 							]
 						}
 					},

@@ -41,7 +41,7 @@ class Pedidos(Resource):
         # Devuelve los resultados paginados
         return [pedido.to_json_complete() for pedido in pedidos_paginated.items], 200
     def post(self):
-        productos_ids = request.get_json('productos')
+        productos_ids = request.get_json().get('productos')
         pedido=PedidosModel.from_json(request.get_json())  # Extraer los IDs de los productos
         if productos_ids:
             productos=ProductosModel.query.filter(ProductosModel.id.in_(productos_ids)).all()
