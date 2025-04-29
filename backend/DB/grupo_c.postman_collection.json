@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "62b28b90-7c8c-4764-97b6-fea1b63286e6",
-		"name": "C1",
+		"name": "grupo_c",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "43534135",
 		"_collection_link": "https://emanuel-2501405.postman.co/workspace/emanuel's-Workspace~650b36c6-832c-45e2-8471-24e9def97a2f/collection/43534135-62b28b90-7c8c-4764-97b6-fea1b63286e6?action=share&source=collection_link&creator=43534135"
@@ -175,7 +175,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_categoria\":1,\n    \"nombre\":\"test\",\n    \"descripcion\":\"con carne\",\n    \"precio\":3.00,\n    \"stock\":4\n\n}",
+							"raw": "{\n    \"id_categoria\":1,\n    \"nombre\":\"dfffddsf\",\n    \"descripcion\":\"con carne\",\n    \"precio\":3.00,\n    \"stock\":4\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -311,7 +311,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_usuario\":1,\n    \"descripcion\":\"Testing\",\n    \"direccion\":\"suipacha\",\n    \"precio\":19.5\n}",
+							"raw": "{\n    \"id_usuario\":1,\n    \"descripcion\":\"Testing\",\n    \"direccion\":\"suipacha\",\n    \"precio\":19.5,\n    \"id_productos\":[1, 2]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -396,7 +396,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedido/1",
+							"raw": "http://127.0.0.1:1234/pedido/4",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -407,7 +407,7 @@
 							"port": "1234",
 							"path": [
 								"pedido",
-								"1"
+								"4"
 							]
 						}
 					},

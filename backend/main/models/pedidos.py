@@ -16,8 +16,7 @@ class Pedidos(db.Model):
     precio = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     usuario = db.relationship('Usuarios', back_populates='pedido')
-    productos = db.relationship('Productos', secondary=pedidos_productos, back_populates='pedidos')  # Relación muchos-a-muchos
-    #productos = db.relationship('Productos', secondary=pedidos_productos, backref=db.backref('pedidos', lazy='dynamic'))
+    productos = db.relationship('Productos', secondary=pedidos_productos, backref=db.backref('pedidos', lazy='dynamic'))
 
     def __repr__(self):
         return f'<Pedido {self.id}: {self.descripcion}>'

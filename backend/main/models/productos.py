@@ -13,7 +13,7 @@ class Productos(db.Model):
 
     categoria = db.relationship('Categorias', back_populates='producto')
     calificacion = db.relationship('Calificaciones', back_populates="producto", cascade="all, delete-orphan")
-    pedidos = db.relationship('Pedidos', secondary='pedidos_productos', back_populates='productos')
+    #pedidos = db.relationship('Pedidos', secondary='pedidos_productos', back_populates='productos')
 
     def __repr__(self):
         return f'<Producto {self.id}: {self.nombre}>'
@@ -50,6 +50,7 @@ class Productos(db.Model):
         precio = productos_json.get('precio')
         stock = productos_json.get('stock')
         created_at = productos_json.get('created_at', datetime.utcnow())
+
         return Productos(
             id=id,
             id_categoria=id_categoria,
