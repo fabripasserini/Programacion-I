@@ -1,61 +1,61 @@
 from main.__init__ import db
 from datetime import datetime
-from .pedidos_productos_intermedia import PedidosProductos
-#de muchos a muchos no hace falta hacer esto---> intermedias
+# #de muchos a muchos no hace falta hacer esto---> intermedias
+pedidos_productos = db.Table(
+    "pedidos_productos",
+    db.Column("id_pedidos", db.Integer, db.ForeignKey("pedidos.id"), primary_key=True),
+    db.Column("id_producto", db.Integer, db.ForeignKey("productos.id"), primary_key=True)
+ )
+
 class Pedidos(db.Model):
-    __tablename__= 'pedidos'
+    __tablename__ = 'pedidos'
     id = db.Column(db.Integer, primary_key=True)
-   # id_categoria=db.Column(db.Integer, nullable=False)
-   #id_=db.Column(db.Integer, nullable=False)
-    id_usuario=db.Column(db.Integer,db.ForeignKey('usuarios.id'),nullable=False)
+    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     descripcion = db.Column(db.String(50), nullable=False)
     direccion = db.Column(db.String(50), nullable=False)
-    precio= db.Column(db.Float, nullable=False)
-    created_at=db.Column(db.DateTime,nullable=False,default=datetime.utcnow) 
-    intermedia_pedidos = db.relationship('Productos', secondary='pedidos_productos', back_populates='intermedia_productos') #secondary sirve para que se haga la
-    #relacion con la intermedia(apunta al nombre de la clase y no al nombre del archivo)
-   
-    #productos = db.relationship('Productos', secondary=pedidos_productos, back_populates='pedidos')  # Relación muchos a muchos
-    usuario=db.relationship('Usuarios',back_populates="pedido") # no va el cascade porque es la
+    precio = db.Column(db.Float, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    usuario = db.relationship('Usuarios', back_populates='pedido')
+    productos = db.relationship('Productos', secondary=pedidos_productos, back_populates='pedidos')  # Relación muchos-a-muchos
+    #productos = db.relationship('Productos', secondary=pedidos_productos, backref=db.backref('pedidos', lazy='dynamic'))
+
     def __repr__(self):
-        pedido_json = {
-            'id': self.id,
-            'descripcion': self.descripcion,
-            'direccion': self.direccion,
-            'precio': self.precio,
-            'created_at': str(self.created_at)
-        }
-        return pedido_json
+        return f'<Pedido {self.id}: {self.descripcion}>'
+
     def to_json(self):
-        pedidos_json = {
+        return {
             'id': self.id,
             'descripcion': self.descripcion,
             'direccion': self.direccion,
             'precio': self.precio,
             'created_at': str(self.created_at)
         }
-        return pedidos_json
-    @staticmethod
-    def from_json(pedidos_json):
-        id=pedidos_json.get('id')
-        id_usuario=pedidos_json.get('id_usuario')
-        descripcion=pedidos_json.get('descripcion')
-        direccion=pedidos_json.get('direccion')
-        precio=pedidos_json.get('precio')
-        created_at=pedidos_json.get('created_at')
-        return Pedidos(id=id,id_usuario=id_usuario,descripcion=descripcion,direccion=direccion,precio=precio,created_at=created_at)
-    
+
     def to_json_complete(self):
-        usuario=self.usuario.to_json()
-        #pedidos_productos=[pedidos_productos for i in pedidos_productos]
-        #usuario=[usuario.to_json() for usuario in self.usuario]
-        pedido_json = {
+        return {
             'id': self.id,
             'descripcion': self.descripcion,
             'direccion': self.direccion,
             'precio': self.precio,
             'created_at': str(self.created_at),
-            'usuario': usuario
-           # 'pedidos_productos': pedidos_productos
+            'usuario': self.usuario.to_json(),
+            'productos':[producto.to_json() for producto in self.productos]
+            #'productos': [producto.to_json() for producto in self.productos]
         }
-        return pedido_json
+
+    @staticmethod
+    def from_json(pedidos_json):
+        id = pedidos_json.get('id')
+        id_usuario = pedidos_json.get('id_usuario')
+        descripcion = pedidos_json.get('descripcion')
+        direccion = pedidos_json.get('direccion')
+        precio = pedidos_json.get('precio')
+        created_at = pedidos_json.get('created_at', datetime.utcnow())
+        return Pedidos(
+            id=id,
+            id_usuario=id_usuario,
+            descripcion=descripcion,
+            direccion=direccion,
+            precio=precio,
+            created_at=created_at
+        )

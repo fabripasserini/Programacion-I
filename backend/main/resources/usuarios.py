@@ -33,4 +33,9 @@ class Usuarios(Resource):
         db.session.add(data_usuario)
         db.session.commit()
 
+        usuarios_id=request.get_json().get('campo')
+        usuario=UsuariosModel.from_json(request.get_json())
+        if usuarios_id:
+            campo=Usuarios
+
         return 'Usario creado', 201

@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import request
 from flask import jsonify
-from main.models import PedidosModel
+from main.models import PedidosModel,ProductosModel
 from main.__init__ import db
 class Pedido(Resource):
     def get(self,id):
@@ -31,14 +31,21 @@ class Pedido(Resource):
     
 class Pedidos(Resource):
     def get(self):
-        pedidos=db.session.query(PedidosModel).all()
-        return [pedido.to_json_complete() for pedido in pedidos],200
+        page=1
+        per_page=40
+        pedidos_query = db.session.query(PedidosModel)
+
+        # Pagina la consulta
+        pedidos_paginated = pedidos_query.paginate(page=page, per_page=per_page, error_out=False)
+
+        # Devuelve los resultados paginados
+        return [pedido.to_json_complete() for pedido in pedidos_paginated.items], 200
     def post(self):
-        data_pedido=PedidosModel.from_json(request.get_json())
-        db.session.add(data_pedido)
+        productos_ids = request.get_json('productos')
+        pedido=PedidosModel.from_json(request.get_json())  # Extraer los IDs de los productos
+        if productos_ids:
+            productos=ProductosModel.query.filter(ProductosModel.id.in_(productos_ids)).all()
+            pedido.productos.extend(productos)
+        db.session.add(pedido)
         db.session.commit()
-        return 'Pedido creado', 201
-    
-
-
-# el fileter sirve para ver si existe el id, despues sino sdevuelve todo (historias clinicas get)
+        return pedido.to_json_complete(), 201

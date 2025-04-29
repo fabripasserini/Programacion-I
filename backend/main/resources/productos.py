@@ -29,7 +29,10 @@ class Productos(Resource):
         productos=db.session.query(ProductosModel).all()
         return [producto.to_json() for producto in productos],200
     def post(self):
-        data_producto=ProductosModel.from_json(request.get_json())
-        db.session.add(data_producto)
-        db.session.commit()
-        return 'Producto creado', 201
+        producto=ProductosModel.from_json(request.get_json())
+        try:
+            db.session.add(producto)
+            db.session.commit()
+        except:
+            return 'Producto creado', 201
+        return producto.to_json(), 201
