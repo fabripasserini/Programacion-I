@@ -5,5 +5,8 @@ from .productos import Productos as ProductosResource
 from .pedidos import Pedido as PedidoResource
 from .pedidos import Pedidos as PedidosResource
 from .notificaciones import Notificacion as NotificacionResource
-from .valoraciones import Valoracion as ValoracionResource
-from .valoraciones import Valoraciones as ValoracionesResource
+from .notificaciones import Notificaciones as NotificacionesResource
+from .calificaciones import Calificacion as CalificacionResource
+from .calificaciones import Calificaciones as CalificacionesResource
+from .categorias import Categoria as CategoriaResource
+from .categorias import Categorias as CategoriasResource
