@@ -37,7 +37,7 @@ class Productos(db.Model):
             'precio': self.precio,
             'stock': self.stock,
             'created_at': str(self.created_at),
-            'categoria': self.categoria.to_json()
+            'categoria': self.categoria.to_json() if self.categoria else None
           #  'pedidos': [pedido.to_json() for pedido in self.pedidos]
         }
 

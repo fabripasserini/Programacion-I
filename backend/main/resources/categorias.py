@@ -22,6 +22,7 @@ class Categoria(Resource):
         return 'Categoria actualizada',200
 class Categorias(Resource):
     def get(self):
+        
         categorias=db.session.query(CategoriasModel).all()
         return [categoria.to_json() for categoria in categorias],200 
     def post(self):
