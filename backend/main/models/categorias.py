@@ -29,4 +29,4 @@ class Categorias(db.Model):
             'nombre': self.nombre
         }
         return categorias_json
-    #no hace falta el json complete porque no estamos devolviendo nungun dato extra
+    #no hace falta el json complete porque no estamos devolviendo ningun dato extra

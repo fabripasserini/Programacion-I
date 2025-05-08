@@ -5,17 +5,32 @@ from main.models import UsuariosModel
 from main.models import NotificacionesModel
 from flask import jsonify
 from sqlalchemy import func, desc
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
+from main.auth.decorators import role_required
+
 class Usuario(Resource):
+    @jwt_required(optional=False)
     def get(self,id):
         usuario=db.session.query(UsuariosModel).get_or_404(id)
-        return usuario.to_json_complete() # solo cuando le pasemos el id va a mostar la notificacion
-      
+        current_identity = get_jwt_identity()
+        if current_identity == usuario.id:
+            return usuario.to_json_complete() # solo cuando le pasemos el id va a mostar la notificacion
+        else:
+            return usuario.to_json() # solo cuando le pasemos el id va a mostar la notificacion
+
+
+    @role_required(roles=["admin"])
     def delete(self,id):
         usuario=db.session.query(UsuariosModel).get_or_404(id)
+        rol=get_jwt().get('rol')
+        if rol=='users' and usuario.id != get_jwt_identity():
+            return "No tienes permisos para ultilizar este recurso",403
         db.session.delete(usuario)
         db.session.commit()
         return 'Usuario eliminado',200 # [+]el codigo 204 no emite una respuesta en flask[+]
 
+
+    @jwt_required(optional=False)
     def put(self,id):
         usuario=db.session.query(UsuariosModel).get_or_404(id)
         data=request.get_json().items()
@@ -24,7 +39,11 @@ class Usuario(Resource):
         db.session.add(usuario)
         db.session.commit()
         return 'Usuario actualizado',200
+
+
+
 class Usuarios(Resource):
+    @role_required(roles=["admin"])
     def get(self):
         page=1
         per_page=20
@@ -70,7 +89,7 @@ class Usuarios(Resource):
                   'page': page
                 }
         
-    
+    @role_required(roles=["admin"])
     def post(self):
         data_usuario = UsuariosModel.from_json(request.get_json())
         db.session.add(data_usuario)

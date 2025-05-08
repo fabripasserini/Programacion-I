@@ -6,13 +6,17 @@ from main.models import ProductosModel
 from main.models import UsuariosModel
 from main.__init__ import db
 from sqlalchemy import func, desc
+from main.auth.decorators import role_required
+from flask_jwt_extended import jwt_required
 
 class Calificacion(Resource):
+    @jwt_required(optional=True)
     def get(self,id):
         calificacion=db.session.query(CalificacionesModel).get_or_404(id)
         return calificacion.to_json_complete() 
     
 class Calificaciones(Resource):
+    @jwt_required(optional=True)
     def get(self):
         page=1
         per_page=10
@@ -45,6 +49,7 @@ class Calificaciones(Resource):
                   'page': page
                 }
     
+    @role_required(roles=["admin","usuarios"])
     def post(self):
         data_usuario = CalificacionesModel.from_json(request.get_json())
         db.session.add(data_usuario)

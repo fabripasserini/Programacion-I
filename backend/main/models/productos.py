@@ -10,10 +10,11 @@ class Productos(db.Model):
     stock = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     id_categoria = db.Column(db.Integer, db.ForeignKey('categorias.id'), nullable=False)
+    pedidos_productos = db.relationship("PedidoProducto", back_populates="producto")
 
     categoria = db.relationship('Categorias', back_populates='producto')
     calificacion = db.relationship('Calificaciones', back_populates="producto", cascade="all, delete-orphan")
-    #pedidos = db.relationship('Pedidos', secondary='pedidos_productos', back_populates='productos')
+    
 
     def __repr__(self):
         return f'<Producto {self.id}: {self.nombre}>'

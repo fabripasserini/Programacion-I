@@ -1,7 +1,6 @@
 from main.__init__ import db
 from datetime import datetime
-
-#de muchos a muchos no hace falta hacer esto---> intermedias
+from werkzeug.security import generate_password_hash, check_password_hash
 class Usuarios(db.Model):
     __tablename__= 'usuarios'
     id = db.Column(db.Integer, primary_key=True)
@@ -10,7 +9,7 @@ class Usuarios(db.Model):
     apellido = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(50), nullable=False)
-    rol = db.Column(db.String(50), nullable=False)
+    rol = db.Column(db.String(50), nullable=False, server_default = "usuarios")
     dni=db.Column(db.String(50),nullable=False)
     created_at=db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     calificacion=db.relationship('Calificaciones',back_populates="usuario",cascade="all, delete-orphan")
@@ -20,20 +19,21 @@ class Usuarios(db.Model):
                                  back_populates="usuario",
                                  cascade="all, delete-orphan",) #[+] tampoco va el single_parent=True porque no es 1 a 1 ( van de la mano las 2),Por defecto es False
     #convertir a json
+   
+    @property
+    def plain_password(self):
+        raise AttributeError('Plain password is not accessible')
 
-        #id_categoria=db.relationship("Categoria",uselist=False,back_populates="id_categoria",cascade="all, delete-orphan",single_parent=True)    
+    @plain_password.setter
+    def plain_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def validate_pass(self,password):
+        return check_password_hash(self.password,password)
 
     def __repr__(self):
         return f'<Usuario {self.id}]>'
-        # usuario_json = {
-        #     'id': self.id,
-        #     'nombre': self.nombre,
-        #     'apellido': self.apellido,
-        #     'email': self.email,
-        #     'password': self.password,
-        #     'rol': self.rol
-        # }
-        # return usuario_json
+        
     def to_json(self):
         usuarios_json = {
             'id': self.id,
@@ -48,6 +48,14 @@ class Usuarios(db.Model):
               
         }
         return usuarios_json
+    @property
+    def plain_password(self):
+        raise AttributeError('Plain password is not accessible')
+    @plain_password.setter
+    def plain_password(self, password):
+        self.password = generate_password_hash(password)
+    def validate_pass(self,password):
+        return check_password_hash(self.password,password)
     @staticmethod
     def from_json(usuarios_json):
         id=usuarios_json.get('id')
@@ -55,10 +63,11 @@ class Usuarios(db.Model):
         apellido=usuarios_json.get('apellido')
         email=usuarios_json.get('email')
         password=usuarios_json.get('password')
-        rol=usuarios_json.get('rol')
+        rol=usuarios_json.get('rol','usuarios')
         dni=usuarios_json.get('dni')
+        password=usuarios_json.get('password')
         created_at=usuarios_json.get('created_at')
-        return Usuarios(id=id,nombre=nombre,apellido=apellido,email=email,password=password,rol=rol,dni=dni,created_at=created_at)
+        return Usuarios(id=id,nombre=nombre,apellido=apellido,email=email,password=password,rol=rol,dni=dni,plain_password=password,created_at=created_at)
     
     def to_json_complete(self):
         notificacion=[notificacion.to_json() for notificacion in self.notificacion]

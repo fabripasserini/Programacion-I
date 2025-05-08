@@ -13,10 +13,20 @@
 				{
 					"name": "usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/usuarios?set_range=2,4",
+							"raw": "http://127.0.0.1:1234/usuarios",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -33,10 +43,6 @@
 									"key": "hola=nose",
 									"value": null,
 									"disabled": true
-								},
-								{
-									"key": "set_range",
-									"value": "2,4"
 								}
 							]
 						}
@@ -46,11 +52,21 @@
 				{
 					"name": "usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"nombre\": \"z\",\n  \"apellido\": \"fabio\",\n  \"email\":\"a@a.com\",\n  \"password\":\"teging\",\n  \"rol\":\"admin\", \n  \"dni\":\"4534343444445\"\n\n}\n",
+							"raw": "{\n  \"nombre\": \"z\",\n  \"apellido\": \"fabio\",\n  \"email\":\"a@a.com\",\n  \"password\":\"teging\",\n  \"rol\":\"noadmin\", \n  \"dni\":\"4534343444445\"\n\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -77,6 +93,16 @@
 				{
 					"name": "usuario",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjQ0NSwianRpIjoiNTAwZTZmYmUtZDAwNy00YzVkLTg0YzYtZDUyMzNjNDA1ZDNmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NDY3MzI0NDUsImNzcmYiOiIxN2NmMDU2ZC00ZjY5LTQwMWItYTc5ZS01YWFkNTMxYzQwMzAiLCJleHAiOjE3NDY3MzYwNDUsInJvbCI6InVzdWFyaW9zIiwiaWQiOjIsImVtYWlsIjoidXNlckBhZG1pbi5jb20ifQ.VaTPq5thafmql9qs4qvbRcPtJ7w2lXXEEoqYkt3-1Fk",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -132,6 +158,16 @@
 				{
 					"name": "usuario",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -160,6 +196,16 @@
 				{
 					"name": "productos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMTk1NiwianRpIjoiZDU0MjdhMmQtMjQ5OC00MDQ3LWI1ZGYtMDQ4OTc2MjUxZmYyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjgiLCJuYmYiOjE3NDY3MzE5NTYsImNzcmYiOiJlMGE4NjkwOC1iNjJjLTQzN2YtYmExMC0zZTNmMDY0Yzk3ZDQiLCJleHAiOjE3NDY3MzU1NTYsInJvbCI6ImFkbWluIiwiaWQiOjgsImVtYWlsIjoibGlzdG9AdGVzdC5jb20ifQ.Cl1qJ5lKBmOqhneMRYfpSGPPn_lR_drSl5JZMbh3H1s",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -182,11 +228,21 @@
 				{
 					"name": "productos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_categoria\":1,\n    \"nombre\":\"dfffddsf\",\n    \"descripcion\":\"con carne\",\n    \"precio\":3.00,\n    \"stock\":4\n\n}",
+							"raw": "{\n    \"id_categoria\":1,\n    \"nombre\":\"test\",\n    \"descripcion\":\"con carne\",\n    \"precio\":3.00,\n    \"stock\":4\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -213,10 +269,20 @@
 				{
 					"name": "producto",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/producto/2",
+							"raw": "http://127.0.0.1:1234/producto/4",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -227,7 +293,7 @@
 							"port": "1234",
 							"path": [
 								"producto",
-								"2"
+								"4"
 							]
 						}
 					},
@@ -236,6 +302,16 @@
 				{
 					"name": "producto",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -248,7 +324,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/producto/1",
+							"raw": "http://127.0.0.1:1234/producto/3",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -259,7 +335,7 @@
 							"port": "1234",
 							"path": [
 								"producto",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -268,6 +344,16 @@
 				{
 					"name": "producto",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -296,6 +382,16 @@
 				{
 					"name": "pedidos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -328,11 +424,21 @@
 				{
 					"name": "pedidos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_usuario\":3,\n    \"descripcion\":\"Testing\",\n    \"direccion\":\"suipacha\",\n    \"precio\":777,\n    \"productos\":[1,2,3,4]\n}",
+							"raw": "{\n    \"id_usuario\":2,\n    \"descripcion\":\"Testing\",\n    \"direccion\":\"suipacha\",\n    \"precio\":777,\n    \"productos\": [\n    {\"id\": 1},\n    {\"id\": 2, \"cantidad\": 5}\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -359,10 +465,20 @@
 				{
 					"name": "pedido",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedido/1",
+							"raw": "http://127.0.0.1:1234/pedido/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -373,7 +489,7 @@
 							"port": "1234",
 							"path": [
 								"pedido",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -382,6 +498,16 @@
 				{
 					"name": "pedido",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -414,10 +540,20 @@
 				{
 					"name": "pedido",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedido/7",
+							"raw": "http://127.0.0.1:1234/pedido/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -428,7 +564,7 @@
 							"port": "1234",
 							"path": [
 								"pedido",
-								"7"
+								"1"
 							]
 						}
 					},
@@ -442,10 +578,20 @@
 				{
 					"name": "notificacion",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/notificacion/2",
+							"raw": "http://127.0.0.1:1234/notificacion/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -456,7 +602,7 @@
 							"port": "1234",
 							"path": [
 								"notificacion",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -465,6 +611,16 @@
 				{
 					"name": "notificaciones",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -496,6 +652,16 @@
 				{
 					"name": "notificaciones",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -523,11 +689,21 @@
 				{
 					"name": "calificaciones",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_producto\": 1,\n    \"id_usuario\": 4,\n    \"descripcion\": \"Horrible producto\",\n    \"estrellas\": 4\n}",
+							"raw": "{\n    \"id_producto\": 1,\n    \"id_usuario\": 2,\n    \"descripcion\": \"Horrible producto\",\n    \"estrellas\": 4\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -554,6 +730,16 @@
 				{
 					"name": "calificacion",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -613,7 +799,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/categoria/3",
+							"raw": "http://127.0.0.1:1234/categoria/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -624,7 +810,7 @@
 							"port": "1234",
 							"path": [
 								"categoria",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -633,10 +819,20 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/categoria/2",
+							"raw": "http://127.0.0.1:1234/categoria/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -647,7 +843,7 @@
 							"port": "1234",
 							"path": [
 								"categoria",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -656,6 +852,16 @@
 				{
 					"name": "put",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -710,11 +916,21 @@
 				{
 					"name": "categorias",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\":\"entratestda\"\n}",
+							"raw": "{\n    \"nombre\":\"entrada\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -739,6 +955,73 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"user\",\n    \"apellido\": \"user\",\n    \"email\": \"user@admin.com\",\n    \"password\": \"user\",\n    \"dni\": \"12345678\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:1234/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1234",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"admin@admin.com\",\n    \"password\":\"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:1234/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1234",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
