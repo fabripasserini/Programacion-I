@@ -1,11 +1,6 @@
 from main.__init__ import db
 from datetime import datetime
 # #de muchos a muchos no hace falta hacer esto---> intermedias
-pedidos_productos = db.Table(
-    "pedidos_productos",
-    db.Column("id_pedidos", db.Integer, db.ForeignKey("pedidos.id"), primary_key=True),
-    db.Column("id_producto", db.Integer, db.ForeignKey("productos.id"), primary_key=True)
- )
 
 class Pedidos(db.Model):
     __tablename__ = 'pedidos'
@@ -16,7 +11,7 @@ class Pedidos(db.Model):
     precio = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     usuario = db.relationship('Usuarios', back_populates='pedido')
-    productos = db.relationship('Productos', secondary=pedidos_productos, backref=db.backref('pedidos', lazy='dynamic'))
+    pedidos_productos = db.relationship("PedidoProducto", back_populates="pedido", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f'<Pedido {self.id}: {self.descripcion}>'
@@ -27,6 +22,7 @@ class Pedidos(db.Model):
             'descripcion': self.descripcion,
             'direccion': self.direccion,
             'precio': self.precio,
+            'usuario': self.usuario.return_user(),
             'created_at': str(self.created_at)
         }
 
@@ -38,7 +34,15 @@ class Pedidos(db.Model):
             'precio': self.precio,
             'created_at': str(self.created_at),
             'usuario': self.usuario.to_json(),
-            'productos':[producto.to_json() for producto in self.productos]
+            'productos': [
+            {
+                'id': pp.producto.id,
+                'nombre': pp.producto.nombre,
+                'cantidad': pp.cantidad
+            }
+            for pp in self.pedidos_productos
+            ] # para que arme un diccionario con todos los productos
+            
             #'productos': [producto.to_json() for producto in self.productos]
         }
 

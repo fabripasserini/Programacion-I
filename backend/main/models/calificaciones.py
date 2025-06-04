@@ -1,7 +1,6 @@
 from main.__init__ import db
 from datetime import datetime
 
-#de muchos a muchos no hace falta hacer esto
 class Calificaciones(db.Model):
     __tablename__= 'calificaciones'
     id = db.Column(db.Integer, primary_key=True)
