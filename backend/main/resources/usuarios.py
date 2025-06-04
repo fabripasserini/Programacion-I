@@ -74,12 +74,17 @@ class Usuarios(Resource):
         # funciona ordena de forma descendiente x nombre
         if request.args.get('sortby_usuario_name'):
             usuarios = usuarios.order_by(desc(UsuariosModel.nombre))
-
+        if request.args.get('usuario'):
+            usuarios = usuarios.filter(UsuariosModel.nombre.like("%"+ request.args.get('usuario') + "%"))
+        if request.args.get('email'):
+            usuarios = usuarios.filter(UsuariosModel.email.like("%"+ request.args.get('email') + "%"))
         # Ordeno los usuarios por rol de forma descendiente - funciona
         if request.args.get('is_admin'):
             usuarios = usuarios.filter(UsuariosModel.rol == 'admin')
+        if request.args.get('dni'):
+            usuarios=usuarios.filter(UsuariosModel.dni==request.args.get('dni'))
             
-        
+        ##email y nombre
         #Obtener valor paginado
         usuarios = usuarios.paginate(page=page, per_page=per_page, error_out=False)
 

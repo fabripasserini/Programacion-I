@@ -33,6 +33,8 @@ class Usuarios(db.Model):
 
     def __repr__(self):
         return f'<Usuario {self.id}]>'
+    def return_user(self):
+        return self.nombre
         
     def to_json(self):
         usuarios_json = {
@@ -40,7 +42,6 @@ class Usuarios(db.Model):
             'nombre': self.nombre,
             'apellido': self.apellido,
             'email': self.email,
-            'password': self.password,
             'rol': self.rol,
             'dni': self.dni,
             'created_at': str(self.created_at)
@@ -76,7 +77,6 @@ class Usuarios(db.Model):
             'nombre': self.nombre,
             'apellido': self.apellido,
             'email': self.email,
-            'password': self.password,
             'rol': self.rol,
             'dni': self.dni,
             'notificacion': notificacion

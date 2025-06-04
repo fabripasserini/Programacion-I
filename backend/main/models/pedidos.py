@@ -22,6 +22,7 @@ class Pedidos(db.Model):
             'descripcion': self.descripcion,
             'direccion': self.direccion,
             'precio': self.precio,
+            'usuario': self.usuario.return_user(),
             'created_at': str(self.created_at)
         }
 

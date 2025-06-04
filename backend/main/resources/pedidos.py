@@ -34,7 +34,7 @@ class Pedidos(Resource):
     @jwt_required(optional=False)
     def get(self):
         page=1
-        per_page=2
+        per_page=10
         pedidos = db.session.query(PedidosModel)
         
         if request.args.get('page'):
@@ -44,8 +44,7 @@ class Pedidos(Resource):
  
         # filtra por pedidos q tengas mayor o igual cantidad
         if request.args.get('productos'):
-            pedidos=pedidos.outerjoin(PedidosModel.productos).group_by(PedidosModel.id).having(func.count(ProductosModel.id) >= int(request.args.get('productos')))
-        
+            pedidos = pedidos.join(PedidoProductoModel, PedidosModel.id==PedidoProductoModel.id_pedidos).group_by(PedidosModel.id).having(func.count(PedidoProductoModel.id_producto) >= int(request.args.get('productos')))        
         # funciona -- sirve para filtrar por letras que % contenga %,  comience% o %finalice.  
         if request.args.get('usuario'):
             pedidos = pedidos.join(PedidosModel.usuario).filter(UsuariosModel.nombre.like("%"+ request.args.get('usuario') + "%"))
@@ -59,7 +58,7 @@ class Pedidos(Resource):
             pedidos=pedidos.order_by(desc(PedidosModel.precio))
         # funciona  
         if request.args.get('sortby_productos'):
-            pedidos=pedidos.outerjoin(PedidosModel.productos).group_by(PedidosModel.id).order_by(func.count(ProductosModel.id).desc())
+            pedidos=pedidos.outerjoin(PedidoProductoModel.producto).group_by(PedidosModel.id).order_by(func.count(ProductosModel.id).desc())
         
 
         
