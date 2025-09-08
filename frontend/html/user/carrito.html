@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carrito Vacío - Rotisería</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+</head>
+
+<body class="bg-light bg-user">
+
+    <div class="main-container bg-primary-gradient vh-100 d-flex flex-column">
+        <header class="text-white py-4 position-relative">
+            <a href="#" onclick="history.back()" class="back-link position-absolute top-0 start-0 m-3">
+                <i class="fa-solid fa-arrow-left fa-xl text-white"></i>
+            </a>
+            <div class="text-center">
+                <h4 class="fw-bold"><i class="fa-solid fa-cart-shopping me-2"></i>Carrito</h4>
+            </div>
+        </header>
+
+        <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center">
+            <div class="empty-cart-content">
+                <h4 class="mb-4 text-white">Su carrito esta vacio</h4>
+                
+                <a href="menu.html" class="add-icon-circle mb-3">
+                    <i class="fa-solid fa-plus text-white"></i>
+                </a>
+                
+                <h6 class="text-white">¿Desea agregar algo?</h6>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom bg-danger text-white">
+        <a href="menu.html" class="text-white py-2"><i class="fa-solid fa-house"></i></a>
+        <a href="carrito.html" class="text-white"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="favoritos.html" class="text-white"><i class="fa-solid fa-heart"></i></a>
+        <a href="pedidos.html" class="text-white"><i class="fa-solid fa-list"></i></a>
+        <a href="../index.html" class="text-dark"><img src="../css/logo.png" alt="Home" width="30"></a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
