@@ -19,41 +19,64 @@
 
      <div class="main-body-container  rounded-top-5">
 
-        <header class="text-dark py-4 position-relative">
+        <header class="text-dark py-5 position-relative">
             <a href="#" onclick="history.back()" class="back-link position-absolute top-0 start-0 m-3">
                 <i class="fa-solid fa-arrow-left fa-xl text-dark"></i>
             </a>
         </header>
 
-        <div class="container my-4">
-            <div class="d-flex justify-content-around">
-                <h2 class="fw-bold mb-0">Asunto del mail</h2>
-         </div>
-         <div class="mb-3">
-                <label for="textarea" class="form-label">...</label>
-                                <textarea class="form-control" id="textarea" placeholder="Tu mensaje" rows="10" cols="33" required></textarea>                            
-                        </div>
         
-        <div class="d-flex align-items-center mt-3">
-            <p class="mb-0 fw-bold">Válido desde:</p>
-            <span class="ms-2">aaa</span>
+
+            <div class="card order-item mb-3">
+    <div class="row g-0 align-items-center">
+        <div class="col-4">
+            <input type="file" id="subirImagen" accept="image/*" style="display: none;">
+            <label for="subirImagen" style="cursor: pointer;">
+                <img src="../assets/hamburguesas.png" class="img-fluid rounded-start product-img" alt="Sushi Wave">
+            </label>
         </div>
-        <div class="d-flex align-items-center mt-3">
-            <p class="mb-0 fw-bold">Válido hasta:</p>
-            <span class="ms-2">aaa</span>
-        </div>
-        <div class="d-flex justify-content-around">
-                <button type="button" class="btn btn-success">Agregar oferta</button>
-         </div>
+        
 
+        <div class="col-8">
+            <div class="card-body">
+                <!-- Nombre y precio -->
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <input type="text" class="form-control fw-bold" placeholder="Nombre del producto">
+                    <input type="number" class="form-control text-warning ms-2" placeholder="Precio" min="0">
 
+                </div>
 
-            
-        </div>
+                <!-- Categoría -->
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <label class="py-2 text-dark me-2">Categoría:</label>
+                    <input type="text" class="form-control" placeholder="Ej: Hamburguesa">
+                </div>
 
-            
+                <!-- Descripción -->
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <label class="py-2 text-dark me-2">Descripción:</label>
+                    <textarea class="form-control" rows="2" placeholder="Escribe una breve descripción..."></textarea>
+                    
+                </div>
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <label class="py-2 text-dark me-2">Stock:</label>
+                    <input type="number" class="form-control text-warning ms-2" placeholder="Stock" min="0">
+
+                    
+                </div>
+
+                    <button type="button" class="btn btn-success mt-2">Cambiar imagen</button>
+
+            </div>
         </div>
     </div>
+</div>
+
+                        
+                            
+                          
+ 
+    <div >
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom text-white">
         <a href="inicioadmin.html" class= "text-dark py-2"><i class="fa-solid fa-house"></i></a>
@@ -62,6 +85,8 @@
         <a href="pedidos_clientes.html" class="text-dark"><i class="fa-solid fa-list"></i></a>
         <a href="modificar_pedidos.html" class="text-dark"><i class="fa-solid fa-utensils"></i></a>
         <a href="productos.html" class="text-dark"><i class="fa-solid fa-plus"></i></a>
+
+        
 
         <a href="../index.html" class="text-dark"><img src="../assets/logo.png" alt="Home" width="30"></a>
     </footer>

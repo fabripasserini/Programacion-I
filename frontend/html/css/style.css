@@ -1,14 +1,31 @@
-html {
+/* html {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
+} */
+ html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
-
+body{
+    padding-bottom: 800px;
+}
+.body-user{
+    padding-bottom: 1200px;
+}
 
 /* Fondo para admin */
 .bg-admin {
     background-image: url("bg-admin.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.bg-index {
+    background-image: url("bg-index.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -41,7 +58,9 @@ html {
 footer {
     background-color: #ffffff;
     border-top: 1px solid #e9ecef;
+    margin-top: auto;
 }
+
 
 
 
