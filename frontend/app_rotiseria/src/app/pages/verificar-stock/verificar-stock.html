@@ -1,0 +1,64 @@
+<body class="bg-light bg-empleado">
+
+     <div class="main-body-container  rounded-top-5">
+
+        <flecha-volver></flecha-volver>
+
+        <div class="container my-4">
+            <div class="d-flex justify-content-around">
+                <h2 class="fw-bold mb-0">Estado de los pedidos</h2>
+            </div>
+            <div class="d-flex justify-content-around mt-3">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar pedido" aria-label="Search">
+                </form>       
+            </div>
+        </div>
+
+        <div class="container order-list">
+            <div class="card order-item mb-3">
+            <div class="row g-0">
+                <!-- Columna izquierda: imagen + botón abajo -->
+                <div class="col-4 d-flex flex-column align-items-start p-3">
+                <img src="../assets/hamburguesas.png" class="img-fluid rounded-start order-img mb-3" width="100" alt="Sushi Wave">
+                
+                <!-- El truco: mt-auto empuja el botón hacia abajo -->
+                <button type="button" class="btn btn-dark mt-auto"><i class="fa-solid fa-gear"></i></button>
+                
+                </div>
+
+                <!-- Columna derecha: info del pedido -->
+                <div class="col-8">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title fw-bold mb-0">Nombre</h5>
+                        <h5 class="fw-bold mb-0">$20000</h5>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start mt-4">
+                        <h5 class="card-title fw-bold mb-0">Categoria</h5>
+                        <h5 class="fw-bold mb-0">hamburguesas</h5>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start mt-4">
+                        <h5 class="card-title fw-bold mb-0">Stock disponible</h5>
+                        <h5 class="fw-bold mb-0">30 unidades</h5>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start mt-4">
+                        <h5 class="card-title fw-bold mb-0">Stock minimo</h5>
+                        <h5 class="fw-bold mb-0">4 unidades</h5>
+                    </div>
+
+                   
+
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+            
+        </div>
+    </div>
+
+    <empleado-footer></empleado-footer>
+</body>
+
