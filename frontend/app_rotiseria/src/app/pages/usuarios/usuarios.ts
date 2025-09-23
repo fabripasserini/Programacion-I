@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { AdminFooter } from '../../components/admin-footer/admin-footer';
-import { FlechaVolver } from '../../components/flecha-volver/flecha-volver';
+import { Back } from '../../components/back/back';
 @Component({
   selector: 'app-usuarios',
-  imports: [AdminFooter, FlechaVolver],
+  imports: [AdminFooter, Back],
   templateUrl: './usuarios.html',
   styleUrl: './usuarios.css'
 })

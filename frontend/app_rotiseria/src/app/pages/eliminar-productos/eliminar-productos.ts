@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FlechaVolver } from '../../components/flecha-volver/flecha-volver';
+import { Back } from '../../components/back/back';
 import { AdminFooter } from '../../components/admin-footer/admin-footer';
 
 @Component({
   selector: 'app-eliminar-productos',
-  imports: [FlechaVolver,AdminFooter],
+  imports: [Back,AdminFooter],
   templateUrl: './eliminar-productos.html',
   styleUrl: './eliminar-productos.css'
 })

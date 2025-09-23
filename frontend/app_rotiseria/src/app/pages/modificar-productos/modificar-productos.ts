@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { AdminFooter } from '../../components/admin-footer/admin-footer';
-import { FlechaVolver } from '../../components/flecha-volver/flecha-volver';
-
+import { Back } from '../../components/back/back';
 @Component({
   selector: 'app-modificar-productos',
-  imports: [AdminFooter,FlechaVolver],
+  imports: [AdminFooter,Back],
   templateUrl: './modificar-productos.html',
   styleUrl: './modificar-productos.css'
 })
