@@ -1,0 +1,19 @@
+<div class="container my-4">
+    <div class="d-flex justify-content-around">
+        <a routerLink="/pedidos" 
+           class="btn btn-filter" 
+           [class.active]="activeTab === 'enproceso'">
+           En proceso
+        </a>
+        <a routerLink="/pedidoscompletados" 
+           class="btn btn-filter"
+           [class.active]="activeTab === 'completadas'">
+           Completadas
+        </a>
+        <a routerLink="/pedidoscancelados" 
+           class="btn btn-filter"
+           [class.active]="activeTab === 'canceladas'">
+           Canceladas
+        </a>
+    </div>
+</div>

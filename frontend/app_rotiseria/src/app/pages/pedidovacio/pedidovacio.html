@@ -1,0 +1,17 @@
+<div class="main-content-wrapper bg-light bg-user body-user">
+
+    <app-back></app-back>
+
+    
+    <app-titulos 
+        [titulo]="'Mis órdenes'">
+    </app-titulos>
+
+    <app-estadopedido [activeTab]="'enproceso'"></app-estadopedido>
+
+    <div class="container order-list">
+        <app-sinordenes></app-sinordenes>
+        
+    </div>
+
+    <app-footer-cliente></app-footer-cliente>

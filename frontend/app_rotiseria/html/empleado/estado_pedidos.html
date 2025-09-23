@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Órdenes Canceladas - Rotisería</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+</head>
+
+<body class="bg-light bg-empleado">
+
+     <div class="main-body-container  rounded-top-5">
+
+        <header class="text-dark py-4 position-relative">
+            <a href="#" onclick="history.back()" class="back-link position-absolute top-0 start-0 m-3">
+                <i class="fa-solid fa-arrow-left fa-xl text-dark"></i>
+            </a>
+        </header>
+
+        <div class="container my-4">
+            <div class="d-flex justify-content-around">
+                <h2 class="fw-bold mb-0">Estado de los pedidos</h2>
+            </div>
+            <div class="d-flex justify-content-around mt-3">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar pedido" aria-label="Search">
+                </form>       
+            </div>
+        </div>
+
+        <div class="container order-list">
+            <div class="card order-item mb-3">
+            <div class="row g-0">
+                <!-- Columna izquierda: imagen + botón abajo -->
+                <div class="col-4 d-flex flex-column align-items-start p-3">
+                <img src="../assets/hamburguesas.png" class="img-fluid rounded-start order-img mb-3" width="100" alt="Sushi Wave">
+                
+                <!-- El truco: mt-auto empuja el botón hacia abajo -->
+                <button type="button" class="btn btn-danger mt-auto">Cancelar orden</button>
+                
+                </div>
+
+                <!-- Columna derecha: info del pedido -->
+                <div class="col-8">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title fw-bold mb-0">Pedido N 300</h5>
+                        <h5 class="fw-bold mb-0">$20000</h5>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start mt-5">
+                        <h5 class="card-title fw-bold mb-0">Unidades</h5>
+                        <h5 class="fw-bold mb-0">4</h5>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-start mt-5">
+                    <button type="button" class="btn btn-info">Pendiente</button>
+                    <button type="button" class="btn btn-info">En preparacion</button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start mt-5">
+                    <button type="button" class="btn btn-info">Listo</button>
+                    <button type="button" class="btn btn-info">Entregado</button>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+            
+        </div>
+    </div>
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom text-white">
+        <a href="inicioempleado.html" class= "text-dark py-2"><i class="fa-solid fa-house"></i></a>
+        <a href="administrar_user.html" class="text-dark"><i class="fa-solid fa-user"></i></a>
+        <a href="verificar_stock.html" class="text-dark"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a href="agregar_pedido.html" class="text-dark"><i class="fa-solid fa-utensils"></i></a>
+        <a href="estado_pedidos.html" class="text-dark"><i class="fa-solid fa-list"></i></a>
+
+        <a href="../index.html" class="text-dark"><img src="../assets/logo.png" alt="Home" width="30"></a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

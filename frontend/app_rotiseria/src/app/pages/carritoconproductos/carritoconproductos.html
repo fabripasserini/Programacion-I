@@ -1,0 +1,35 @@
+<div class="main-content-wrapper bg-light bg-user body-user">
+
+    <app-back></app-back>
+    
+    <app-carritopedido></app-carritopedido>
+
+    <app-productocarrito></app-productocarrito>
+   
+    <app-productocarrito></app-productocarrito>
+
+    <app-textoespaciado
+        [etiqueta]= "'subtotal'"
+        [valor]= "'R$ 70,00'">
+    </app-textoespaciado>
+
+    <app-textoespaciado
+        [etiqueta]= "'propina'"
+        [valor]= "'R$ 10,00'">
+    </app-textoespaciado>
+
+    <app-textoespaciado
+        [etiqueta]= "'total a pagar'"
+        [valor]= "'R$ 80,00'">
+    </app-textoespaciado>
+    
+    <app-boton
+        [textoboton]="'Confirmar Pedido'"
+        [link]="'/pedidos'">
+    </app-boton>
+    
+    
+
+</div>
+
+<app-footer-cliente></app-footer-cliente>
