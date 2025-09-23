@@ -1,0 +1,55 @@
+<div class="bg-light bg-user body-user">
+
+    <app-back></app-back>
+    
+    
+    <app-bienvenido></app-bienvenido>
+
+    <div class="container mt-3">
+        <div class="row text-center g-4">
+            
+            <app-categorias-productos
+                [titulo]="'hamburguesas'"
+                [imageSrc]="'assets/hamburguesas.png'"
+                [link]="'/hamburguesas'">
+            </app-categorias-productos>
+            
+            <app-categorias-productos
+                [titulo]="'pizzas'"
+                [imageSrc]="'assets/pizzas.png'"
+                [link]="'/pizzas'">
+            </app-categorias-productos>
+        
+            <app-categorias-productos
+                [titulo]="'papas'"
+                [imageSrc]="'assets/papas.png'"
+                [link]="'/papas'">
+            </app-categorias-productos>
+
+            <app-categorias-productos
+                [titulo]="'panchos'"
+                [imageSrc]="'assets/panchos.png'"
+                [link]="'/panchos'">
+            </app-categorias-productos>
+
+            <app-categorias-productos
+                [titulo]="'pollos'"
+                [imageSrc]="'assets/pollos.png'"
+                [link]="'/pollos'">
+            </app-categorias-productos>
+
+            <app-categorias-productos
+                [titulo]="'bebidas'"
+                [imageSrc]="'assets/bebidas.png'"
+                [link]="'/bebidas'">
+            </app-categorias-productos>
+        </div>
+    </div>
+</div>
+
+<app-footer-cliente></app-footer-cliente>
+
+  
+
+
+

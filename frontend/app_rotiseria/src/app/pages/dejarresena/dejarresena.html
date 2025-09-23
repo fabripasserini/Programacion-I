@@ -1,0 +1,38 @@
+<div class="main-container bg-user body-user">
+
+    <header class="bg-danger text-white py-3 text-center">
+        <app-back></app-back>
+        <app-titulos [titulo]="'Deja tu reseña!!'"></app-titulos>
+    </header>
+
+    <div class="container mt-4">
+
+            <app-productoresena
+                [titulo]="'Cheese Burger Duplo'"
+                [imagenSrc]="'assets/hamburguesas.png'"
+                [imagenAlt]="'Cheese Burger Duplo'">
+            </app-productoresena>
+
+            <app-estrellas></app-estrellas>
+            <app-comentario></app-comentario>
+        
+    
+            <div class="d-flex justify-content-between my-4">
+                <app-boton
+                    [textoboton]="'Cancelar'"
+                    [link]="'/pedidoscompletados'"
+                    class="w-50 ms-2">
+                </app-boton>
+                
+                <app-boton
+                    [textoboton]="'Confirmar'"
+                    [link]="'/pedidos'"
+                    class="w-50 ms-2">
+                </app-boton>
+            </div>
+        </div>
+    </div>
+    
+    <app-footer-cliente></app-footer-cliente>
+        
+        
