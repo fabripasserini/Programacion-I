@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { FlechaVolver } from '../../components/flecha-volver/flecha-volver';
+
 @Component({
-  selector: 'app-usuarios',
-  imports: [AdminFooter, FlechaVolver],
-  templateUrl: './usuarios.html',
-  styleUrl: './usuarios.css'
+  selector: 'app-agregar-productos',
+  imports: [AdminFooter,FlechaVolver],
+  templateUrl: './agregar-productos.html',
+  styleUrl: './agregar-productos.css'
 })
-export class Usuarios {
+export class AgregarProductos {
 
 }

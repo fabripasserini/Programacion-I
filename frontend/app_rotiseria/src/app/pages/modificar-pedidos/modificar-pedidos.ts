@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { FlechaVolver } from '../../components/flecha-volver/flecha-volver';
+
 @Component({
-  selector: 'app-usuarios',
-  imports: [AdminFooter, FlechaVolver],
-  templateUrl: './usuarios.html',
-  styleUrl: './usuarios.css'
+  selector: 'app-modificar-pedidos',
+  imports: [AdminFooter,FlechaVolver],
+  templateUrl: './modificar-pedidos.html',
+  styleUrl: './modificar-pedidos.css'
 })
-export class Usuarios {
+export class ModificarPedidos {
 
 }
