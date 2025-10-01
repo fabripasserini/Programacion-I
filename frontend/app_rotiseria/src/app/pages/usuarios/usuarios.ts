@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
-import { AdminFooter } from '../../components/admin-footer/admin-footer';
-import { Back } from '../../components/back/back';
+import { Footer } from "../../components/footer/footer";
+import { Navbar } from '../../components/navbar/navbar';
+import { VerUser } from "../../components/usuario/ver-user/ver-user";
+
 @Component({
   selector: 'app-usuarios',
-  imports: [AdminFooter, Back],
+  imports: [
+    Footer,
+    Navbar,
+    VerUser
+],
   templateUrl: './usuarios.html',
   styleUrl: './usuarios.css'
 })

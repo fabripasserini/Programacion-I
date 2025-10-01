@@ -6,6 +6,7 @@ import os
 import main.resources as resources
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 db = SQLAlchemy()
 jwt = JWTManager()
 #Importar Flask mail
@@ -19,11 +20,10 @@ def create_app():
     migrate = Migrate()
     
     load_dotenv()
-
+    CORS(app)
     # Ruta completa a la base de datos
     db_path = os.getenv('PATH_DB')
     db_name = os.getenv('NAME_DB')
-    full_path = os.path.join(db_path, db_name)
     
     # Crear archivo si no existe
     os.makedirs(db_path, exist_ok=True)

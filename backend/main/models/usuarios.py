@@ -9,9 +9,10 @@ class Usuarios(db.Model):
     apellido = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(50), nullable=False)
-    rol = db.Column(db.String(50), nullable=False, server_default = "usuarios")
+    rol = db.Column(db.String(50), nullable=True, default = "usuario")
     dni=db.Column(db.String(50),nullable=False)
-    created_at=db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
+    alta=db.Column(db.Boolean,default=False,nullable=True)
+    created_at=db.Column(db.DateTime,nullable=True,default=datetime.utcnow)
     calificacion=db.relationship('Calificaciones',back_populates="usuario",cascade="all, delete-orphan")
     pedido=db.relationship('Pedidos',back_populates="usuario",cascade="all, delete-orphan")
     notificacion=db.relationship('Notificaciones',
@@ -43,6 +44,7 @@ class Usuarios(db.Model):
             'apellido': self.apellido,
             'email': self.email,
             'rol': self.rol,
+            'alta': self.alta,
             'dni': self.dni,
             'created_at': str(self.created_at)
             
@@ -63,12 +65,13 @@ class Usuarios(db.Model):
         nombre=usuarios_json.get('nombre')
         apellido=usuarios_json.get('apellido')
         email=usuarios_json.get('email')
+        alta=usuarios_json.get('alta')
         password=usuarios_json.get('password')
         rol=usuarios_json.get('rol','usuarios')
         dni=usuarios_json.get('dni')
         password=usuarios_json.get('password')
         created_at=usuarios_json.get('created_at')
-        return Usuarios(id=id,nombre=nombre,apellido=apellido,email=email,password=password,rol=rol,dni=dni,plain_password=password,created_at=created_at)
+        return Usuarios(id=id,nombre=nombre,apellido=apellido,email=email,alta=alta,password=password,rol=rol,dni=dni,plain_password=password,created_at=created_at)
     
     def to_json_complete(self):
         notificacion=[notificacion.to_json() for notificacion in self.notificacion]
@@ -77,6 +80,7 @@ class Usuarios(db.Model):
             'nombre': self.nombre,
             'apellido': self.apellido,
             'email': self.email,
+            'alta': self.alta,
             'rol': self.rol,
             'dni': self.dni,
             'notificacion': notificacion

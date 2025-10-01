@@ -23,7 +23,7 @@ class Usuario(Resource):
     def delete(self,id):
         usuario=db.session.query(UsuariosModel).get_or_404(id)
         rol=get_jwt().get('rol')
-        if rol=='users' and usuario.id != get_jwt_identity():
+        if rol=='usuario' and usuario.id != get_jwt_identity():
             return "No tienes permisos para ultilizar este recurso",403
         db.session.delete(usuario)
         db.session.commit()
@@ -43,7 +43,7 @@ class Usuario(Resource):
 
 
 class Usuarios(Resource):
-    @role_required(roles=["admin"])
+    @role_required(roles=["admin","empleado"])
     def get(self):
         page=1
         per_page=20
@@ -94,7 +94,7 @@ class Usuarios(Resource):
                   'page': page
                 }
         
-    @role_required(roles=["admin"])
+    @role_required(roles=["admin","empleado"])
     def post(self):
         data_usuario = UsuariosModel.from_json(request.get_json())
         db.session.add(data_usuario)

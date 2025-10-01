@@ -20,7 +20,7 @@ import { Ordencancelada } from './pages/ordencancelada/ordencancelada';
 import { Pedidoscancelados } from './pages/pedidoscancelados/pedidoscancelados';
 import { Pedidoscompletados } from './pages/pedidoscompletados/pedidoscompletados';
 import { Pedidovacio } from './pages/pedidovacio/pedidovacio';
-import { InicioAdmin } from './pages/inicio-admin/inicio-admin';
+import { Inicio } from './pages/inicio/inicio';
 import { EliminarProductos } from './pages/eliminar-productos/eliminar-productos';
 import { EnviarOfertas } from './pages/enviar-ofertas/enviar-ofertas';
 import { AgregarProductos } from './pages/agregar-productos/agregar-productos';
@@ -29,17 +29,17 @@ import { ModificarProductos } from './pages/modificar-productos/modificar-produc
 import { PedidosClientes } from './pages/pedidos-clientes/pedidos-clientes';
 import { Productos } from './pages/productos/productos';
 import { AdministrarUser } from './pages/administrar-user/administrar-user';
-import { InicioEmpleado } from './pages/inicio-empleado/inicio-empleado';
 import { EstadoPedidos } from './pages/estado-pedidos/estado-pedidos';
 import { AgregarPedido } from './pages/agregar-pedido/agregar-pedido';
 import { VerificarStock } from './pages/verificar-stock/verificar-stock';
 import { Contacto } from './pages/contacto/contacto';
+import { authsessionGuard } from './guards/authsession-guard';
 
 export const routes: Routes = [
     { path: 'home', loadComponent: () => import('./pages/home/home').then(m => m.Home) },
     { path: 'register', loadComponent: () => import('./pages/register/register').then(m => m.Register) },
     { path: 'login', loadComponent: () => import('./pages/login-page/login-page').then(m => m.LoginPage) },
-    { path: 'usuarios', loadComponent: () => import('./pages/usuarios/usuarios').then(m => m.Usuarios) },
+    { path: 'usuarios', loadComponent: () => import('./pages/usuarios/usuarios').then(m => m.Usuarios),canActivate:[authsessionGuard] },
     { path: 'menu', loadComponent: () => import('./pages/menu/menu').then(m => m.Menu) },
     { path: 'panchos', loadComponent: () => import('./pages/panchos/panchos').then(m => m.Panchos) },
     { path: 'hamburguesas', loadComponent: () => import('./pages/hamburguesas/hamburguesas').then(m => m.Hamburguesas) },
@@ -56,7 +56,7 @@ export const routes: Routes = [
     { path: 'pedidoscancelados', loadComponent: () => import('./pages/pedidoscancelados/pedidoscancelados').then(m => m.Pedidoscancelados) },
     { path: 'pedidoscompletados', loadComponent: () => import('./pages/pedidoscompletados/pedidoscompletados').then(m => m.Pedidoscompletados) },
     { path: 'pedidovacio', loadComponent: () => import('./pages/pedidovacio/pedidovacio').then(m => m.Pedidovacio) },
-    { path: 'inicio-admin', loadComponent: () => import('./pages/inicio-admin/inicio-admin').then(m => m.InicioAdmin) },
+    { path: 'inicio', loadComponent: () => import('./pages/inicio/inicio').then(m => m.Inicio) },
     { path: 'eliminar-productos', loadComponent: () => import('./pages/eliminar-productos/eliminar-productos').then(m => m.EliminarProductos) },
     { path: 'enviar-ofertas', loadComponent: () => import('./pages/enviar-ofertas/enviar-ofertas').then(m => m.EnviarOfertas) },
     { path: 'agregar-productos', loadComponent: () => import('./pages/agregar-productos/agregar-productos').then(m => m.AgregarProductos) },
@@ -65,12 +65,12 @@ export const routes: Routes = [
     { path: 'pedidos-clientes', loadComponent: () => import('./pages/pedidos-clientes/pedidos-clientes').then(m => m.PedidosClientes) },
     { path: 'productos', loadComponent: () => import('./pages/productos/productos').then(m => m.Productos) },
     { path: 'administrar-user', loadComponent: () => import('./pages/administrar-user/administrar-user').then(m => m.AdministrarUser) },
-    { path: 'inicio-empleado', loadComponent: () => import('./pages/inicio-empleado/inicio-empleado').then(m => m.InicioEmpleado) },
     { path: 'estado-pedidos', loadComponent: () => import('./pages/estado-pedidos/estado-pedidos').then(m => m.EstadoPedidos) },
     { path: 'agregar-pedido', loadComponent: () => import('./pages/agregar-pedido/agregar-pedido').then(m => m.AgregarPedido) },
     { path: 'verificar-stock', loadComponent: () => import('./pages/verificar-stock/verificar-stock').then(m => m.VerificarStock) },
     { path: 'contacto', loadComponent: () => import('./pages/contacto/contacto').then(m => m.Contacto) },
     { path: 'error', loadComponent: () => import('./pages/error-page/error-page').then(m => m.ErrorPage) },
+    { path: 'usuario/:id/:tipo_op', loadComponent: () => import('./pages/usuario/usuario').then(m => m.UsuarioComponent) },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: 'error', pathMatch: 'full' }
 ];
