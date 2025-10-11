@@ -14,7 +14,7 @@ export class Reg {
   //     email:'manuel@gmail.com',
   //     password:'123456'
   //   }
-  register(dataRegister:RegisterRequest): Observable<any>{
+  register(dataRegister:UserCreate): Observable<any>{
     return this.http.post(this.url+'/auth/register',dataRegister);
   }
 }

@@ -1,4 +1,4 @@
-interface RegisterRequest {
+interface UserCreate {
     nombre: string;
     apellido: string;
     dni: string;

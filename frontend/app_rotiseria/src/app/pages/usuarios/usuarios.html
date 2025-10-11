@@ -1,5 +1,13 @@
-<app-navbar></app-navbar>
+<div [ngClass]="fondo">
+    <div class="main-container vh-100 d-flex flex-column">
+            <app-back></app-back>
 
-<app-ver-user></app-ver-user>
+            <app-ver-user></app-ver-user>
 
-<app-footer></app-footer>
+@if(usuario.rol === 'admin'){
+    <admin-footer></admin-footer>
+
+    }
+@if(usuario.rol === 'empleado'){
+    <empleado-footer></empleado-footer>
+}

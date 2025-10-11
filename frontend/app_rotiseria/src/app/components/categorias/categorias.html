@@ -1,0 +1,7 @@
+@for (categoria of arrayFiltred; track categoria.id) {
+  <app-product-card
+    [titulo]="categoria.nombre"
+    [imagenSrc]="'assets/hamburguesas.png'"
+    [imagenAlt]="'Categoria'">
+  </app-product-card>
+}

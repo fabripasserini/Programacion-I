@@ -21,8 +21,8 @@ export class LoginPage {
     
   ){
     this.loginForm = this.formBuilder.group({
-      email: ['aca va el mail', Validators.required],
-      password: ['123456', Validators.required]
+      email: ['admin@edu.ar', Validators.required],
+      password: ['fabri', Validators.required]
     });
   }
 
@@ -36,7 +36,6 @@ export class LoginPage {
         console.log("Respuesta login: ", res);
         localStorage.setItem('token', res.access_token);
         localStorage.setItem('email', res.email);
-        localStorage.setItem('rol', res.rol);
         this.router.navigateByUrl('/menu') //queda que todo usuario nuevo se vaya a una pantalla que le diga que tiene que ser validado
         // if(res.rol === 'admin' || res.rol === 'empleado')
         //   this.router.navigateByUrl('/inicio')

@@ -17,34 +17,9 @@ export class VerUser {
 
   nombre!: string;
 
-  // arrayUsuarios = [
-  //   {
-  //     id: 1,
-  //     nombre: "Martin",
-  //     email: "martin@correo.com"
-  //   },
-  //   {
-  //     id: 2,
-  //     nombre: "Rodrigo",
-  //     email: "rodrigo@correo.com"
-  //   },
-  //   {
-  //     id: 3,
-  //     nombre: "Maria",
-  //     email: "maria@correo.com"
-  //   },
-  //   {
-  //     id: 4,
-  //     nombre: "Juana",
-  //     email: "juana@correo.com"
-  //   }
-  // ]
-  
-  // arrayFiltred = [...this.arrayUsuarios]
 
-  arrayUsuarios:any[] = [];
-  arrayFiltred:any[] = [];
-  
+  arrayUsuarios: any[] = [];
+  arrayFiltred: any[] = [];
   constructor(
     private router:Router,
     private usuarioSvc: Usuarios
@@ -54,7 +29,7 @@ export class VerUser {
     this.usuarioSvc.getUsuarios().subscribe({
       next: (res:any) => {
         console.log("Usuarios: ", res);
-        this.arrayUsuarios = res.animales;
+        this.arrayUsuarios = res.usuarios;
         this.arrayFiltred = [...this.arrayUsuarios]
       },
       error: (err) => {
@@ -67,7 +42,12 @@ export class VerUser {
     // this.router.navigate([`/usuario/${usuario.id}/Editar`]);
     this.router.navigateByUrl(`/usuario/${usuario.id}/Editar`);
   }
-
+  crearUsuario(){
+    this.router.navigateByUrl(`/usuario/null/Crear`);
+  }
+  eliminarUsuario(usuario:any){ // id
+    this.router.navigateByUrl(`/usuarios/null/Eliminado`);
+  }
   buscar(){
     let nombreNuevo = this.nombre.toLowerCase();
     this.arrayFiltred = this.arrayUsuarios.filter(u => u.name.toLowerCase().includes(nombreNuevo));
