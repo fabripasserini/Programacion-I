@@ -19,24 +19,24 @@ export class Usuarios {
   getUsuarios(): Observable<any> {
     return this.http.get(this.url + '/usuarios', { headers: this.headers });
   }
+  getUsuario(id: number): Observable<any> {
+    return this.http.get(this.url + '/usuario/' + id, { headers: this.headers });
+  }
 
-  eliminarUsuario(id: number) {
+  deleteUsuario(id: number) {
     this.http.delete(this.url + '/usuario/' + id, { headers: this.headers })
       .subscribe({
         next: (res) => {
           console.log('Usuario eliminado:', res);
-          // vuelve a la página anterior
         },
         
         error: (err) => console.error('Error al eliminar usuario:', err)
       });
   }
 
-  updateUsuario(usuario: any, dataUpdate: UserUpdate): Observable<any> {
-    return this.http.put(this.url + '/usuario/' + usuario.id, dataUpdate, { headers: this.headers });
+  updateUsuario(usuario: any): Observable<any> {
+    return this.http.put(this.url + '/usuario/' + usuario.id, usuario,{ headers: this.headers });
   }
 
-  createUsuario(dataCreate: UserCreate): Observable<any> {
-    return this.http.post(this.url + '/usuarios', dataCreate, { headers: this.headers });
-  }
+
 }

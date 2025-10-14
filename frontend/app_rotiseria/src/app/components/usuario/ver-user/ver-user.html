@@ -6,7 +6,7 @@
                 <input (input)="buscar()" [(ngModel)]="nombre" type="text" class="form-control me-2 flex-grow-1" placeholder="Buscar usuario...">
                 <button (click)="buscar()" class="btn btn-secondary" type="button"><i
                         class="fa-solid fa-magnifying-glass"></i></button>
-                <a class="btn btn-primary ms-2" routerLink="/usuario/null/Alta"><i class="fa-solid fa-plus"></i></a>
+                <a class="btn btn-primary ms-2" routerLink="/usuario/null/Crear"><i class="fa-solid fa-plus"></i></a>
                 <!-- <button class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#nuevoUsuarioModal">
                     <i class="fa-solid fa-plus"></i>
                 </button> -->
@@ -14,17 +14,19 @@
             <ul class="list-group">
                 @for (usuario of arrayFiltred; track usuario.id) {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{usuario.id}}-{{usuario.nombre}} 
+                        {{usuario.id}}-{{usuario.email}} 
                         <div>
-                            <button (click)="editarUsuario(usuario)" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button routerLink="/usuario/{{usuario.id}}/Modificar" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-pen-to-square"></i></button>
                             <!-- <a routerLink="/usuario/{{usuario.id}}/Editar" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-pen-to-square"></i></a> -->
-                            <button (click)="eliminarUsuario(usuario)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                            <button routerLink="/usuario/{{usuario.id}}/Eliminar" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </li>
                 }
             </ul>
         </div>
     </div>
+
+
     <!-- Modal para agregar nuevo usuario -->
     <div class="modal fade" id="nuevoUsuarioModal" tabindex="-1" aria-labelledby="nuevoUsuarioModalLabel"
         aria-hidden="true">

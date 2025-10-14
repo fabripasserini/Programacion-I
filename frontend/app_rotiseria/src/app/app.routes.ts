@@ -23,7 +23,6 @@ import { ModificarPedidos } from './pages/modificar-pedidos/modificar-pedidos';
 import { ModificarProductos } from './pages/modificar-productos/modificar-productos';
 import { PedidosClientes } from './pages/pedidos-clientes/pedidos-clientes';
 import { Productos } from './pages/productos/productos';
-import { AdministrarUser } from './pages/administrar-user/administrar-user';
 import { EstadoPedidos } from './pages/estado-pedidos/estado-pedidos';
 import { AgregarPedido } from './pages/agregar-pedido/agregar-pedido';
 import { VerificarStock } from './pages/verificar-stock/verificar-stock';
@@ -32,21 +31,21 @@ import { authsessionGuard } from './guards/authsession-guard';
 import { authuserGuard } from './guards/authuser-guard';
 import { authadminGuard } from './guards/authadmin-guard';
 import { authempleadoGuard } from './guards/authempleado-guard';
+import { authadminempleadoGuard } from './guards/authadminempleado-guard';
 
 export const routes: Routes = [
     { path: 'home', loadComponent: () => import('./pages/home/home').then(m => m.Home) },
     { path: 'register', loadComponent: () => import('./pages/register/register').then(m => m.Register) },
     { path: 'login', loadComponent: () => import('./pages/login-page/login-page').then(m => m.LoginPage) },
-    { path: 'usuarios', loadComponent: () => import('./pages/usuarios/usuarios').then(m => m.Usuarios) },
+    { path: 'usuarios', loadComponent: () => import('./pages/usuarios/usuarios').then(m => m.Usuarios),canActivate:[authadminempleadoGuard] },
     // { path: 'menu', loadComponent: () => import('./pages/menu/menu').then(m => m.Menu),canActivate:[authuserGuard] },
     // { path: 'administrar-user', loadComponent: () => import('./pages/administrar-user/administrar-user').then(m => m.AdministrarUser),canActivate:[authempleadoGuard] },
     // { path: 'enviar-ofertas', loadComponent: () => import('./pages/enviar-ofertas/enviar-ofertas').then(m => m.EnviarOfertas),canActivate:[authadminGuard] },
-    { path: 'menu', loadComponent: () => import('./pages/menu/menu').then(m => m.Menu) },
-    { path: 'administrar-user', loadComponent: () => import('./pages/administrar-user/administrar-user').then(m => m.AdministrarUser) },
-    { path: 'enviar-ofertas', loadComponent: () => import('./pages/enviar-ofertas/enviar-ofertas').then(m => m.EnviarOfertas) },
+    { path: 'menu', loadComponent: () => import('./pages/menu/menu').then(m => m.Menu),canActivate:[authuserGuard] },
+    { path: 'enviar-ofertas', loadComponent: () => import('./pages/enviar-ofertas/enviar-ofertas').then(m => m.EnviarOfertas),canActivate:[authadminGuard] },
   
     { path: 'carrito', loadComponent: () => import('./pages/carrito/carrito').then(m => m.Carrito) },
-    { path: 'favoritos', loadComponent: () => import('./pages/favoritos/favoritos').then(m => m.Favoritos) },
+    { path: 'favoritos', loadComponent: () => import('./pages/favoritos/favoritos').then(m => m.Favoritos),canActivate:[authuserGuard] },
     { path: 'pedidos', loadComponent: () => import('./pages/pedidos/pedidos').then(m => m.Pedidos) },
     { path: 'carritoconproductos', loadComponent: () => import('./pages/carritoconproductos/carritoconproductos').then(m => m.Carritoconproductos) },
     { path: 'dejarresena', loadComponent: () => import('./pages/dejarresena/dejarresena').then(m => m.Dejarresena) },
@@ -54,7 +53,7 @@ export const routes: Routes = [
     { path: 'pedidoscancelados', loadComponent: () => import('./pages/pedidoscancelados/pedidoscancelados').then(m => m.Pedidoscancelados) },
     { path: 'pedidoscompletados', loadComponent: () => import('./pages/pedidoscompletados/pedidoscompletados').then(m => m.Pedidoscompletados) },
     { path: 'pedidovacio', loadComponent: () => import('./pages/pedidovacio/pedidovacio').then(m => m.Pedidovacio) },
-    { path: 'inicio', loadComponent: () => import('./pages/inicio/inicio').then(m => m.Inicio) },
+    { path: 'inicio', loadComponent: () => import('./pages/inicio/inicio').then(m => m.Inicio),canActivate:[authadminempleadoGuard] },
     { path: 'eliminar-productos', loadComponent: () => import('./pages/eliminar-productos/eliminar-productos').then(m => m.EliminarProductos) },
     { path: 'agregar-productos', loadComponent: () => import('./pages/agregar-productos/agregar-productos').then(m => m.AgregarProductos) },
     { path: 'modificar-pedidos', loadComponent: () => import('./pages/modificar-pedidos/modificar-pedidos').then(m => m.ModificarPedidos) },

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { VerCategorias } from '../../services/categorias';
 import { ProductCard } from '../product-card/product-card';
 
 @Component({
   selector: 'app-categorias',
   standalone: true,
-  imports: [RouterLink, FormsModule, ProductCard],
+  imports: [ FormsModule, ProductCard],
   templateUrl: './categorias.html',
   styleUrls: ['./categorias.css']
 })

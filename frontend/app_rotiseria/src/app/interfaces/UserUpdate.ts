@@ -3,7 +3,7 @@ interface UserUpdate {
     apellido: string;
     email: string;
     rol: string;
-    password: string;
+    password?: string;
     dni: string;
     alta: boolean;
 

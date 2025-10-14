@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
-import { Navbar } from "../../components/navbar/navbar";
-import { Footer } from "../../components/footer/footer";
-import { AbmComponent } from "../../components/usuario/abm/abm";
 import { ActivatedRoute } from '@angular/router';
 import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { Back } from '../../components/back/back';
 import { EmpleadoFooter } from '../../components/empleado-footer/empleado-footer';
 import { CommonModule } from '@angular/common';  
-import { jwtDecode } from 'jwt-decode';
 import { Checkrol } from '../../services/checkrol';
 import { VerUser } from '../../components/usuario/ver-user/ver-user';
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [Navbar, Footer, AbmComponent, AdminFooter, Back, EmpleadoFooter,CommonModule,VerUser],
+  imports: [ AdminFooter, Back, EmpleadoFooter,CommonModule,VerUser],
   templateUrl: './usuarios.html',
   styleUrl: './usuarios.css'
 })

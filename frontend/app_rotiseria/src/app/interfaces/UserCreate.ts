@@ -4,4 +4,6 @@ interface UserCreate {
     dni: string;
     email: string;
     password: string;
+    rol: boolean;
+    alta: boolean;
 }

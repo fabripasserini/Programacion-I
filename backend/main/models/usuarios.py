@@ -46,7 +46,7 @@ class Usuarios(db.Model):
             'rol': self.rol,
             'alta': self.alta,
             'dni': self.dni,
-            'created_at': str(self.created_at)
+            'created_at': str(self.created_at),
             
               
         }
@@ -67,7 +67,7 @@ class Usuarios(db.Model):
         email=usuarios_json.get('email')
         alta=usuarios_json.get('alta')
         password=usuarios_json.get('password')
-        rol=usuarios_json.get('rol','usuarios')
+        rol=usuarios_json.get('rol','user')
         dni=usuarios_json.get('dni')
         password=usuarios_json.get('password')
         created_at=usuarios_json.get('created_at')

@@ -16,7 +16,7 @@ import { Usuarios } from '../../../services/usuarios';
 export class VerUser {
 
   nombre!: string;
-
+  apellido!: string;
 
   arrayUsuarios: any[] = [];
   arrayFiltred: any[] = [];
@@ -46,10 +46,13 @@ export class VerUser {
     this.router.navigateByUrl(`/usuario/null/Crear`);
   }
   eliminarUsuario(usuario:any){ // id
-    this.router.navigateByUrl(`/usuarios/null/Eliminado`);
+    this.router.navigateByUrl(`/usuarios/`);
   }
   buscar(){
-    let nombreNuevo = this.nombre.toLowerCase();
-    this.arrayFiltred = this.arrayUsuarios.filter(u => u.name.toLowerCase().includes(nombreNuevo));
-  }
+  const nombreNuevo = (this.nombre || '').toLowerCase().trim();
+  this.arrayFiltred = this.arrayUsuarios.filter(u =>
+    (u.nombre || '').toLowerCase().includes(nombreNuevo)
+  );
+}
+
 }
