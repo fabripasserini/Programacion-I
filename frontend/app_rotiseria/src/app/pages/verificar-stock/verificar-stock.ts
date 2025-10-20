@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Back } from '../../components/back/back';
-import { EmpleadoFooter } from '../../components/empleado-footer/empleado-footer';
+import { Footerunico } from '../../components/footerunico/footerunico';
 
 @Component({
   selector: 'app-verificar-stock',
-  imports: [Back,EmpleadoFooter],
+  imports: [Back, Footerunico],
   templateUrl: './verificar-stock.html',
   styleUrl: './verificar-stock.css'
 })

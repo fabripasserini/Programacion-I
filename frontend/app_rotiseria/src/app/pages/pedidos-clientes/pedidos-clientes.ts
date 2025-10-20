@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { Back } from '../../components/back/back';
+import { Footerunico } from '../../components/footerunico/footerunico';
 @Component({
   selector: 'app-pedidos-clientes',
-  imports: [AdminFooter,Back],
+  imports: [Footerunico,Back],
   templateUrl: './pedidos-clientes.html',
   styleUrl: './pedidos-clientes.css'
 })

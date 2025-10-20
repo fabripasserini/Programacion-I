@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
 import { AbmComponent } from "../../components/usuario/abm/abm";
 import { ActivatedRoute } from '@angular/router';
-import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { Back } from '../../components/back/back';
-import { EmpleadoFooter } from '../../components/empleado-footer/empleado-footer';
 import { CommonModule } from '@angular/common';  
 import { Checkrol } from '../../services/checkrol';
 
 @Component({
   selector: 'app-usuario',
   standalone: true,
-  imports: [  AbmComponent, AdminFooter, Back, EmpleadoFooter,CommonModule],
+  imports: [  AbmComponent, Back,CommonModule],
   templateUrl: './usuario.html',
   styleUrl: './usuario.css'
 })

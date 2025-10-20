@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Back } from '../../components/back/back';
 import { Titulos } from '../../components/titulos/titulos';
-import { FooterCliente } from '../../components/footer-cliente/footer-cliente';
 import { Estadopedido } from '../../components/estadopedido/estadopedido';
 import { Productoorden } from '../../components/productoorden/productoorden';
 import { Boton } from '../../components/boton/boton';
+import { Footerunico } from '../../components/footerunico/footerunico';
 
 @Component({
   selector: 'app-pedidos',
@@ -13,7 +13,7 @@ import { Boton } from '../../components/boton/boton';
     CommonModule,
     Back,
     Titulos,
-    FooterCliente,
+    Footerunico,
     Estadopedido,
     Productoorden,
     Boton

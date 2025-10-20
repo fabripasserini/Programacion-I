@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Back } from '../../components/back/back';
 import { Titulos } from '../../components/titulos/titulos';
-import { FooterCliente } from '../../components/footer-cliente/footer-cliente';
 import { Agregarproducto } from '../../components/agregarproducto/agregarproducto';
 import { Carritopedido } from '../../components/carritopedido/carritopedido';
+import { Footerunico } from '../../components/footerunico/footerunico';
 
 @Component({
   selector: 'app-carrito',
@@ -13,7 +13,7 @@ import { Carritopedido } from '../../components/carritopedido/carritopedido';
     CommonModule,
     Back,
     Titulos,
-    FooterCliente,
+    Footerunico,
     Agregarproducto,
     Carritopedido
   ],

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminFooter } from './admin-footer';
+import { Footerunico } from './footerunico';
 
-describe('AdminFooter', () => {
-  let component: AdminFooter;
-  let fixture: ComponentFixture<AdminFooter>;
+describe('Footerunico', () => {
+  let component: Footerunico;
+  let fixture: ComponentFixture<Footerunico>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminFooter]
+      imports: [Footerunico]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AdminFooter);
+    fixture = TestBed.createComponent(Footerunico);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

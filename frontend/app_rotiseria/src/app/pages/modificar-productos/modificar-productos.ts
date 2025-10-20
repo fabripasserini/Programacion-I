@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { Back } from '../../components/back/back';
+import { Footerunico } from '../../components/footerunico/footerunico';
 @Component({
   selector: 'app-modificar-productos',
-  imports: [AdminFooter,Back],
+  imports: [Footerunico,Back],
   templateUrl: './modificar-productos.html',
   styleUrl: './modificar-productos.css'
 })

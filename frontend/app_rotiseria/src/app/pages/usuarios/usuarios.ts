@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { Back } from '../../components/back/back';
-import { EmpleadoFooter } from '../../components/empleado-footer/empleado-footer';
+import { Footerunico } from '../../components/footerunico/footerunico';
 import { CommonModule } from '@angular/common';  
 import { Checkrol } from '../../services/checkrol';
 import { VerUser } from '../../components/usuario/ver-user/ver-user';
@@ -10,7 +9,7 @@ import { VerUser } from '../../components/usuario/ver-user/ver-user';
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [ AdminFooter, Back, EmpleadoFooter,CommonModule,VerUser],
+  imports: [  Back, Footerunico,CommonModule,VerUser],
   templateUrl: './usuarios.html',
   styleUrl: './usuarios.css'
 })

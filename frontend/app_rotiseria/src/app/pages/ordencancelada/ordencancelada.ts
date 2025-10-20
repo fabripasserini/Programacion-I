@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Back } from '../../components/back/back';
 import { Checkordenc } from '../../components/checkordenc/checkordenc';
-import { FooterCliente } from '../../components/footer-cliente/footer-cliente';
+import { Footerunico } from '../../components/footerunico/footerunico';
 
 @Component({
   selector: 'app-ordencancelada',
@@ -10,7 +10,7 @@ import { FooterCliente } from '../../components/footer-cliente/footer-cliente';
     CommonModule,
     Back,
     Checkordenc,
-    FooterCliente
+    Footerunico
   ],
   templateUrl: './ordencancelada.html',
   styleUrl: './ordencancelada.css'

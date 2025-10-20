@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Back } from '../../components/back/back';
 import { Titulos } from '../../components/titulos/titulos';
-import { FooterCliente } from '../../components/footer-cliente/footer-cliente';
 import { Puntajecomida } from '../../components/puntajecomida/puntajecomida';
+import { Footerunico } from '../../components/footerunico/footerunico';
 
 @Component({
   selector: 'app-favoritos',
@@ -11,7 +11,7 @@ import { Puntajecomida } from '../../components/puntajecomida/puntajecomida';
     CommonModule,
     Back,
     Titulos,
-    FooterCliente,
+    Footerunico,
     Puntajecomida
   ],
   templateUrl: './favoritos.html',

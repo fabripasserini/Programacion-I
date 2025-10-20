@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { Back } from '../../components/back/back';
+import { Footerunico } from '../../components/footerunico/footerunico';
 
 @Component({
   selector: 'app-agregar-productos',
-  imports: [AdminFooter,Back],
+  imports: [Footerunico,Back],
   templateUrl: './agregar-productos.html',
   styleUrl: './agregar-productos.css'
 })

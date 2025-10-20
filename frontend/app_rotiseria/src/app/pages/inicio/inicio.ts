@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminFooter } from '../../components/admin-footer/admin-footer';
 import { Back } from '../../components/back/back';
-import { EmpleadoFooter } from '../../components/empleado-footer/empleado-footer';
 import { CommonModule } from '@angular/common';  
 import { Usuarios } from '../../services/usuarios';
 import { jwtDecode } from 'jwt-decode';
 import { Checkrol } from '../../services/checkrol';
+import { Footerunico } from '../../components/footerunico/footerunico';
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [AdminFooter, Back, EmpleadoFooter,CommonModule],
+  imports: [Footerunico, Back,CommonModule],
   templateUrl: './inicio.html',
   styleUrls: ['./inicio.css']
 })
