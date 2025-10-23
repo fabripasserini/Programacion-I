@@ -1,5 +1,4 @@
-python3 ~/Programacion-I/backend/app.py &
+python3 /home/manu/Proyectos/programacion_1/Programacion-I/backend/app.py &
 
-cd  ~/Programacion-I/frontend/app_rotiseria
+cd  /home/manu/Proyectos/programacion_1/Programacion-I/frontend/app_rotiseria
 ng serve
-flask run --port=5000

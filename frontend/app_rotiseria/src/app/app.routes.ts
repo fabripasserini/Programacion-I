@@ -8,7 +8,6 @@ import { ErrorPage } from './pages/error-page/error-page';
 
 import { Carrito } from './pages/carrito/carrito';
 import { Favoritos } from './pages/favoritos/favoritos';
-import { Pedidos } from './pages/pedidos/pedidos';
 import { Carritoconproductos } from './pages/carritoconproductos/carritoconproductos';
 import { Dejarresena } from './pages/dejarresena/dejarresena';
 import { Ordencancelada } from './pages/ordencancelada/ordencancelada';
@@ -16,11 +15,8 @@ import { Pedidoscancelados } from './pages/pedidoscancelados/pedidoscancelados';
 import { Pedidoscompletados } from './pages/pedidoscompletados/pedidoscompletados';
 import { Pedidovacio } from './pages/pedidovacio/pedidovacio';
 import { Inicio } from './pages/inicio/inicio';
-import { EliminarProductos } from './pages/eliminar-productos/eliminar-productos';
 import { EnviarOfertas } from './pages/enviar-ofertas/enviar-ofertas';
-import { AgregarProductos } from './pages/agregar-productos/agregar-productos';
 import { ModificarPedidos } from './pages/modificar-pedidos/modificar-pedidos';
-import { ModificarProductos } from './pages/modificar-productos/modificar-productos';
 import { PedidosClientes } from './pages/pedidos-clientes/pedidos-clientes';
 import { Productos } from './pages/productos/productos';
 import { EstadoPedidos } from './pages/estado-pedidos/estado-pedidos';
@@ -32,7 +28,8 @@ import { authuserGuard } from './guards/authuser-guard';
 import { authadminGuard } from './guards/authadmin-guard';
 import { authempleadoGuard } from './guards/authempleado-guard';
 import { authadminempleadoGuard } from './guards/authadminempleado-guard';
-
+import { Pedido } from './pages/pedido/pedido';
+import { Pedidos } from './pages/pedidos/pedidos';
 export const routes: Routes = [
     { path: 'home', loadComponent: () => import('./pages/home/home').then(m => m.Home) },
     { path: 'register', loadComponent: () => import('./pages/register/register').then(m => m.Register) },
@@ -54,10 +51,7 @@ export const routes: Routes = [
     { path: 'pedidoscompletados', loadComponent: () => import('./pages/pedidoscompletados/pedidoscompletados').then(m => m.Pedidoscompletados) },
     { path: 'pedidovacio', loadComponent: () => import('./pages/pedidovacio/pedidovacio').then(m => m.Pedidovacio) },
     { path: 'inicio', loadComponent: () => import('./pages/inicio/inicio').then(m => m.Inicio),canActivate:[authadminempleadoGuard] },
-    { path: 'eliminar-productos', loadComponent: () => import('./pages/eliminar-productos/eliminar-productos').then(m => m.EliminarProductos) },
-    { path: 'agregar-productos', loadComponent: () => import('./pages/agregar-productos/agregar-productos').then(m => m.AgregarProductos) },
-    { path: 'modificar-pedidos', loadComponent: () => import('./pages/modificar-pedidos/modificar-pedidos').then(m => m.ModificarPedidos) },
-    { path: 'modificar-productos', loadComponent: () => import('./pages/modificar-productos/modificar-productos').then(m => m.ModificarProductos) },
+
     { path: 'pedidos-clientes', loadComponent: () => import('./pages/pedidos-clientes/pedidos-clientes').then(m => m.PedidosClientes) },
     { path: 'productos', loadComponent: () => import('./pages/productos/productos').then(m => m.Productos) },
     { path: 'estado-pedidos', loadComponent: () => import('./pages/estado-pedidos/estado-pedidos').then(m => m.EstadoPedidos) },
@@ -66,6 +60,8 @@ export const routes: Routes = [
     { path: 'contacto', loadComponent: () => import('./pages/contacto/contacto').then(m => m.Contacto) },
     { path: 'error', loadComponent: () => import('./pages/error-page/error-page').then(m => m.ErrorPage) },
     { path: 'usuario/:id/:tipo_op', loadComponent: () => import('./pages/usuario/usuario').then(m => m.UsuarioComponent) },
+    { path: 'producto/:id/:tipo_op', loadComponent: () => import('./pages/producto/producto').then(m => m.ProductoComponent) },
+    { path: 'pedido/:id/:tipo_op', loadComponent: () => import('./pages/pedido/pedido').then(m => m.Pedido) },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: 'error', pathMatch: 'full' }
 ];

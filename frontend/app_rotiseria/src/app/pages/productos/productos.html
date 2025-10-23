@@ -1,55 +1,14 @@
-<div class="bg-admin min-vh-100 d-flex flex-columnn">
+<div [ngClass]="fondo" class="min-vh-100 d-flex flex-column">
 
-    <div class="main-body-container rounded-top-5">
+  <div class="main-body-container rounded-top-5">
 
-        <app-back></app-back>
-        
-        <div class="container my-4">
-            <div class="d-flex justify-content-around">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2 text-center" type="search" placeholder="Buscar producto" aria-label="Search">
-                </form>
-            </div>
-            <div class="d-flex justify-content-center my-3">
-                <button type="button" class="btn btn-success" onclick="location.href='/agregar-productos'">
-                    <i class="fa-solid fa-plus"></i> Agregar producto
-                </button>
-            </div>
-        </div>
+    <app-back></app-back>
 
-        <div class="card order-item mb-3">
-            <div class="row g-0 align-items-center">
-                <div class="col-4">
-                    <img src="../assets/hamburguesas.png" class="img-fluid rounded-start order-img" width="100" alt="Sushi Wave">
-                </div>
-                <div class="col-8">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <h5 class="card-title fw-bold mb-0">Hamburguesa</h5>
-                            <h5 class="fw-bold mb-0">$50</h5>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-start">
-                            <p class="py-2">Categoria</p>
-                            <p>postre</p>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-start">
-                            <p class="py-2">Descripción</p>
-                            <p>doble carne</p>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-start mt-3">
-                            <button type="button" class="btn btn-success" onclick="location.href='/modificar-productos'">
-                                <i class="fa-solid fa-edit"></i> Editar
-                            </button>
-                            <button type="button" class="btn btn-danger">Eliminar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> 
-
-    </div> 
+    <app-ver-producto></app-ver-producto>
 
 
-    <app-footerunico></app-footerunico>
-</div>
+  </div> <!-- ✅ cierra correctamente main-body-container -->
+
+  <app-footerunico></app-footerunico>
+
+</div> <!-- ✅ cierra correctamente el contenedor principal -->
