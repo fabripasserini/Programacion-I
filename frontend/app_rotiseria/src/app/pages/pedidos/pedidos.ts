@@ -6,6 +6,9 @@ import { Estadopedido } from '../../components/estadopedido/estadopedido';
 import { Productoorden } from '../../components/productoorden/productoorden';
 import { Boton } from '../../components/boton/boton';
 import { Footerunico } from '../../components/footerunico/footerunico';
+import { VerPedido } from '../../components/pedido/ver-pedido/ver-pedido';
+import { ActivatedRoute } from '@angular/router';
+import { Checkrol } from '../../services/checkrol';
 
 @Component({
   selector: 'app-pedidos',
@@ -16,11 +19,19 @@ import { Footerunico } from '../../components/footerunico/footerunico';
     Footerunico,
     Estadopedido,
     Productoorden,
-    Boton
+    Boton,
+    VerPedido
   ],
   templateUrl: './pedidos.html',
   styleUrl: './pedidos.css'
 })
 export class Pedidos {
-
+  userId!: string;
+  tipo_op!: string;
+  usuario: any = {};
+  fondo = '';
+  constructor(
+    private route:ActivatedRoute,
+  ){}
+ 
 }

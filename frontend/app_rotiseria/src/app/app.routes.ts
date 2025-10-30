@@ -38,7 +38,7 @@ export const routes: Routes = [
     // { path: 'menu', loadComponent: () => import('./pages/menu/menu').then(m => m.Menu),canActivate:[authuserGuard] },
     // { path: 'administrar-user', loadComponent: () => import('./pages/administrar-user/administrar-user').then(m => m.AdministrarUser),canActivate:[authempleadoGuard] },
     // { path: 'enviar-ofertas', loadComponent: () => import('./pages/enviar-ofertas/enviar-ofertas').then(m => m.EnviarOfertas),canActivate:[authadminGuard] },
-    { path: 'menu', loadComponent: () => import('./pages/menu/menu').then(m => m.Menu),canActivate:[authuserGuard] },
+    { path: 'menu', loadComponent: () => import('./pages/menu/menu').then(m => m.Menu) },
     { path: 'enviar-ofertas', loadComponent: () => import('./pages/enviar-ofertas/enviar-ofertas').then(m => m.EnviarOfertas),canActivate:[authadminGuard] },
   
     { path: 'carrito', loadComponent: () => import('./pages/carrito/carrito').then(m => m.Carrito) },

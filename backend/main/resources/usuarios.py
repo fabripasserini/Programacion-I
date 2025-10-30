@@ -83,7 +83,8 @@ class Usuarios(Resource):
             usuarios = usuarios.filter(UsuariosModel.rol == 'admin')
         if request.args.get('dni'):
             usuarios=usuarios.filter(UsuariosModel.dni==request.args.get('dni'))
-            
+        if request.args.get('id'):
+            usuarios=usuarios.filter(UsuariosModel.id==request.args.get('id'))
         ##email y nombre
         #Obtener valor paginado
         usuarios = usuarios.paginate(page=page, per_page=per_page, error_out=False)

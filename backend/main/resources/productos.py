@@ -54,12 +54,13 @@ class Productos(Resource):
             productos = productos.filter(ProductosModel.id_categoria == int(request.args.get('categoria_id')))
 
         # Ordeno los productos por precion de forma descendiente - funciona
-        if request.args.get('sortby_precio'):
-            productos=productos.order_by(desc(ProductosModel.precio))
+        if request.args.get('precio'):
+            productos=productos.filter(ProductosModel.precio <= int(request.args.get('precio')))
         # funciona  
         if request.args.get('categoria'):
             productos=productos.join(CategoriasModel, ProductosModel.id_categoria == CategoriasModel.id).filter(CategoriasModel.nombre == request.args.get('categoria')).order_by(CategoriasModel.nombre.desc())
-        
+        if request.args.get('nombre'):
+            productos=productos.filter(ProductosModel.nombre.like("%"+ request.args.get('nombre') + "%"))
 
         
     

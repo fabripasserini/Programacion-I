@@ -1,1 +1,32 @@
-<p>ver-pedido works!</p>
+<div class="main-content-wrapper">
+
+    <app-back></app-back>
+
+    
+    <app-titulos 
+        [titulo]="'Mis órdenes'">
+    </app-titulos>
+
+    <app-estadopedido [activeTab]="'enproceso'"></app-estadopedido>
+
+    <div class="container order-list">
+        <app-productoorden
+        [titulo]="'Cheese Burger Duplo'"
+        [precio]="'$103.00'"
+        [cantidad]="3"
+        [imagenSrc]="'assets/hamburguesas.png'"
+        [imagenAlt]="'Hamburguesa'"
+        [estado]="'en-proceso'">
+        </app-productoorden>
+        <app-boton
+                    [textoboton]="'Cancelar orden'"
+                    [link]="'/ordencancelada'"
+                    class="w-50 ms-2">
+                </app-boton>
+        <app-boton
+                    [textoboton]="'Dejar una calificación'"
+                    [link]="'/dejarresena'"
+                    class="w-50 ms-2">
+                </app-boton>
+    </div>
+

@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { PedidoService } from '../../../services/pedidos';
-import { Pedido } from '../../../interfaces/Pedido'; // ✅ Importar interfaz Pedido
+import { Pedido } from '../../../interfaces/Pedido'; 
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Back } from '../../back/back';
+import { Titulos } from '../../titulos/titulos';
+import { Estadopedido } from '../../estadopedido/estadopedido';
+import { Productoorden } from '../../productoorden/productoorden';
+import { Boton } from '../../boton/boton';
 
 @Component({
   selector: 'app-ver-pedido',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CommonModule, Back, Titulos, Estadopedido, Productoorden, Boton],
   templateUrl: './ver-pedido.html',
   styleUrl: './ver-pedido.css'
 })

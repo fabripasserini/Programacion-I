@@ -1,5 +1,5 @@
 import { Injectable,Inject, inject } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs'
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,13 @@ export class Productos {
     'Authorization': `Bearer ${this.token}`
   });
 
-  getProductos(): Observable<any> {
-    return this.http.get(this.url + '/productos', { headers: this.headers });
+ getProductos(page: number, limit: number, nombre: string = '', criterio: string): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page)
+      .set('per_page', limit)
+      .set(criterio, nombre); // Use the selected criterion as the query parameter
+
+    return this.http.get(this.url + '/productos', { headers: this.headers, params });
   }
   getProducto(id: number): Observable<any> {
     return this.http.get(this.url + '/producto/' + id, { headers: this.headers });

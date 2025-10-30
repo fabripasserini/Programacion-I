@@ -1,58 +1,78 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Usuarios } from '../../../services/usuarios';
+import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-ver-user',
   standalone: true,
   imports: [
     RouterLink,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule,
+    CommonModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './ver-user.html',
-  styleUrl: './ver-user.css'
+  styleUrls: ['./ver-user.css']
 })
 export class VerUser {
-
-  nombre!: string;
-  apellido!: string;
-
+  nombre: string = '';
+  criterioBusqueda: string = 'dni';
+  page: number = 1;
+  itemsPerPage: number = 10;
+  totalUsuarios: number = 0;
   arrayUsuarios: any[] = [];
-  arrayFiltred: any[] = [];
+
   constructor(
-    private router:Router,
+    private router: Router,
     private usuarioSvc: Usuarios
-  ){}
+  ) {}
 
-  ngOnInit(){
-    this.usuarioSvc.getUsuarios().subscribe({
-      next: (res:any) => {
-        console.log("Usuarios: ", res);
-        this.arrayUsuarios = res.usuarios;
-        this.arrayFiltred = [...this.arrayUsuarios]
-      },
-      error: (err) => {
-        console.log("Error al traer usuarios: ", err);
-      }
-    })
+  ngOnInit() {
+    this.cargarUsuarios();
   }
 
-  editarUsuario(usuario:any){
-    // this.router.navigate([`/usuario/${usuario.id}/Editar`]);
-    this.router.navigateByUrl(`/usuario/${usuario.id}/Editar`);
-  }
-  crearUsuario(){
-    this.router.navigateByUrl(`/usuario/null/Crear`);
-  }
-  eliminarUsuario(usuario:any){ // id
-    this.router.navigateByUrl(`/usuarios/`);
-  }
-  buscar(){
-  const nombreNuevo = (this.nombre || '').toLowerCase().trim();
-  this.arrayFiltred = this.arrayUsuarios.filter(u =>
-    (u.nombre || '').toLowerCase().includes(nombreNuevo)
-  );
+  cargarUsuarios() {
+  this.usuarioSvc.getUsuarios(this.page, this.itemsPerPage, this.nombre, this.criterioBusqueda).subscribe({
+    next: (res: any) => {
+      console.log("Usuarios recibidos: ", res);
+      console.log("Total de usuarios: ", res.total); // Verificar el total
+      this.arrayUsuarios = res.usuarios; 
+      this.totalUsuarios = Number(res.total); // Asegurarse de que sea un número
+    },
+    error: (err) => {
+      console.error("Error al traer usuarios: ", err);
+    }
+  });
 }
 
+  buscar() {
+    this.page = 1; 
+    this.cargarUsuarios();
+  }
+
+  onPageChange(page: number) {
+    console.log('Pagina cambiada a:', page); 
+    this.page = page;
+    this.cargarUsuarios();
+  }
+
+  trackById(item: any) {
+    return item.id;
+  }
+
+  editarUsuario(usuario: any) {
+    this.router.navigateByUrl(`/usuario/${usuario.id}/Editar`);
+  }
+
+  crearUsuario() {
+    this.router.navigateByUrl(`/usuario/null/Crear`);
+  }
+
+  eliminarUsuario(usuario: any) {
+    this.router.navigateByUrl(`/usuario/${usuario.id}/Eliminar`);
+  }
 }

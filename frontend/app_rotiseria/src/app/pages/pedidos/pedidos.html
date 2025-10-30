@@ -1,29 +1,13 @@
 <div class="main-content-wrapper bg-light bg-user body-user">
 
+  <div class="main-body-container rounded-top-5">
+
     <app-back></app-back>
+    <app-ver-pedido></app-ver-pedido>
 
-    
-    <app-titulos 
-        [titulo]="'Mis órdenes'">
-    </app-titulos>
 
-    <app-estadopedido [activeTab]="'enproceso'"></app-estadopedido>
+  </div> <!-- ✅ cierra correctamente main-body-container -->
 
-    <div class="container order-list">
-        <app-productoorden
-        [titulo]="'Cheese Burger Duplo'"
-        [precio]="'$103.00'"
-        [cantidad]="3"
-        [imagenSrc]="'assets/hamburguesas.png'"
-        [imagenAlt]="'Hamburguesa'"
-        [estado]="'en-proceso'">
-        </app-productoorden>
-        <app-boton
-                    [textoboton]="'Cancelar orden'"
-                    [link]="'/ordencancelada'"
-                    class="w-50 ms-2">
-                </app-boton>
-        
-    </div>
+  <app-footerunico></app-footerunico>
 
-    <app-footerunico></app-footerunico>
+</div> <!-- ✅ cierra correctamente el contenedor principal -->

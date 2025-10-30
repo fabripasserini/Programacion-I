@@ -28,10 +28,7 @@
                                         <label for="email" class="form-label">Correo electrónico</label>
                                         <input type="email" class="form-control" formControlName="email" id="email" placeholder="Tu correo electrónico" formControlName="email">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Contraseña</label>
-                                        <input type="email" class="form-control" formControlName="password" id="email" placeholder="Contraseña" formControlName="email">
-                                    </div>
+                                   
                                     
                                     <div class="mb-3">
                                         <label for="rol" class="form-label">Rol</label>
@@ -61,7 +58,7 @@
                 </div>
             }
 
-            @if (tipoOperacion === 'Modificar') {
+            @if (tipoOperacion === 'Editar') {
                 <div class="row justify-content-center w-100">
                     <div class="col-md-12">
                         <div class="card">

@@ -24,6 +24,7 @@ def create_app():
     # Ruta completa a la base de datos
     db_path = os.getenv('PATH_DB')
     db_name = os.getenv('NAME_DB')
+    full_path = os.path.join(db_path, db_name)
     
     # Crear archivo si no existe
     os.makedirs(db_path, exist_ok=True)

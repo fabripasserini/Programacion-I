@@ -1,74 +1,127 @@
 <div class="container-flex content background-image">
-    <div class="row">
+  <div class="row">
     <div class="col-md-8 offset-md-2">
-            <h2 class="text-center mb-4">Lista de Productos</h2>
-            <div class="d-flex mb-3">
-                <input (input)="buscar()" [(ngModel)]="nombre" type="text" class="form-control me-2 flex-grow-1" placeholder="Buscar Producto...">
-                <button (click)="buscar()" class="btn btn-secondary" type="button"><i
-                        class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-                <!-- <a class="btn btn-primary ms-2" routerLink="/producto/null/Crear"><i class="fa-solid fa-plus"></i></a> -->
-                <div class="d-flex justify-content-center my-3">
-                    <button type="button" class="btn btn-success" routerLink="/producto/null/Crear">
-                        <i class="fa-solid fa-plus"></i> Agregar producto
+      <h2 class="text-center mb-4">Lista de Productos</h2>
+
+      <!-- 🔍 Barra de búsqueda -->
+      <div class="d-flex mb-3">
+        <select class="form-select me-2" [(ngModel)]="criterioBusqueda">
+          <option value="nombre">Nombre</option>
+          <option value="precio">Precio</option>
+          <option value="categoria">Categoria</option>
+        </select>
+        <input
+          type="text"
+          class="form-control me-2 flex-grow-1"
+          placeholder="Buscar producto.."
+          [(ngModel)]="nombre"
+          (keyup.enter)="buscar()"
+        />
+        <button (click)="buscar()" class="btn btn-secondary" type="button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <a class="btn btn-primary ms-2" routerLink="/producto/null/Crear">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+      </div>
+
+      <!-- 🧾 Lista de productos -->
+      <ul class="list-unstyled">
+        @for (
+          producto of arrayProductos
+            | paginate: {
+                itemsPerPage: itemsPerPage,
+                currentPage: page,
+                totalItems: totalProductos
+              };
+          track trackById($index)
+        ) {
+        <li>
+          <div class="card order-item mb-3 shadow-sm">
+            <div class="row g-0 align-items-center">
+              <div class="col-4">
+                <img
+                  src="../assets/hamburguesas.png"
+                  class="img-fluid rounded-start order-img"
+                  alt="Producto"
+                />
+              </div>
+
+              <div class="col-8">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-1"
+                  >
+                    <h5 class="card-title fw-bold mb-0">Nombre</h5>
+                    <h5 class="fw-bold mb-0">{{ producto.nombre }}</h5>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-1"
+                  >
+                    <h6>Precio</h6>
+                    <h6 class="fw-bold mb-0">${{ producto.precio }}</h6>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-1"
+                  >
+                    <p>Categoría</p>
+                    <p>{{ producto.id_categoria }}</p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-1"
+                  >
+                    <p>Stock</p>
+                    <p>{{ producto.stock }}</p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-1"
+                  >
+                    <p>Descripción</p>
+                    <p>{{ producto.descripcion }}</p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-start mt-3"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      [routerLink]="['/producto', producto.id, 'Modificar']"
+                    >
+                      <i class="fa-solid fa-edit"></i> Editar
                     </button>
+
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      [routerLink]="['/producto', producto.id, 'Eliminar']"
+                    >
+                      <i class="fa-solid fa-trash"></i> Eliminar
+                    </button>
+                  </div>
                 </div>
-                <!-- <button class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#nuevoproductoModal">
-                    <i class="fa-solid fa-plus"></i>
-                </button> -->
+              </div>
             </div>
-           
-        <div>
-            @for (producto of arrayFiltred; track producto.id) {
+          </div>
+        </li>
+        }
+      </ul>
 
-                <div class="card order-item mb-3">
-                <div class="row g-0 align-items-center">
-                    <div class="col-4">
-                    <img src="../assets/hamburguesas.png" class="img-fluid rounded-start order-img" width="100" alt="Sushi Wave">
-                    </div>
-                    <div class="col-8">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-start">
-                        <h5 class="card-title fw-bold mb-0">Nombre</h5>
-                        <h5 class="fw-bold mb-0">{{producto.nombre}}</h5>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-start">
-                        <h5 class="">Precio</h5>
-                        <h5 class="fw-bol mb-0">${{producto.precio}}</h5>
-                        </div>
+      <!-- 📄 Paginación -->
+      <pagination-controls
+  class="mt-5 d-flex justify-content-center"
+  (pageChange)="onPageChange($event)"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+  [maxSize]="5"
+  [directionLinks]="true"
+  [autoHide]="false">
+</pagination-controls>
 
-                        <div class="d-flex justify-content-between align-items-start">
-                        <p >Categoria</p>
-                        <p>{{producto.id_categoria}} Implementar funcion para agrarra el nombre</p>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-start">
-                        <p >Stock</p>
-                        <p>{{producto.stock}}</p>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-start">
-                        <p>Descripción</p>
-                        <p>{{producto.descripcion}}</p>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-start mt-3">
-                        <button type="button" class="btn btn-success" routerLink="/producto/{{producto.id}}/Modificar">
-                            <i class="fa-solid fa-edit"></i> Editar
-                        </button>
-
-                        <button type="button" routerLink="/producto/{{producto.id}}/Eliminar" class="btn btn-danger "><i class="fa-solid fa-trash"></i>Eliminar</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            }
-
-            </div>
-
-
-
-        </div>
     </div>
-
-    
+  </div>
+</div>
