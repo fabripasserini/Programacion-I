@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Usuarios } from '../../../services/usuarios';
 import { CommonModule } from '@angular/common';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginationService } from '../../../services/pagination.service';
 
 @Component({
   selector: 'app-ver-user',
@@ -11,7 +11,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     RouterLink,
     FormsModule,
-    NgxPaginationModule,
     CommonModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -21,27 +20,26 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class VerUser {
   nombre: string = '';
   criterioBusqueda: string = 'dni';
-  page: number = 1;
-  itemsPerPage: number = 10;
-  totalUsuarios: number = 0;
   arrayUsuarios: any[] = [];
 
   constructor(
     private router: Router,
-    private usuarioSvc: Usuarios
+    private usuarioSvc: Usuarios,
+    public paginationSvc: PaginationService
   ) {}
 
   ngOnInit() {
+    this.paginationSvc.setPage(1);
     this.cargarUsuarios();
   }
 
   cargarUsuarios() {
-  this.usuarioSvc.getUsuarios(this.page, this.itemsPerPage, this.nombre, this.criterioBusqueda).subscribe({
+  this.usuarioSvc.getUsuarios(this.paginationSvc.page, this.paginationSvc.itemsPerPage, this.nombre, this.criterioBusqueda).subscribe({
     next: (res: any) => {
       console.log("Usuarios recibidos: ", res);
       console.log("Total de usuarios: ", res.total); // Verificar el total
       this.arrayUsuarios = res.usuarios; 
-      this.totalUsuarios = Number(res.total); // Asegurarse de que sea un número
+      this.paginationSvc.totalItems = Number(res.total); // Asegurarse de que sea un número
     },
     error: (err) => {
       console.error("Error al traer usuarios: ", err);
@@ -50,14 +48,20 @@ export class VerUser {
 }
 
   buscar() {
-    this.page = 1; 
+    this.paginationSvc.setPage(1); 
     this.cargarUsuarios();
   }
 
-  onPageChange(page: number) {
+  onPageChange(page: number, event: Event) {
+    event.preventDefault();
     console.log('Pagina cambiada a:', page); 
-    this.page = page;
+    this.paginationSvc.setPage(page);
     this.cargarUsuarios();
+  }
+
+  getPages(): number[] {
+    const totalPages = this.paginationSvc.getTotalPages();
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
   trackById(item: any) {

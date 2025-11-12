@@ -8,28 +8,22 @@ export class Productos {
   private http = inject(HttpClient);
   private url = 'http://localhost:3000';
 
-  private token = localStorage.getItem('token') || '';
-  private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${this.token}`
-  });
-
  getProductos(page: number, limit: number, nombre: string = '', criterio: string): Observable<any> {
     let params = new HttpParams()
       .set('page', page)
       .set('per_page', limit)
       .set(criterio, nombre); // Use the selected criterion as the query parameter
 
-    return this.http.get(this.url + '/productos', { headers: this.headers, params });
+    return this.http.get(this.url + '/productos', { params });
   }
   getProducto(id: number): Observable<any> {
-    return this.http.get(this.url + '/producto/' + id, { headers: this.headers });
+    return this.http.get(this.url + '/producto/' + id);
   }
   createProducto(dataCreate: ProductCreate): Observable<any> {
-    return this.http.post(this.url + '/productos', dataCreate, { headers: this.headers });
+    return this.http.post(this.url + '/productos', dataCreate);
   }
   deleteProducto(id: number) {
-    this.http.delete(this.url + '/producto/' + id, { headers: this.headers })
+    this.http.delete(this.url + '/producto/' + id)
       .subscribe({
         next: (res) => {
           console.log('Producto eliminado:', res);
@@ -40,7 +34,7 @@ export class Productos {
   }
 
   updateProducto(producto: any): Observable<any> {
-    return this.http.put(this.url + '/producto/' + producto.id, producto,{ headers: this.headers });
+    return this.http.put(this.url + '/producto/' + producto.id, producto);
   }
 
 

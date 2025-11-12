@@ -28,12 +28,7 @@
       <!-- 🧾 Lista de productos -->
       <ul class="list-unstyled">
         @for (
-          producto of arrayProductos
-            | paginate: {
-                itemsPerPage: itemsPerPage,
-                currentPage: page,
-                totalItems: totalProductos
-              };
+          producto of arrayProductos;
           track trackById($index)
         ) {
         <li>
@@ -112,15 +107,23 @@
       </ul>
 
       <!-- 📄 Paginación -->
-      <pagination-controls
-  class="mt-5 d-flex justify-content-center"
-  (pageChange)="onPageChange($event)"
-  previousLabel="Anterior"
-  nextLabel="Siguiente"
-  [maxSize]="5"
-  [directionLinks]="true"
-  [autoHide]="false">
-</pagination-controls>
+      <div class="d-flex justify-content-center mt-4">
+        <nav>
+          <ul class="pagination">
+            <li class="page-item" [class.disabled]="paginationSvc.page === 1">
+              <a class="page-link" href="#" (click)="onPageChange(paginationSvc.page - 1, $event)">&laquo;</a>
+            </li>
+            @for (page of getPages(); track page) {
+              <li class="page-item" [class.active]="page === paginationSvc.page">
+                <a class="page-link" href="#" (click)="onPageChange(page, $event)">{{ page }}</a>
+              </li>
+            }
+            <li class="page-item" [class.disabled]="paginationSvc.page === paginationSvc.getTotalPages()">
+              <a class="page-link" href="#" (click)="onPageChange(paginationSvc.page + 1, $event)">&raquo;</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
     </div>
   </div>

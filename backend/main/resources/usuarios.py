@@ -89,7 +89,7 @@ class Usuarios(Resource):
         #Obtener valor paginado
         usuarios = usuarios.paginate(page=page, per_page=per_page, error_out=False)
 
-        return {'usuarios': [pedido.to_json() for pedido in usuarios],
+        return {'usuarios': [usuario.to_json() for usuario in usuarios.items],
                   'total': usuarios.total,
                   'pages': usuarios.pages,
                   'page': page

@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Productos } from '../../../services/productos';
 import { CommonModule } from '@angular/common';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginationService } from '../../../services/pagination.service';
+
 @Component({
   selector: 'app-ver-producto',
   standalone: true,
-  imports: [RouterLink, FormsModule, NgxPaginationModule, CommonModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   templateUrl: './ver-producto.html',
@@ -17,42 +18,44 @@ export class VerProducto {
   nombre!: string;
   descripcion!: string;
   criterioBusqueda: string = 'nombre'; // Criterio de búsqueda por defecto
-  page: number = 1;
-  itemsPerPage: number = 10;
-  totalProductos: number = 0;
   arrayProductos: any[] = [];
   constructor(
     private router:Router,
-    private productoSvc: Productos
+    private productoSvc: Productos,
+    public paginationSvc: PaginationService
   ){}
 
   ngOnInit(){
+    this.paginationSvc.setPage(1);
     this.cargarProductos();
   }
 
   cargarProductos() {
-  this.productoSvc.getProductos(this.page, this.itemsPerPage, this.nombre, this.criterioBusqueda).subscribe({
+  this.productoSvc.getProductos(this.paginationSvc.page, this.paginationSvc.itemsPerPage, this.nombre, this.criterioBusqueda).subscribe({
     next: (res: any) => {
-      console.log("Usuarios recibidos: ", res);
-      console.log("Total de usuarios: ", res.total); // Verificar el total
+      console.log("Productos recibidos: ", res);
       this.arrayProductos = res.productos; 
-      this.totalProductos = Number(res.total); // Asegurarse de que sea un número
-      console.log("Total de usuarios: ", res.total); // Verificar el total
+      this.paginationSvc.totalItems = Number(res.total);
     },
     error: (err) => {
-      console.error("Error al traer usuarios: ", err);
+      console.error("Error al traer productos: ", err);
     }
   });
 }
 
   buscar() {
-    this.page = 1; 
+    this.paginationSvc.setPage(1); 
     this.cargarProductos();
   }
-  onPageChange(page: number) {
+  onPageChange(page: number, event: Event) {
+    event.preventDefault();
     console.log('Página cambiada a:', page); // Log para verificar el cambio de página
-    this.page = page;
+    this.paginationSvc.setPage(page);
     this.cargarProductos();
+  }
+   getPages(): number[] {
+    const totalPages = this.paginationSvc.getTotalPages();
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
    trackById(item: any) {
     return item.id;

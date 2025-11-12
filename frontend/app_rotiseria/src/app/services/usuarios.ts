@@ -6,11 +6,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class Usuarios {
   private http = inject(HttpClient);
   private url = 'http://localhost:3000';
-  private token = localStorage.getItem('token') || '';
-  private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${this.token}`
-  });
 
   getUsuarios(page: number, limit: number, nombre: string = '', criterio: string): Observable<any> {
     let params = new HttpParams()
@@ -18,18 +13,18 @@ export class Usuarios {
       .set('per_page', limit)
       .set(criterio, nombre); // Use the selected criterion as the query parameter
 
-    return this.http.get(this.url + '/usuarios', { headers: this.headers, params });
+    return this.http.get(this.url + '/usuarios', { params });
   }
 
   getUsuario(id: number): Observable<any> {
-    return this.http.get(`${this.url}/usuario/${id}`, { headers: this.headers });
+    return this.http.get(`${this.url}/usuario/${id}`);
   }
 
   deleteUsuario(id: number): Observable<any> {
-    return this.http.delete(`${this.url}/usuario/${id}`, { headers: this.headers });
+    return this.http.delete(`${this.url}/usuario/${id}`);
   }
 
   updateUsuario(usuario: any): Observable<any> {
-    return this.http.put(`${this.url}/usuario/${usuario.id}`, usuario, { headers: this.headers });
+    return this.http.put(`${this.url}/usuario/${usuario.id}`, usuario);
   }
 }
