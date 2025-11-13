@@ -10,15 +10,22 @@
                     <h5 class="fw-bold mb-0">{{ precio }}</h5>
                 </div>
                 
-                <p class="card-text text-muted small" *ngIf="estado === 'cancelada'">
-                    <i class="fa-solid fa-xmark text-danger me-1"></i>Orden cancelada
-                </p>
-                <p class="card-text text-muted small" *ngIf="estado === 'en-proceso'">
-                    <i class="fa-solid fa-sync-alt text-warning me-1"></i>En proceso
-                </p>
-                <p class="card-text text-muted small" *ngIf="estado === 'entregada'">
-                    <i class="fa-solid fa-check text-success me-1"></i>Orden Entregada
-                </p>
+                
+                @if (estado === 'proceso') {
+                    <p class="card-text text-muted small">
+                        <i class="fa-solid fa-clock me-1"></i>En espera de entrega
+                    </p>
+                }
+                @if (estado === 'completado') {
+                    <p class="card-text text-muted small">
+                        <i class="fa-solid fa-check me-1"></i>Orden entregada
+                    </p>
+                }
+                @if (estado === 'cancelado') {
+                    <p class="card-text text-muted small">
+                        <i class="fa-solid fa-xmark me-1"></i>Orden cancelada
+                    </p>
+                }
 
                 <p class="card-text text-end small text-muted">{{ cantidad }} items</p>
             </div>

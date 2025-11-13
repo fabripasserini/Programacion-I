@@ -1,0 +1,52 @@
+<div class="container order-list">
+  @for (pedido of pedidos; track trackById($index)) {
+    <div class="accordion" id="accordion-{{pedido.id}}">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" 
+                  [attr.data-bs-target]="'#collapse-' + pedido.id" 
+                  aria-expanded="false" 
+                  [attr.aria-controls]="'collapse-' + pedido.id">
+            @if (pedido.estado === 'proceso') {
+                  <i class="fa-solid fa-clock me-1"></i>
+                  Pedido #{{pedido.id}}
+            }
+            @if (pedido.estado === 'completado') {
+                  <i class="fa-solid fa-check me-1"></i>
+                  Pedido #{{pedido.id}}
+            }
+            @if (pedido.estado === 'cancelado') {
+                  <i class="fa-solid fa-xmark me-1"></i>
+                  Pedido #{{pedido.id}}
+            }
+          </button>
+        </h2>
+        <div [id]="'collapse-' + pedido.id" 
+             class="accordion-collapse collapse" 
+             [attr.data-bs-parent]="'#accordion-' + pedido.id">
+          <div class="accordion-body">
+             
+            <p><strong>Cliente:</strong> {{ pedido.usuario?.nombre }} {{ pedido.usuario?.apellido }}</p>
+           
+            <p><strong>Dirección:</strong> {{pedido.direccion}}</p>
+            <p><strong>Descripción:</strong> {{pedido.descripcion}}</p>
+            <p><strong>Precio Total:</strong> ${{pedido.precio}}</p>
+            <p><strong>Fecha:</strong> {{pedido.created_at | date:'short'}}</p>
+            <h6>Productos:</h6>
+            @for (producto of pedido.productos; track trackById($index)) {
+              <app-productoorden
+                [titulo]="producto.nombre"
+                [cantidad]="producto.cantidad"
+                [precio]="producto.precio.toString()"
+                [imagenSrc]="'assets/hamburguesas.png'" 
+                [imagenAlt]="producto.nombre"
+                [estado]="estado">
+              </app-productoorden>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

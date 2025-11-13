@@ -16,5 +16,5 @@ export class Productoorden {
   @Input() cantidad!: number;
   @Input() imagenSrc!: string;
   @Input() imagenAlt!: string;
-  @Input() estado!: 'en-proceso' | 'entregada' | 'cancelada';
+  @Input() estado!: 'proceso' | 'completado' | 'cancelado';
 }

@@ -1,11 +1,11 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pedido } from '../interfaces/Pedido';
 @Injectable({
   providedIn: 'root'
 })
-export class PedidoService {
+export class Pedidos {
   private http = inject(HttpClient);
   private url = 'http://localhost:3000';
 
@@ -14,10 +14,16 @@ export class PedidoService {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${this.token}`
   });
+  
+  getPedidos(page: number, limit: number, nombre: string = '', criterio: string): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page)
+      .set('per_page', limit)
+      .set(criterio, nombre); // Use the selected criterion as the query parameter
 
-  getPedidos(): Observable<any> {
-    return this.http.get(this.url + '/pedidos', { headers: this.headers });
+    return this.http.get(this.url + '/pedidos', { params });
   }
+
 
   getPedido(id: number): Observable<any> {
     return this.http.get(this.url + '/pedido/' + id, { headers: this.headers });

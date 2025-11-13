@@ -247,3 +247,110 @@ admin-footer {
 .guardar-btn {
     margin-bottom: 120px; /* Deja espacio para el footer */
 }
+
+
+/* ===============================
+   MP TABS (no collide con otras clases)
+   Prefijo: mp-
+   =============================== */
+
+.mp-tabs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;      /* centra el grupo */
+  margin: 0 auto 1.25rem auto;
+  padding: 6px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 999px;         /* contenedor pill */
+  box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+  max-width: 760px;             /* no ocupen todo el largo */
+  width: fit-content;           /* se encogen al contenido */
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* cada item */
+.mp-tab-item {
+  list-style: none;
+}
+
+/* boton de pestaña */
+.mp-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #4b5563;               /* gris oscuro */
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease, color .12s ease;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* icono */
+.mp-tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* label */
+.mp-tab-label {
+  display: inline-block;
+  font-size: 0.95rem;
+}
+
+/* hover */
+.mp-tab-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0,0,0,0.03);
+}
+
+/* pestaña activa */
+.mp-tab-btn.mp-active,
+.mp-tab-btn[aria-selected="true"] {
+  background: linear-gradient(90deg, rgba(255,82,13,1) 0%, rgba(255,145,77,1) 100%);
+  color: white;
+  box-shadow: 0 6px 18px rgba(255,82,13,0.15);
+  transform: translateY(-2px);
+}
+
+/* versión compacta para pantallas pequeñas */
+@media (max-width: 520px) {
+  .mp-tabs {
+    gap: 6px;
+    padding: 6px;
+    max-width: 94%;
+  }
+  .mp-tab-btn {
+    padding: 6px 10px;
+    gap: 6px;
+    font-size: 0.86rem;
+  }
+  .mp-tab-icon {
+    font-size: 0.86rem;
+  }
+}
+/* Título estilizado */
+.mp-title {
+  font-family: 'Poppins', 'Inter', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  color: #333;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+
+  /* Suavizado de fuente */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

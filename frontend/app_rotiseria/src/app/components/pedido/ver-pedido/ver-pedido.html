@@ -1,32 +1,65 @@
 <div class="main-content-wrapper">
-
     <app-back></app-back>
-
     
     <app-titulos 
-        [titulo]="'Mis órdenes'">
+        [titulo]="'Mis pedidos'">
     </app-titulos>
 
-    <app-estadopedido [activeTab]="'enproceso'"></app-estadopedido>
+    <!-- SISTEMA DE PESTAÑAS PARA ORGANIZAR EL CONTENIDO -->
+    <ul class="mp-tabs" id="profileTabs" role="tablist">
+  <li class="mp-tab-item" role="presentation">
+    <button class="mp-tab-btn" data-bs-toggle="tab" data-bs-target="#proceso" type="button" aria-controls="proceso" aria-selected="true">
+      <span class="mp-tab-icon">⏳</span>
+      <span class="mp-tab-label">En proceso</span>
+    </button>
+  </li>
 
-    <div class="container order-list">
-        <app-productoorden
-        [titulo]="'Cheese Burger Duplo'"
-        [precio]="'$103.00'"
-        [cantidad]="3"
-        [imagenSrc]="'assets/hamburguesas.png'"
-        [imagenAlt]="'Hamburguesa'"
-        [estado]="'en-proceso'">
-        </app-productoorden>
-        <app-boton
-                    [textoboton]="'Cancelar orden'"
-                    [link]="'/ordencancelada'"
-                    class="w-50 ms-2">
-                </app-boton>
-        <app-boton
-                    [textoboton]="'Dejar una calificación'"
-                    [link]="'/dejarresena'"
-                    class="w-50 ms-2">
-                </app-boton>
-    </div>
+  <li class="mp-tab-item" role="presentation">
+    <button class="mp-tab-btn" data-bs-toggle="tab" data-bs-target="#completados" type="button" aria-controls="completados" aria-selected="false">
+      <span class="mp-tab-icon">✅</span>
+      <span class="mp-tab-label">Completados</span>
+    </button>
+  </li>
 
+  <li class="mp-tab-item" role="presentation">
+    <button class="mp-tab-btn" data-bs-toggle="tab" data-bs-target="#cancelados" type="button" aria-controls="cancelados" aria-selected="false">
+      <span class="mp-tab-icon">✖️</span>
+      <span class="mp-tab-label">Cancelados</span>
+    </button>
+  </li>
+</ul>
+
+    
+    <!-- CONTENIDO DE LAS PESTAÑAS -->
+
+
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="proceso">
+    <app-lista-pedidos [pedidos]="getPedidosPorEstado('proceso')" estado="proceso"></app-lista-pedidos>
+  </div>
+
+  <div class="tab-pane fade" id="completados">
+    <app-lista-pedidos [pedidos]="getPedidosPorEstado('completado')" estado="completado"></app-lista-pedidos>
+  </div>
+
+  <div class="tab-pane fade" id="cancelados">
+    <app-lista-pedidos [pedidos]="getPedidosPorEstado('cancelado')" estado="cancelado"></app-lista-pedidos>
+  </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+        <nav>
+          <ul class="pagination">
+            <li class="page-item" [class.disabled]="paginationSvc.page === 1">
+              <a class="page-link" href="#" (click)="onPageChange(paginationSvc.page - 1, $event)">&laquo;</a>
+            </li>
+            @for (page of getPages(); track page) {
+              <li class="page-item" [class.active]="page === paginationSvc.page">
+                <a class="page-link" href="#" (click)="onPageChange(page, $event)">{{ page }}</a>
+              </li>
+            }
+            <li class="page-item" [class.disabled]="paginationSvc.page === paginationSvc.getTotalPages()">
+              <a class="page-link" href="#" (click)="onPageChange(paginationSvc.page + 1, $event)">&raquo;</a>
+            </li>
+          </ul>
+        </nav>
+      </div>

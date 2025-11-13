@@ -11,8 +11,6 @@ import { Favoritos } from './pages/favoritos/favoritos';
 import { Carritoconproductos } from './pages/carritoconproductos/carritoconproductos';
 import { Dejarresena } from './pages/dejarresena/dejarresena';
 import { Ordencancelada } from './pages/ordencancelada/ordencancelada';
-import { Pedidoscancelados } from './pages/pedidoscancelados/pedidoscancelados';
-import { Pedidoscompletados } from './pages/pedidoscompletados/pedidoscompletados';
 import { Pedidovacio } from './pages/pedidovacio/pedidovacio';
 import { Inicio } from './pages/inicio/inicio';
 import { EnviarOfertas } from './pages/enviar-ofertas/enviar-ofertas';
@@ -47,8 +45,6 @@ export const routes: Routes = [
     { path: 'carritoconproductos', loadComponent: () => import('./pages/carritoconproductos/carritoconproductos').then(m => m.Carritoconproductos) },
     { path: 'dejarresena', loadComponent: () => import('./pages/dejarresena/dejarresena').then(m => m.Dejarresena) },
     { path: 'ordencancelada', loadComponent: () => import('./pages/ordencancelada/ordencancelada').then(m => m.Ordencancelada) },
-    { path: 'pedidoscancelados', loadComponent: () => import('./pages/pedidoscancelados/pedidoscancelados').then(m => m.Pedidoscancelados) },
-    { path: 'pedidoscompletados', loadComponent: () => import('./pages/pedidoscompletados/pedidoscompletados').then(m => m.Pedidoscompletados) },
     { path: 'pedidovacio', loadComponent: () => import('./pages/pedidovacio/pedidovacio').then(m => m.Pedidovacio) },
     { path: 'inicio', loadComponent: () => import('./pages/inicio/inicio').then(m => m.Inicio),canActivate:[authadminempleadoGuard] },
 

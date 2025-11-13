@@ -10,6 +10,7 @@ class Pedidos(db.Model):
     descripcion = db.Column(db.String(50), nullable=False)
     direccion = db.Column(db.String(50), nullable=False)
     precio = db.Column(db.Float, nullable=False)
+    estado = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     # Relaciones
@@ -26,6 +27,13 @@ class Pedidos(db.Model):
         return f'<Pedido {self.id}: {self.descripcion}>'
 
     # ======== SERIALIZADORES ========
+    @property
+    def precio_total(self):
+        """Calcula el precio total del pedido sumando productos * cantidad."""
+        return sum(
+            pp.producto.precio * pp.cantidad
+            for pp in self.pedidos_productos
+        )
 
     def to_json(self):
         """Versión simplificada del pedido."""
@@ -34,24 +42,30 @@ class Pedidos(db.Model):
             'descripcion': self.descripcion,
             'direccion': self.direccion,
             'precio': self.precio,
+            'estado': self.estado,
             'created_at': self.created_at.isoformat(),
             'id_usuario': self.id_usuario
         }
 
     def to_json_complete(self):
         """Versión extendida, con productos asociados."""
+        usuario_json = self.usuario.to_json() if self.usuario else None
         return {
             'id': self.id,
             'descripcion': self.descripcion,
             'direccion': self.direccion,
-            'precio': self.precio,
+            'total': self.precio_total,
             'created_at': self.created_at.isoformat(),
+            'estado': self.estado,
             'id_usuario': self.id_usuario,
+            'usuario': usuario_json,
             'productos': [
                 {
                     'id': pp.producto.id,
                     'nombre': pp.producto.nombre,
-                    'cantidad': pp.cantidad
+                    'cantidad': pp.cantidad,
+                    'precio': pp.producto.precio,
+                    'total_producto': pp.producto.precio * pp.cantidad
                 }
                 for pp in self.pedidos_productos
             ]
@@ -66,6 +80,7 @@ class Pedidos(db.Model):
             id_usuario=pedidos_json.get('id_usuario'),
             descripcion=pedidos_json.get('descripcion'),
             direccion=pedidos_json.get('direccion'),
+            estado=pedidos_json.get('estado'),
             precio=pedidos_json.get('precio'),
             created_at=pedidos_json.get('created_at', datetime.utcnow())
         )

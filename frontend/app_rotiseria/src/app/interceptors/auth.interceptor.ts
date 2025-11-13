@@ -6,7 +6,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   if (token && !req.url.includes('/login') && !req.url.includes('/register')) {
     req = req.clone({
       setHeaders: {
-        authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     });
   }
