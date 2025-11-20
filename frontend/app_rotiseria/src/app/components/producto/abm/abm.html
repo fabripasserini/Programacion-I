@@ -1,146 +1,187 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <!-- <h2 class="text-center mb-4">
-                Deseas {{ tipoOperacion }} Usuario con id {{ userId === 'null' ? '' : userId }}
-            </h2> -->
 
+            <!-- ============================= -->
+            <!--        CREAR PRODUCTO        -->
+            <!-- ============================= -->
             @if (tipoOperacion === 'Crear') {
-                <div class="row justify-content-center w-100">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title text-center">Crear Producto</h2>
-                                <form [formGroup]="formProducto">
-                                    <div class="mb-3">
-                                        <label for="nombre" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="Nombre" formControlName="nombre">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="descripcion" class="form-label">Descripcion</label>
-                                        <input type="text" class="form-control" formControlName="descripcion" id="descripcion" placeholder="Descripcion" formControlName="descripcion">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="precio" class="form-label">Precio</label>
-                                        <input type="number" class="form-control" formControlName="precio" id="precio" placeholder="Precio" formControlName="precio">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="stock" class="form-label">Stock/Cantidad</label>
-                                        <input type="number" class="form-control" formControlName="stock" id="stock" placeholder="Stock" formControlName="stock">
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="id_categoria" class="form-label">Categoría</label>
-                                        <select class="form-select" id="id_categoria" formControlName="id_categoria">
-                                            <option [ngValue]="1">Pastas</option>
-                                            <option [ngValue]="2">Hamburguesas</option>
-                                            <option [ngValue]="3">Panchos</option>
-                                        </select>
-                                        </div>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Crear Producto</h2>
 
-                                        <div class="text-center">
-                                    <button type="submit" (click)="createProducto()" class="btn btn-success">
-                                        <i class="fa-solid fa-pen-to-square"></i> Crear Producto
+                    <form [formGroup]="formProducto">
+
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre">
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" class="form-control" formControlName="descripcion" placeholder="Descripción">
+                        </div>
+
+                        <!-- Precio -->
+                        <div class="mb-3">
+                            <label class="form-label">Precio</label>
+                            <input type="number" class="form-control" formControlName="precio" placeholder="Precio">
+                        </div>
+
+                        <!-- Stock -->
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="number" class="form-control" formControlName="stock" placeholder="Cantidad disponible">
+                        </div>
+
+                        <!-- Categoría -->
+                        <div class="mb-3">
+                            <label class="form-label">Categoría</label>
+
+                            @if (!mostrarInputCategoria) {
+                            <div>
+                                <select class="form-select" formControlName="id_categoria">
+                                    @for (categoria of arrayCategorias; track trackById(categoria)) {
+                                    <option [value]="categoria.id">{{ categoria.nombre }}</option>
+                                    }
+                                </select>
+
+                                <div class="mt-2">
+                                    <span class="text-primary" style="cursor: pointer;"
+                                        (click)="mostrarInputCategoria = true">
+                                        + Agregar nueva categoría
+                                    </span>
+                                </div>
+                            </div>
+                            }
+
+                            @if (mostrarInputCategoria) {
+                            <div class="mt-2 d-flex gap-2">
+                                <input type="text" class="form-control"
+                                    placeholder="Nombre de la categoría"
+                                    [(ngModel)]="nuevaCategoria"
+                                    [ngModelOptions]="{standalone: true}">
+                                
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-success" (click)="agregarCategoria()">
+                                        Guardar
                                     </button>
-                                    </div>
-                                </form>
+                                    <button type="button" class="btn btn-secondary" (click)="mostrarInputCategoria = false">
+                                        Cancelar
+                                    </button>
+                                </div>
                             </div>
+                            }
                         </div>
-                    </div>
-                </div>
-            }
 
-            @if (tipoOperacion === 'Modificar') {
-                <div class="row justify-content-center w-100">
-                    <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                        <h2 class="card-title text-center">Modificar Producto</h2>
-
-                        <form [formGroup]="formProducto">
-                            <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                formControlName="nombre"
-                                id="nombre"
-                                placeholder="Nombre del producto"
-                            />
-                            </div>
-
-                            <div class="mb-3">
-                            <label for="descripcion" class="form-label">Descripción</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                formControlName="descripcion"
-                                id="descripcion"
-                                placeholder="Descripción del producto"
-                            />
-                            </div>
-
-                            <div class="mb-3">
-                            <label for="precio" class="form-label">Precio</label>
-                            <input
-                                type="number"
-                                class="form-control"
-                                formControlName="precio"
-                                id="precio"
-                                placeholder="Precio"
-                            />
-                            </div>
-
-                            <div class="mb-3">
-                            <label for="stock" class="form-label">Stock/Cantidad</label>
-                            <input
-                                type="number"
-                                class="form-control"
-                                formControlName="stock"
-                                id="stock"
-                                placeholder="Cantidad disponible"
-                            />
-                            </div>
-
-                            <div class="mb-3">
-                            <label for="id_categoria" class="form-label">Categoría</label>
-                            <select class="form-select" id="id_categoria" formControlName="id_categoria">
-                                <option value="1">Pastas</option>
-                                <option value="2">Hamburguesas</option>
-                                <option value="3">Panchos</option>
-                            </select>
-                            </div>
-
-                            <div class="text-center">
-                            <button type="submit" (click)="updateProducto()" class="btn btn-primary">
-                                <i class="fa-solid fa-pen-to-square"></i> Modificar Producto
+                        <div class="text-center">
+                            <button type="button" (click)="createProducto()" class="btn btn-success">
+                                Crear Producto
                             </button>
-                            </div>
-                        </form>
                         </div>
-                    </div>
-                    </div>
-                </div>
-                }
 
-
-            @if (tipoOperacion === 'Eliminar') {
-                <div class="row justify-content-center w-100">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title text-center">{{ tipoOperacion }}</h2>
-                                <form>
-                                    <div>
-                                        <button type="button" routerLink="/productos" class="btn btn-primary">Cancelar</button>
-                                        <button type="button" (click)="deleteProducto(productoId)" routerLink="/productos" class="btn btn-danger">Eliminar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
+            </div>
             }
+
+            <!-- ============================= -->
+            <!--      MODIFICAR PRODUCTO      -->
+            <!-- ============================= -->
+            @if (tipoOperacion === 'Modificar') {
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Modificar Producto</h2>
+
+                    <form [formGroup]="formProducto">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" class="form-control" formControlName="descripcion">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Precio</label>
+                            <input type="number" class="form-control" formControlName="precio">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="number" class="form-control" formControlName="stock">
+                        </div>
+
+                        <!-- Categoría -->
+                        <div class="mb-3">
+                            <label class="form-label">Categoría</label>
+
+                            @if (!mostrarInputCategoria) {
+                            <div>
+                                <select class="form-select" formControlName="id_categoria">
+                                    @for (categoria of arrayCategorias; track trackById(categoria)) {
+                                    <option [value]="categoria.id">{{ categoria.nombre }}</option>
+                                    }
+                                </select>
+
+                                <div class="mt-2">
+                                    <span class="text-primary" style="cursor: pointer;"
+                                        (click)="mostrarInputCategoria = true">
+                                        + Agregar nueva categoría
+                                    </span>
+                                </div>
+                            </div>
+                            }
+
+                            @if (mostrarInputCategoria) {
+                            <div class="mt-2 d-flex gap-2">
+                                <input type="text" class="form-control"
+                                    placeholder="Nombre de la categoría"
+                                    [(ngModel)]="nuevaCategoria"
+                                    [ngModelOptions]="{standalone: true}">
+                                
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-success" (click)="agregarCategoria()">
+                                        Guardar
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" (click)="mostrarInputCategoria = false">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                            }
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" (click)="updateProducto()" routerLink="/productos" class="btn btn-primary">                                Modificar Producto
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            }
+
+            <!-- ============================= -->
+            <!--        ELIMINAR PRODUCTO     -->
+            <!-- ============================= -->
+            @if (tipoOperacion === 'Eliminar') {
+            <div class="card mt-4">
+                <div class="card-body text-center">
+                    <h2 class="card-title">Eliminar</h2>
+
+                    <button type="button" routerLink="/productos" class="btn btn-primary">Cancelar</button>
+                    <button type="button" (click)="deleteProducto(productoId)" routerLink="/productos"
+                        class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+            }
+
         </div>
     </div>
 </div>

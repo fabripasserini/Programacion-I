@@ -10,3 +10,5 @@ from .calificaciones import Calificacion as CalificacionResource
 from .calificaciones import Calificaciones as CalificacionesResource
 from .categorias import Categoria as CategoriaResource
 from .categorias import Categorias as CategoriasResource
+from .carritos import CarritoResource
+from .carritos import CarritosListResource

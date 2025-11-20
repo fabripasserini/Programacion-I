@@ -1,14 +1,14 @@
 <div class="flex-grow-1 p-4 text-dark">
     <div class="cart-items mb-4">
         <div class="d-flex align-items-center mb-3">
-            <img src="../assets/hamburguesas.png" class="cart-item-img me-3" alt="Strawberry Shake">
+            <img [src]="imagen" class="cart-item-img me-3" [alt]="nombre">
             <div class="flex-grow-1">
-                <h6 class="mb-0 fw-bold">Cheese Burger Duplo</h6>
-                <p class="mb-0">$20.00</p>
+                <h6 class="mb-0 fw-bold">{{ nombre }}</h6>
+                <p class="mb-0">{{ precio | currency:'USD' }}</p>
             </div>
             <div class="quantity-controls d-flex align-items-center">
                 <button class="btn btn-sm btn-quantity">-</button>
-                <span class="mx-2 fw-bold">2</span>
+                <span class="mx-2 fw-bold">{{ cantidad }}</span>
                 <button class="btn btn-sm btn-quantity">+</button>
             </div>
         </div>

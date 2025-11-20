@@ -3,7 +3,7 @@ import { AbmComponent } from "../../components/usuario/abm/abm";
 import { ActivatedRoute } from '@angular/router';
 import { Back } from '../../components/back/back';
 import { CommonModule } from '@angular/common';  
-import { Checkrol } from '../../services/checkrol';
+import { GetUserInfo } from '../../services/getuserinfo';
 
 @Component({
   selector: 'app-usuario',
@@ -19,7 +19,7 @@ export class UsuarioComponent {
   fondo = '';
   constructor(
     private route:ActivatedRoute,
-    private checkrol: Checkrol
+    private userInfo: GetUserInfo
   ){}
 
   ngOnInit(){
@@ -28,7 +28,7 @@ export class UsuarioComponent {
 
     console.log("user id: ", this.userId);
     console.log("tipo operacion: ", this.tipo_op);
-    this.usuario.rol=this.checkrol.getRol();
+    this.usuario.rol=this.userInfo.getRol();
 
     if (this.usuario.rol === 'admin') {
         this.fondo = 'bg-admin';

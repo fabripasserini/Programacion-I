@@ -26,24 +26,54 @@
              class="accordion-collapse collapse" 
              [attr.data-bs-parent]="'#accordion-' + pedido.id">
           <div class="accordion-body">
-             
-            <p><strong>Cliente:</strong> {{ pedido.usuario?.nombre }} {{ pedido.usuario?.apellido }}</p>
-           
+             @if (getRol() === 'admin' || getRol() === 'empleado') {
+
+            <p><strong>Id usuario:</strong> {{pedido.id_usuario}}</p>
+             }
             <p><strong>Dirección:</strong> {{pedido.direccion}}</p>
             <p><strong>Descripción:</strong> {{pedido.descripcion}}</p>
-            <p><strong>Precio Total:</strong> ${{pedido.precio}}</p>
+            <p><strong>Precio Total:</strong> ${{pedido.total}}</p>
             <p><strong>Fecha:</strong> {{pedido.created_at | date:'short'}}</p>
             <h6>Productos:</h6>
             @for (producto of pedido.productos; track trackById($index)) {
-              <app-productoorden
-                [titulo]="producto.nombre"
-                [cantidad]="producto.cantidad"
-                [precio]="producto.precio.toString()"
-                [imagenSrc]="'assets/hamburguesas.png'" 
-                [imagenAlt]="producto.nombre"
-                [estado]="estado">
-              </app-productoorden>
+              <div class="card order-item mb-3">
+                <div class="row g-0 align-items-center">
+                  <div class="col-4">
+                    <img src="assets/hamburguesas.png" class="img-fluid rounded-start order-img" [alt]="producto.nombre">
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title fw-bold mb-0">{{ producto.nombre }}</h5>
+                        <h5 class="fw-bold mb-0">${{ producto.precio }}</h5>
+                      </div>
+                      <p class="card-text text-end small text-muted">{{ producto.cantidad }} items</p>
+                      @if (pedido.estado === 'completado') {
+                        @if (getRol() === 'user') {
+                          <button class="btn btn-success mt-3 rounded-pill fw-bold"
+                                (click)="dejarComentario(producto.id_producto)">
+                          <i class="fa-solid fa-star me-1" ></i> Dejar comentario del producto
+                        </button>
+                      }}
+                    </div>
+                  </div>
+                </div>
+              </div>
             }
+        
+            @if (pedido.estado === 'proceso') {
+              <button class="btn btn-danger mt-3 rounded-pill fw-bold" (click)="cancelarPedido(pedido.id)"><i class="fa-solid fa-xmark me-1"></i> Cancelar Pedido</button>
+              @if (getRol() === 'admin' || getRol() === 'empleado') {
+                <button class="btn btn-primary mt-3 rounded-pill fw-bold" (click)="modificarPedido(pedido.id)"><i class="fa-solid fa-pencil me-1"></i> Modificar Pedido</button>
+                <button class="btn btn-success mt-3 rounded-pill fw-bold"
+                      (click)="completarPedido(pedido.id)">
+                <i class="fa-solid fa-check me-1"></i> Marcar como Completado
+              </button>
+              }
+            }
+            
+            
+            
           </div>
         </div>
       </div>

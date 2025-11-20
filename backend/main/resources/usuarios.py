@@ -77,7 +77,7 @@ class Usuarios(Resource):
         if request.args.get('usuario'):
             usuarios = usuarios.filter(UsuariosModel.nombre.like("%"+ request.args.get('usuario') + "%"))
         if request.args.get('email'):
-            usuarios = usuarios.filter(UsuariosModel.email.like("%"+ request.args.get('email') + "%"))
+            usuarios = usuarios.filter(UsuariosModel.email ==request.args.get('email'))
         # Ordeno los usuarios por rol de forma descendiente - funciona
         if request.args.get('is_admin'):
             usuarios = usuarios.filter(UsuariosModel.rol == 'admin')

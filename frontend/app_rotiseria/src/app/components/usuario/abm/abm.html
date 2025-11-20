@@ -5,7 +5,7 @@
                 Deseas {{ tipoOperacion }} Usuario con id {{ userId === 'null' ? '' : userId }}
             </h2> -->
 
-            @if (tipoOperacion === 'Crear') {
+            <!-- @if (tipoOperacion === 'Crear') {
                 <div class="row justify-content-center w-100">
                     <div class="col-md-12">
                         <div class="card">
@@ -23,6 +23,10 @@
                                     <div class="mb-3">
                                         <label for="dni" class="form-label">Número de DNI</label>
                                         <input type="text" class="form-control" formControlName="dni" id="dni" placeholder="DNI" formControlName="dni">
+                                    </div>
+                                    <div>
+                                        <label for="telefono" class="form-label">Teléfono</label>
+                                        <input type="text" class="form-control" formControlName="telefono" id="telefono" placeholder="Teléfono" formControlName="telefono">
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Correo electrónico</label>
@@ -56,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-            }
+            } -->
 
             @if (tipoOperacion === 'Editar') {
                 <div class="row justify-content-center w-100">
@@ -72,6 +76,10 @@
                                     <div class="mb-3">
                                         <label for="apellido" class="form-label">Apellido</label>
                                         <input type="text" class="form-control" formControlName="apellido" id="apellido" placeholder="Apellido" formControlName="apellido">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="telefono" class="form-label">Teléfono</label>
+                                        <input type="text" class="form-control" formControlName="telefono" id="telefono" placeholder="Teléfono" formControlName="telefono">
                                     </div>
                                     <div class="mb-3">
                                         <label for="dni" class="form-label">Número de DNI</label>

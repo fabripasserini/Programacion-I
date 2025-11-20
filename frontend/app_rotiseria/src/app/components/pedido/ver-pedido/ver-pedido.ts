@@ -1,7 +1,6 @@
 import { Back } from '../../back/back';
 import { Titulos } from '../../titulos/titulos';
 import { Estadopedido } from '../../estadopedido/estadopedido';
-import { Productoorden } from '../../productoorden/productoorden';
 import { Boton } from '../../boton/boton';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,74 +9,83 @@ import { Pedidos} from '../../../services/pedidos';
 import { CommonModule } from '@angular/common';
 import { PaginationService } from '../../../services/pagination.service';
 import { ListaPedidos } from '../../lista-pedidos/lista-pedidos';
+import { GetUserInfo } from '../../../services/getuserinfo';
 @Component({
   selector: 'app-ver-pedido',
-  imports: [RouterLink, FormsModule, CommonModule, Back, Titulos, Estadopedido, Productoorden, Boton, ListaPedidos],
+  imports: [RouterLink, FormsModule, CommonModule, Back, Titulos, Estadopedido, Boton, ListaPedidos],
   templateUrl: './ver-pedido.html',
   styleUrl: './ver-pedido.css'
 })
 export class VerPedido {
   nombre: string = '';
-    criterioBusqueda: string = 'dni';
-    arrayPedidos: any[] = [];
-  
+  userId: number | null = null;
+  criterioBusqueda: string = 'dni';
+    pedidosEnProceso: any[] = [];
+    pedidosCompletados: any[] = [];
+    pedidosCancelados: any[] = [];
+    activeTab: string = 'proceso'; // 'proceso', 'completado', 'cancelado'
+    fechaInicio: string = '';
+    fechaFin: string = '';
     constructor(
       private router: Router,
       private pedidoSvc: Pedidos,
-      public paginationSvc: PaginationService
+      public paginationSvc: PaginationService,
+      private userInfo: GetUserInfo
     ) {}
   
     ngOnInit() {
       this.paginationSvc.setPage(1);
-      this.cargarPedidos();
+      this.cargarPedidosPorEstado(this.activeTab);
     }
   
-    cargarPedidos() {
-    this.pedidoSvc.getPedidos(this.paginationSvc.page, this.paginationSvc.itemsPerPage, this.nombre, this.criterioBusqueda).subscribe({
-      next: (res: any) => {
-        console.log("Pedidos recibidos: ", res);
-        console.log("Total de Pedidos: ", res.total); // Verificar el total
-        this.arrayPedidos = res.pedidos; 
-        this.paginationSvc.totalItems = Number(res.total); // Asegurarse de que sea un número
-      },
-      error: (err) => {
-        console.error("Error al traer Pedidos: ", err);
+    cargarPedidosPorEstado(estado: string) {
+        this.userId = this.userInfo.getId();
+
+        let usuarioFiltro: number | undefined;     
+        if (this.getRol()==='user' && this.userId) {
+          usuarioFiltro = this.userId;
       }
-    });
-  }
+      this.pedidoSvc.getPedidos(this.paginationSvc.page, this.paginationSvc.itemsPerPage, this.nombre, this.criterioBusqueda, estado, this.fechaInicio, this.fechaFin,usuarioFiltro!).subscribe({
+        next: (res: any) => {
+          console.log(`Pedidos ${estado} recibidos: `, res);
+          if (estado === 'proceso') {
+            this.pedidosEnProceso = res.pedidos;
+          } else if (estado  === 'completado') {
+            this.pedidosCompletados = res.pedidos;
+          } else if (estado === 'cancelado') {
+            this.pedidosCancelados = res.pedidos;
+          }
+          if (estado === this.activeTab) {
+            this.paginationSvc.totalItems = Number(res.total);
+          }
+        },
+        error: (err) => {
+          console.error(`Error al traer Pedidos ${estado}: `, err);
+        }
+      });
+    }
+
+    onTabChange(estado: string) {
+      this.activeTab = estado;
+      this.paginationSvc.setPage(1); // Reset pagination when changing tabs
+      this.cargarPedidosPorEstado(this.activeTab);
+    }
   
     buscar() {
       this.paginationSvc.setPage(1); 
-      this.cargarPedidos();
+      this.cargarPedidosPorEstado(this.activeTab);
     }
   
     onPageChange(page: number, event: Event) {
       event.preventDefault();
       console.log('Pagina cambiada a:', page); 
       this.paginationSvc.setPage(page);
-      this.cargarPedidos();
+      this.cargarPedidosPorEstado(this.activeTab);
     }
   
     getPages(): number[] {
       const totalPages = this.paginationSvc.getTotalPages();
       return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
-    getPedidosPorEstado(estado: string): any[] {
-      return this.arrayPedidos.filter(
-        (pedido) => pedido.estado?.toLowerCase() === estado.toLowerCase()
-      );
-    }
-    // aca van gets para que los tome como propiedades y no como metodos
-    get pedidosEnProceso() {
-      return this.getPedidosPorEstado('proceso');
-    }
-
-    get pedidosCompletados() {
-      return this.getPedidosPorEstado('completado');
-    }
-
-    get pedidosCancelados() {
-      return this.getPedidosPorEstado('cancelado');
     }
   
     trackById(item: any) {
@@ -95,4 +103,9 @@ export class VerPedido {
     eliminarPedido(pedido: any) {
       this.router.navigateByUrl(`/pedido/${pedido.id}/Eliminar`);
     }
+    getRol() {
+      return this.userInfo.getRol();
+    }
+    
+
   }

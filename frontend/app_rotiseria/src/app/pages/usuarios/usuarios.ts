@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Back } from '../../components/back/back';
 import { Footerunico } from '../../components/footerunico/footerunico';
 import { CommonModule } from '@angular/common';  
-import { Checkrol } from '../../services/checkrol';
+import { GetUserInfo } from '../../services/getuserinfo';
 import { VerUser } from '../../components/usuario/ver-user/ver-user';
 
 @Component({
@@ -20,7 +20,7 @@ export class Usuarios {
   fondo = '';
   constructor(
     private route:ActivatedRoute,
-    private checkrol: Checkrol
+    private userInfo: GetUserInfo
   ){}
 
   ngOnInit(){
@@ -29,7 +29,7 @@ export class Usuarios {
 
     console.log("user id: ", this.userId);
     console.log("tipo operacion: ", this.tipo_op);
-    this.usuario.rol=this.checkrol.getRol();
+    this.usuario.rol=this.userInfo.getRol();
     console.log("usuario rol: ", this.usuario.rol);
 
     if (this.usuario.rol === 'admin') {

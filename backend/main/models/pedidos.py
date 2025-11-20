@@ -9,7 +9,7 @@ class Pedidos(db.Model):
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     descripcion = db.Column(db.String(50), nullable=False)
     direccion = db.Column(db.String(50), nullable=False)
-    precio = db.Column(db.Float, nullable=False)
+    total = db.Column(db.Float, nullable=True)
     estado = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
@@ -41,7 +41,7 @@ class Pedidos(db.Model):
             'id': self.id,
             'descripcion': self.descripcion,
             'direccion': self.direccion,
-            'precio': self.precio,
+            'total': self.precio_total,
             'estado': self.estado,
             'created_at': self.created_at.isoformat(),
             'id_usuario': self.id_usuario
@@ -61,7 +61,7 @@ class Pedidos(db.Model):
             'usuario': usuario_json,
             'productos': [
                 {
-                    'id': pp.producto.id,
+                    'id_producto': pp.producto.id,
                     'nombre': pp.producto.nombre,
                     'cantidad': pp.cantidad,
                     'precio': pp.producto.precio,
@@ -75,12 +75,11 @@ class Pedidos(db.Model):
 
     @staticmethod
     def from_json(pedidos_json):
-        """Convierte un diccionario JSON en un objeto Pedido."""
         return Pedidos(
             id_usuario=pedidos_json.get('id_usuario'),
             descripcion=pedidos_json.get('descripcion'),
             direccion=pedidos_json.get('direccion'),
-            estado=pedidos_json.get('estado'),
-            precio=pedidos_json.get('precio'),
-            created_at=pedidos_json.get('created_at', datetime.utcnow())
+            estado="proceso",              # 🔥 default
+            total=0                          # 🔥 se recalcula luego
         )
+

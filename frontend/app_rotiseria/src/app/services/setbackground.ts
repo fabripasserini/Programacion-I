@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Checkrol } from './checkrol';
+import { GetUserInfo } from './getuserinfo';
 @Injectable({
   providedIn: 'root'
 })
@@ -7,12 +7,12 @@ export class SetbackgroundService {
   usuario: any = {};
   fondo = '';
 
-  constructor(private checkrol: Checkrol) {
+  constructor(private userInfo: GetUserInfo) {
     this.inicializar();
   }
 
-  private inicializar(): void {
-    this.usuario.rol = this.checkrol.getRol();
+  public inicializar(): void {
+    this.usuario.rol = this.userInfo.getRol();
     
     if (this.usuario.rol === 'admin') {
       this.fondo = 'bg-admin';

@@ -1,28 +1,32 @@
-  <footer *ngIf="rol === 'user'" class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom text-white"> 
+ 
+ @if (rol === 'user'){
+ <footer *ngIf="rol === 'user'" class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom text-white"> 
     <a href="#" routerLink="/menu" class="text-body-secondary"><i class="fa-solid fa-house"></i></a>
     <a href="#" routerLink="/carrito" class="text-body-secondary"><i class="fa-solid fa-cart-shopping"></i></a>
-    <a href="#" routerLink="/favoritos" class="text-body-secondary"><i class="fa-solid fa-heart"></i></a>
+    <a href="#" routerLink="/notificaciones" class="text-dark"><i class="fa-solid fa-bell"></i></a>
     <a href="#" routerLink="/pedidos" class="text-body-secondary"><i class="fa-solid fa-list"></i></a> 
+    <a href="#" routerLink="/perfil" class="text-body-secondary"><i class="fa-solid fa-user"></i></a>
     <a href="#" routerLink="/home" class="text-dark"><img src="assets/logo.png" alt="Home" width="30"></a>
   </footer>
-
-  <footer *ngIf="rol === 'empleado'" class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom text-white"> 
-    <a routerLink="/inicio-empleado" class="text-dark py-2"><i class="fa-solid fa-house"></i></a>
-    <a routerLink="/usuarios" class="text-dark"><i class="fa-solid fa-user"></i></a>
-    <a routerLink="/verificar-stock" class="text-dark"><i class="fa-solid fa-bag-shopping"></i></a>
-    <a routerLink="/agregar-pedido" class="text-dark"><i class="fa-solid fa-utensils"></i></a>
-    <a routerLink="/estado-pedidos" class="text-dark"><i class="fa-solid fa-list"></i></a>
+}
+  @if (rol === 'empleado'){
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom text-white"> 
+    <a routerLink="/inicio" class="text-dark py-2"><i class="fa-solid fa-house"></i></a>
+    <a routerLink="/pedidos" class="text-dark"><i class="fa-solid fa-utensils"></i></a>
+    <a  routerLink="/notificaciones" class="text-dark"><i class="fa-solid fa-bell"></i></a>
+    <a routerLink="/perfil" class="text-dark"><i class="fa-solid fa-user"></i></a>
     <a routerLink="/index" class="text-dark"><img src="assets/logo.png" alt="Home" width="30"></a>
   </footer>
-  
-  <footer *ngIf="rol === 'admin'" class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom text-white">
+}
+  @if (rol === 'admin'){
+  <footer  class="d-flex flex-wrap justify-content-between align-items-center py-2 px-4 border-top fixed-bottom text-white">
     <a href="#" routerLink="/inicio" class= "text-dark py-2"><i class="fa-solid fa-house"></i></a>
     <a href="#" routerLink="/usuarios" class="text-dark"><i class="fa-solid fa-user-group"></i></a>
-    <a href="#" routerLink="/enviar-ofertas" class="text-dark"><i class="fa-solid fa-percent"></i></a>
-    <a href="#" routerLink="/pedidos-clientes" class="text-dark"><i class="fa-solid fa-list"></i></a>
-    <a href="#" routerLink="/modificar-pedidos" class="text-dark"><i class="fa-solid fa-utensils"></i></a>
-    <a href="#" routerLink="/productos" class="text-dark"><i class="fa-solid fa-plus"></i></a>
+    <a href="#" routerLink="/notificaciones" class="text-dark"><i class="fa-solid fa-bell"></i></a>
+    <a href="#" routerLink="/pedidos" class="text-dark"><i class="fa-solid fa-list"></i></a>
+    <a href="#" routerLink="/perfil" class="text-dark"><i class="fa-solid fa-user"></i></a>
+    <a href="#" routerLink="/productos" class="text-dark"><i class="fa-solid fa-utensils"></i></a>
     <a href="#" routerLink="/home" class="text-dark"><img src="/assets/logo.png" alt="Home" width="30"></a>
   </footer>
-  
+}
 

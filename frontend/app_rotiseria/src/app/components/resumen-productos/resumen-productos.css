@@ -1,0 +1,35 @@
+.resumen-productos {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+  
+  .resumen-productos h2 {
+    margin-top: 0;
+  }
+  
+  .resumen-productos ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .resumen-productos li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .totales {
+    margin-top: 1rem;
+    text-align: right;
+  }
+  
+  .totales p {
+    margin: 0.5rem 0;
+  }
+  
+  .totales span {
+    font-weight: bold;
+  }
+  

@@ -2,6 +2,7 @@ interface UserCreate {
     nombre: string;
     apellido: string;
     dni: string;
+    telefono: string;
     email: string;
     password: string;
     rol: boolean;

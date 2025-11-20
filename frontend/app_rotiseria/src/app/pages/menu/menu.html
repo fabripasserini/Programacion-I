@@ -1,23 +1,27 @@
+<!-- home.html -->
 <div class="bg-light bg-user body-user">
-
+  
   <app-back></app-back>
-
-  <div class="text-center">
-    <h2 class="fw-bold">Bienvenidoooo!</h2>
-  </div>
-
-  <div class="text-center">
-    <h2 class="fw-bold">Menu</h2>
-  </div>
-
-  <div class="container mt-3">
-    <div class="row text-center g-4">
-
-      <app-categorias></app-categorias>
-
+  
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+     
+      <h1 class="hero-title">¿Qué te apetece hoy?</h1>
+      <p class="hero-subtitle">Explora nuestro  menú</p>
     </div>
+    <div class="hero-decoration">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+  </div>
+
+  <!-- Categorías Section -->
+  <div class="categorias-section">
+    <app-categorias></app-categorias>
   </div>
 
   <app-footerunico></app-footerunico>
 
 </div>
+

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Checkrol } from '../../services/checkrol';
 import { Back } from '../../components/back/back';
 import { CommonModule } from '@angular/common';  
 
@@ -9,29 +8,27 @@ import { VerProducto } from '../../components/producto/ver-producto/ver-producto
 import { SetbackgroundService} from '../../services/setbackground';
 @Component({
   selector: 'app-productos',
+  standalone: true,
   imports: [Footerunico,Back,VerProducto,CommonModule],
   templateUrl: './productos.html',
   styleUrl: './productos.css'
 })
 export class Productos {
-  userId!: string;
-    tipo_op!: string;
-    usuario: any = {};
-    fondo = '';
-    constructor(
-      private route:ActivatedRoute,
-      private setbackgroundService: SetbackgroundService
-    ){}
+  fondo = '';
+  selectedCategoryId: number | null = null;
+  
+  constructor(
+    private route: ActivatedRoute,
+    private setbackgroundService: SetbackgroundService
+  ) {}
 
-    ngOnInit(){
-      this.userId = this.route.snapshot.paramMap.get('id') || '';
-      this.tipo_op = this.route.snapshot.paramMap.get('tipo_op') || '';
+  ngOnInit(){
+    this.fondo = this.setbackgroundService.getFondo();
 
-      console.log("user id: ", this.userId);
-      console.log("tipo operacion: ", this.tipo_op);
-      console.log("usuario rol: ", this.usuario.rol);
-
-      this.fondo=this.setbackgroundService.getFondo();
-      
-    }
-  } 
+    this.route.queryParamMap.subscribe(params => {
+      console.log('Params recibidos en productos.ts:', params);
+      const categoryId = params.get('categoria');
+      this.selectedCategoryId = categoryId ? parseInt(categoryId) : null;
+    });
+  }
+}

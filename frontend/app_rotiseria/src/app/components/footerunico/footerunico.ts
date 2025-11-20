@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Checkrol } from '../../services/checkrol';
+import { GetUserInfo } from '../../services/getuserinfo';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -17,10 +17,10 @@ import { RouterLink } from '@angular/router';
 export class Footerunico implements OnInit {
   rol: string | null = null;
 
-  constructor(private checkRol: Checkrol) {}
+  constructor(private userInfo: GetUserInfo) {}
 
   ngOnInit(): void {
-    this.rol = this.checkRol.getRol();
+    this.rol = this.userInfo.getRol();
     console.log("Rol detectado:", this.rol);
   }
 

@@ -14,6 +14,7 @@ class Productos(db.Model):
 
     categoria = db.relationship('Categorias', back_populates='producto')
     calificacion = db.relationship('Calificaciones', back_populates="producto", cascade="all, delete-orphan")
+    carrito_productos = db.relationship('CarritoProducto', back_populates='producto', cascade="all, delete-orphan")
     
 
     def __repr__(self):
@@ -21,7 +22,7 @@ class Productos(db.Model):
 
     def to_json(self):
         return {
-            'id': self.id,
+            'id_producto': self.id,
             'id_categoria': self.id_categoria,
             'nombre': self.nombre,
             'descripcion': self.descripcion,
@@ -32,7 +33,7 @@ class Productos(db.Model):
 
     def to_json_complete(self):
         return {
-            'id': self.id,
+            'id_producto': self.id,
             'nombre': self.nombre,
             'descripcion': self.descripcion,
             'precio': self.precio,
@@ -44,7 +45,7 @@ class Productos(db.Model):
 
     @staticmethod
     def from_json(productos_json):
-        id = productos_json.get('id')
+        id = productos_json.get('id_producto')
         id_categoria = productos_json.get('id_categoria')
         nombre = productos_json.get('nombre')
         descripcion = productos_json.get('descripcion')

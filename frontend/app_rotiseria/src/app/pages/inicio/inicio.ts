@@ -3,8 +3,9 @@ import { Back } from '../../components/back/back';
 import { CommonModule } from '@angular/common';  
 import { Usuarios } from '../../services/usuarios';
 import { jwtDecode } from 'jwt-decode';
-import { Checkrol } from '../../services/checkrol';
+import { GetUserInfo } from '../../services/getuserinfo';
 import { Footerunico } from '../../components/footerunico/footerunico';
+import { SetbackgroundService } from '../../services/setbackground';
 @Component({
   selector: 'app-inicio',
   standalone: true,
@@ -15,15 +16,13 @@ import { Footerunico } from '../../components/footerunico/footerunico';
 export class Inicio implements OnInit {
   usuario: any = {};
   fondo = '';
-  constructor(private checkrol: Checkrol){}
+  constructor(private userInfo: GetUserInfo,
+    private setBackgroudSvc: SetbackgroundService,
+  ){}
   ngOnInit() {
-    this.usuario.rol=this.checkrol.getRol();
+    this.usuario.rol=this.userInfo.getRol();
 
-    if (this.usuario.rol === 'admin') {
-        this.fondo = 'bg-admin';
-      } else if (this.usuario.rol === 'empleado') {
-        this.fondo = 'bg-empleado';
-        }
+    this.setBackgroudSvc.inicializar();
 
       } 
   }

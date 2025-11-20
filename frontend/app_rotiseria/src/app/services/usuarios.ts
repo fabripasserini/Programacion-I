@@ -27,4 +27,13 @@ export class Usuarios {
   updateUsuario(usuario: any): Observable<any> {
     return this.http.put(`${this.url}/usuario/${usuario.id}`, usuario);
   }
+  getUsuariosSinPaginacion(nombre: string = '', criterio: string): Observable<any> {
+    let params = new HttpParams()
+      .set(criterio, nombre); // Use the selected criterion as the query parameter
+
+    return this.http.get(this.url + '/usuarios', { params });
+  }
+  getTodosLosUsuarios(): Observable<any> {
+    return this.http.get(this.url + '/usuarios');
+  }
 }

@@ -58,6 +58,8 @@ def create_app():
     api.add_resource(resources.NotificacionesResource, '/notificaciones')
     api.add_resource(resources.CategoriaResource, '/categoria/<int:id>')
     api.add_resource(resources.CategoriasResource, '/categorias')
+    api.add_resource(resources.CarritoResource, '/carrito/<int:id>')
+    api.add_resource(resources.CarritosListResource, '/carritos/all')
 
     # Registrar Blueprint de autenticación
     from main.auth import routes

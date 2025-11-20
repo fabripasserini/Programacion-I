@@ -1,0 +1,164 @@
+<div class="main-content-wrapper">
+    
+    <app-titulos 
+        [titulo]="'Notificaciones'">
+    </app-titulos>
+
+    <!-- SISTEMA DE PESTAÑAS PARA NOTIFICACIONES -->
+    <ul class="mp-tabs" id="notifTabs" role="tablist">
+
+        <!-- TAB: VER NOTIFICACIONES -->
+        <li class="mp-tab-item" role="presentation">
+            <button 
+                class="mp-tab-btn"
+                [class.active]="activeTab === 'ver'"
+                (click)="onTabChange('ver')"
+                type="button">
+                <span class="mp-tab-label"><i class="fas fa-bell"></i> Mis notificaciones</span>
+            </button>
+        </li>
+
+        @if (getRol() === 'admin' || getRol() === 'empleado') {
+        <!-- TAB: CREAR NOTIFICACIÓN -->
+        <li class="mp-tab-item" role="presentation">
+            <button 
+                class="mp-tab-btn"
+                [class.active]="activeTab === 'crear'"
+                (click)="onTabChange('crear')"
+                type="button">
+                <span class="mp-tab-label"><i class="fas fa-plus"></i> Crear notificación</span>
+            </button>
+        </li>
+    }
+    
+
+    </ul>
+
+    <!-- CONTENIDO DE LAS PESTAÑAS -->
+    <div class="tab-content">
+
+        <!-- ===================================================== -->
+        <!-- TAB 1 → VER NOTIFICACIONES -->
+        <!-- ===================================================== -->
+        <div 
+            class="tab-pane fade"
+            [class.show]="activeTab === 'ver'"
+            [class.active]="activeTab === 'ver'"
+            id="verTab">
+
+            <!-- LISTA DE NOTIFICACIONES -->
+            <div class="notifications-container py-5">
+                
+                <!-- HEADER -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold text-dark mb-0">
+                        <i class="fas fa-bell me-2 "></i>
+                        Mis Notificaciones
+                    </h5>
+                    
+                    <span class="badge bg-primary rounded-pill">
+                        {{ notificaciones.length }} notificaciones
+                    </span>
+                </div>
+
+                <!-- ESTADO VACÍO -->
+                @if (notificaciones.length === 0) {
+                    <div class="text-center py-5">
+                        <div class="empty-state">
+                            <i class="fas fa-bell-slash fa-3x text-muted mb-3"></i>
+                            <h6 class="text-muted">No tienes notificaciones</h6>
+                            <p class="text-muted small">Tus notificaciones aparecerán aquí</p>
+                        </div>
+                    </div>
+                }
+
+                <!-- LISTA DE NOTIFICACIONES -->
+                @if (notificaciones.length > 0) {
+                    <div class="notifications-list">
+                        @for (notificacion of notificaciones; track notificacion.id) {
+                            <div class="notification-card card mb-3 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <!-- CONTENIDO DE LA NOTIFICACIÓN -->
+                                    <div class="notification-content">
+                                        <p class="notification-message mb-2">
+                                            {{ notificacion.informacion }}
+                                        </p>
+                                        <div class="notification-meta">
+                                            <small class="text-muted">
+                                                <i class="fas fa-clock me-1"></i>
+                                                    {{ notificacion.created_at | date:'dd/MM/yyyy' }} a las {{ notificacion.created_at | date:'HH:mm:ss' }}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- TAB 2 → CREAR NOTIFICACIÓN -->
+        <!-- ===================================================== -->
+        @if (getRol() === 'admin' || getRol() === 'usuarios') {
+
+        <div 
+            class="tab-pane fade"
+            [class.show]="activeTab === 'crear'"
+            [class.active]="activeTab === 'crear'"
+            id="crearTab">
+
+            <div class="card p-4 shadow-sm">
+                <h5 class="mb-3 fw-bold">Nueva Notificación</h5>
+
+                <!-- SELECCIÓN DESTINATARIOS -->
+                <label class="form-label fw-semibold">Enviar a:</label>
+                <select class="form-select mb-3" (change)="cambiarDestinatario($event)">
+                    <option value="todos">Todos los usuarios</option>
+                    <option value="usuario">Un solo usuario</option>
+                    <option value="multiples">Múltiples usuarios</option>
+                </select>
+
+                <!-- INPUT UN USUARIO -->
+                @if (mostrarUnicoUsuario) {
+                    <div>
+                        <label class="form-label">Email del usuario</label>
+                        <input type="text" class="form-control mb-3" [(ngModel)]="userEmail" 
+                               placeholder="usuario@mail.com">
+                    </div>
+                }
+
+                <!-- INPUT MÚLTIPLES USUARIOS -->
+                @if (mostrarInputMultiplesUsuarios) {
+                    <div>
+                        <label class="form-label">Emails separados por comas o espacios</label>
+                        <textarea class="form-control mb-3" rows="3" [(ngModel)]="emailsMultiples"
+                            placeholder="email1@mail.com, email2@mail.com ..."></textarea>
+                    </div>
+                }
+
+                <!-- TEXTO DE LA NOTIFICACIÓN -->
+                <label class="form-label">Mensaje</label>
+                <textarea 
+                    class="form-control"
+                    maxlength="500"
+                    rows="4"
+                    [(ngModel)]="mensaje"
+                    (input)="actualizarContador()"
+                    placeholder="Escribe la notificación...">
+                </textarea>
+
+                <div class="text-end small mt-1">{{ contador }}/500</div>
+
+                <button 
+                    class="btn btn-primary mt-3"
+                    (click)="enviarNotificacion()">
+                    <i class="fas fa-plus me-1"></i>
+                    Enviar notificación
+                </button>
+            </div>
+        </div>
+    }
+    </div>
+</div>

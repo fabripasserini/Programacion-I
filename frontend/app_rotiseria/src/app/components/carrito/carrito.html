@@ -1,0 +1,118 @@
+<!-- carrito.component.html -->
+<div class="container mt-3">
+
+  <!-- 🧾 LISTA DE PRODUCTOS -->
+  @for (producto of productos; track trackById($index, producto)) {
+
+    <div class="card mb-3 shadow-sm border-0">
+      <div class="row g-0 align-items-center">
+
+        <!-- Imagen -->
+        <div class="col-4 text-center p-2">
+          <img
+            src="../assets/hamburguesas.png"
+            class="img-fluid rounded"
+            alt="Producto"
+          />
+        </div>
+
+        <!-- Info del producto -->
+        <div class="col-8">
+          <div class="card-body pt-2 pb-2">
+
+            <h5 class="fw-bold mb-1">{{ producto.nombre }}</h5>
+            <p class="text-muted small mb-1">{{ producto.descripcion }}</p>
+
+            <p class="fw-bold mb-2">$ {{ producto.precio }}</p>
+
+            <!-- Cantidad EDITABLE -->
+            <div class="d-flex align-items-center gap-2 mb-2">
+
+              <button 
+                class="btn btn-sm btn-danger"
+                [disabled]="producto.cantidad <= 1"
+                (click)="producto.cantidad = producto.cantidad - 1; updateCantidad(producto)">
+                −
+              </button>
+
+              <input 
+                type="number"
+                class="form-control form-control-sm text-center"
+                style="width: 60px;"
+                min="1"
+                [max]="producto.stock"
+                [(ngModel)]="producto.cantidad"
+                (blur)="updateCantidad(producto)"
+              >
+
+              <button 
+                class="btn btn-sm btn-success"
+                [disabled]="producto.cantidad >= producto.stock"
+                (click)="producto.cantidad = producto.cantidad + 1; updateCantidad(producto)">
+                +
+              </button>
+
+            </div>
+
+            <!-- Eliminar -->
+            <button
+              class="btn btn-sm btn-outline-danger w-100"
+              (click)="deleteProducto(producto.id_producto)"
+            >
+              <i class="fa-solid fa-trash"></i> Eliminar
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  }
+
+  <!-- 📊 RESUMEN DE COMPRA -->
+  @if (productos.length > 0) {
+    <div class="card mt-3">
+      <div class="card-body">
+        <h6 class="fw-bold">Resumen de compra</h6>
+        <div class="d-flex justify-content-between">
+          <span>Subtotal:</span>
+          <span>$ {{ subtotal }}</span>
+        </div>
+       
+        <hr>
+        <div class="d-flex justify-content-between fw-bold">
+          <span>Total:</span>
+          <span>$ {{ total }}</span>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- 🗑️ Vaciar carrito -->
+  @if (productos.length > 0) {
+    <button
+      class="btn btn-danger w-100 mt-3 fw-bold"
+      (click)="vaciarCarrito()"
+    >
+      <i class="fa-solid fa-trash"></i> Vaciar carrito
+    </button>
+
+    <!-- ✔️ Confirmar pedido -->
+    <app-boton
+      class="mt-3"
+      [textoboton]="'Confirmar Pedido'"
+      [link]="'/pedido/crear'"
+    >
+    </app-boton>
+  }
+
+  <!-- 🛒 Carrito vacío -->
+  @if (productos.length === 0) {
+    <div class="text-center mt-5">
+      <i class="fa-solid fa-cart-shopping fa-3x text-muted mb-3"></i>
+      <h5 class="text-muted">Tu carrito está vacío</h5>
+      <p class="text-muted">Agrega algunos productos para continuar</p>
+    </div>
+  }
+
+</div>

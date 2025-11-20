@@ -2,24 +2,23 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Back } from '../../components/back/back';
 import { Titulos } from '../../components/titulos/titulos';
-import { Agregarproducto } from '../../components/agregarproducto/agregarproducto';
-import { Carritopedido } from '../../components/carritopedido/carritopedido';
 import { Footerunico } from '../../components/footerunico/footerunico';
+import { Carrito } from '../../components/carrito/carrito';
 
 @Component({
-  selector: 'app-carrito',
+  selector: 'app-carrito-page',
   standalone: true,
   imports: [
     CommonModule,
     Back,
     Titulos,
     Footerunico,
-    Agregarproducto,
-    Carritopedido
+    Carrito
+    
   ],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css'
 })
-export class Carrito {
+export class CarritoPage {
 
 }

@@ -16,6 +16,11 @@ export class Productos {
 
     return this.http.get(this.url + '/productos', { params });
   }
+
+  getProductosPorCategoria(categoriaId: number): Observable<any> {
+    return this.http.get(this.url + '/productos?categoria=' + categoriaId);
+  }
+
   getProducto(id: number): Observable<any> {
     return this.http.get(this.url + '/producto/' + id);
   }
@@ -23,18 +28,12 @@ export class Productos {
     return this.http.post(this.url + '/productos', dataCreate);
   }
   deleteProducto(id: number) {
-    this.http.delete(this.url + '/producto/' + id)
-      .subscribe({
-        next: (res) => {
-          console.log('Producto eliminado:', res);
-        },
-        
-        error: (err) => console.error('Error al eliminar producto:', err)
-      });
-  }
+  return this.http.delete(this.url + '/producto/' + id);
+}
+
 
   updateProducto(producto: any): Observable<any> {
-    return this.http.put(this.url + '/producto/' + producto.id, producto);
+    return this.http.put(this.url + '/producto/' + producto.id_producto, producto);
   }
 
 
