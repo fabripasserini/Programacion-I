@@ -20,7 +20,7 @@ export class AbmComponent implements OnInit {
     private usuariosSvc: Usuarios,
     private formBuilder: FormBuilder,
     private regService: Reg,
-
+    private router: Router
   ) {
     this.formUsuario = this.formBuilder.group({
       nombre: ['', Validators.required],
@@ -29,7 +29,8 @@ export class AbmComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: [''],
       rol: ['', Validators.required],
-      alta: ['', Validators.required]
+      alta: ['', Validators.required],
+      bloquear: ['', Validators.required]
     });
   }
 
@@ -77,6 +78,13 @@ export class AbmComponent implements OnInit {
   }
 
   deleteUsuario(id: string) {
-    return this.usuariosSvc.deleteUsuario(Number(id));
+    this.usuariosSvc.deleteUsuario(Number(id)).subscribe({
+      next: () => {
+        this.router.navigate(['/usuarios']);
+      },
+      error: (err) => {
+        console.error('Error al eliminar usuario:', err);
+      }
+    });
   }
   }

@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 
 import { Footerunico } from '../../components/footerunico/footerunico';
 import { VerProducto } from '../../components/producto/ver-producto/ver-producto';
-import { SetbackgroundService} from '../../services/setbackground';
 @Component({
   selector: 'app-productos',
   standalone: true,
@@ -18,16 +17,14 @@ export class Productos {
   selectedCategoryId: number | null = null;
   
   constructor(
-    private route: ActivatedRoute,
-    private setbackgroundService: SetbackgroundService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(){
-    this.fondo = this.setbackgroundService.getFondo();
 
     this.route.queryParamMap.subscribe(params => {
       console.log('Params recibidos en productos.ts:', params);
-      const categoryId = params.get('categoria');
+      const categoryId = params.get('id_categoria');
       this.selectedCategoryId = categoryId ? parseInt(categoryId) : null;
     });
   }

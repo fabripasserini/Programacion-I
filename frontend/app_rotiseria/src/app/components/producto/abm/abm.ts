@@ -34,17 +34,26 @@ export class AbmProducto implements OnInit {
   }
 
   ngOnInit() {
-    if (this.productoId) {
-      this.productosSvc.getProducto(Number(this.productoId)).subscribe({
-        next: (res) => {
-          console.log('Producto recibido:', res);
-          // 👇 actualizamos el formulario con los datos
-          this.formProducto.patchValue(res);
-        },
-        error: (err) => console.error('Error al obtener Producto:', err)
-      });
-    }
-    this.cargarCategorias();
+    this.categoriasSvc.getCategorias().subscribe({
+      next: (categoriasRes) => {
+        this.arrayCategorias = categoriasRes;
+        this.categoriasMap = {};
+        categoriasRes.forEach((cat: any) => {
+          this.categoriasMap[cat.id] = cat.nombre;
+        });
+
+        if (this.productoId && this.tipoOperacion === 'Modificar') {
+          this.productosSvc.getProducto(Number(this.productoId)).subscribe({
+            next: (productoRes) => {
+              console.log('Producto recibido:', productoRes);
+              this.formProducto.patchValue(productoRes);
+            },
+            error: (err) => console.error('Error al obtener Producto:', err)
+          });
+        }
+      },
+      error: (err) => console.error("Error al cargar categorías", err)
+    });
   }
   createProducto() {
   console.log('Datos del formulario:', this.formProducto.value);
@@ -67,9 +76,10 @@ export class AbmProducto implements OnInit {
     }
   }) 
 }
-  updateProducto() {
+  updateProducto(id: string) {
     if (this.formProducto.valid) {
-      const data = { id_producto: this.productoId, ...this.formProducto.value };
+      const data = { id_producto: Number(id), ...this.formProducto.value };
+      console.log('Data to be updated:', data);
       this.productosSvc.updateProducto(data).subscribe({
         next: (res) => {
           console.log('Producto actualizado:', res);

@@ -30,9 +30,10 @@ export class Notificaciones {
   createNotificacion(payload: { usuarios: number[] | "todos", informacion: string }): Observable<any> {
     return this.http.post(this.url + '/notificaciones', payload, { headers: this.headers });
 }
+  eliminarNotificacion(id: number): Observable<any> {
+    return this.http.delete(this.url + '/notificacion/' + id, { headers: this.headers });
 
-
-
+  }
  
 }
 

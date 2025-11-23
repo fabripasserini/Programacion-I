@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { CanActivateFn } from '@angular/router';
 
-import { authadminGuard } from './authadmin-guard';
+import { authnotsessionGuard } from './authnotsession-guard';
 
-describe('authadminGuard', () => {
+describe('authnotsessionGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => authadminGuard(...guardParameters));
+      TestBed.runInInjectionContext(() => authnotsessionGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

@@ -20,8 +20,8 @@ class Productos(db.Model):
     def __repr__(self):
         return f'<Producto {self.id}: {self.nombre}>'
 
-    def to_json(self):
-        return {
+    def to_json(self, average_rating=None):
+        data = {
             'id_producto': self.id,
             'id_categoria': self.id_categoria,
             'nombre': self.nombre,
@@ -30,6 +30,9 @@ class Productos(db.Model):
             'stock': self.stock,
             'created_at': str(self.created_at)
         }
+        if average_rating is not None:
+            data['average_rating'] = average_rating
+        return data
 
     def to_json_complete(self):
         return {

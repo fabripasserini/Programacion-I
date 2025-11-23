@@ -5,7 +5,6 @@ import { Usuarios } from '../../services/usuarios';
 import { jwtDecode } from 'jwt-decode';
 import { GetUserInfo } from '../../services/getuserinfo';
 import { Footerunico } from '../../components/footerunico/footerunico';
-import { SetbackgroundService } from '../../services/setbackground';
 @Component({
   selector: 'app-inicio',
   standalone: true,
@@ -16,13 +15,10 @@ import { SetbackgroundService } from '../../services/setbackground';
 export class Inicio implements OnInit {
   usuario: any = {};
   fondo = '';
-  constructor(private userInfo: GetUserInfo,
-    private setBackgroudSvc: SetbackgroundService,
+  constructor(private userInfo: GetUserInfo
   ){}
   ngOnInit() {
     this.usuario.rol=this.userInfo.getRol();
-
-    this.setBackgroudSvc.inicializar();
 
       } 
   }

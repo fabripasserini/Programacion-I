@@ -27,7 +27,6 @@ class Categoria(Resource):
         db.session.commit()
         return 'Categoria actualizada',200
 class Categorias(Resource):
-    @jwt_required(optional=True)
     def get(self):
 
         categorias=db.session.query(CategoriasModel).all()

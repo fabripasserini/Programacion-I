@@ -1,7 +1,4 @@
-import { Back } from '../../back/back';
 import { Titulos } from '../../titulos/titulos';
-import { Estadopedido } from '../../estadopedido/estadopedido';
-import { Boton } from '../../boton/boton';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -12,7 +9,7 @@ import { ListaPedidos } from '../../lista-pedidos/lista-pedidos';
 import { GetUserInfo } from '../../../services/getuserinfo';
 @Component({
   selector: 'app-ver-pedido',
-  imports: [RouterLink, FormsModule, CommonModule, Back, Titulos, Estadopedido, Boton, ListaPedidos],
+  imports: [RouterLink, FormsModule, CommonModule, Titulos, ListaPedidos],
   templateUrl: './ver-pedido.html',
   styleUrl: './ver-pedido.css'
 })
@@ -100,9 +97,7 @@ export class VerPedido {
       this.router.navigateByUrl(`/pedido/null/Crear`);
     }
   
-    eliminarPedido(pedido: any) {
-      this.router.navigateByUrl(`/pedido/${pedido.id}/Eliminar`);
-    }
+  
     getRol() {
       return this.userInfo.getRol();
     }

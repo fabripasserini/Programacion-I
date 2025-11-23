@@ -1,21 +1,25 @@
 
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { jwtDecode } from 'jwt-decode';
+import { GetUserInfo } from '../services/getuserinfo';
 export const authadminempleadoGuard: CanActivateFn = (route, state) => {
-
+  
 
   const router = inject(Router);
+  const getUserInfo = inject(GetUserInfo);
   const token = localStorage.getItem("token");
-
+  const bloqueado= getUserInfo.getBloqueado();
+  if(bloqueado){
+    router.navigate(['/error-page']);
+    return false;
+  }
   if (!token) {
     router.navigate(['/login']);
     return false;
   }
 
   try {
-    const decoded: any = jwtDecode(token);
-    const rol = decoded.rol;
+    const rol = getUserInfo.getRol();
 
     console.log("Rol decodificado:", rol);
 

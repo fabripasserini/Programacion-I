@@ -27,6 +27,11 @@ class Pedido(Resource):
         current_user_id = claims['id']
         current_user_role = claims['rol']
 
+        print(f"Attempting to update pedido {id}")
+        print(f"Current User ID: {current_user_id}, Role: {current_user_role}")
+        print(f"Pedido User ID: {pedido.id_usuario}, Estado: {pedido.estado}")
+        print(f"Request Data: {data}")
+
         # Admin can update any field
         if current_user_role == 'admin':
             for key, value in data.items():
@@ -38,7 +43,7 @@ class Pedido(Resource):
         # User or employee can cancel the order
         if current_user_role in ['empleado'] or pedido.id_usuario == current_user_id:
             if 'estado' in data and data['estado'] == 'cancelado':
-                if pedido.estado == 'en proceso':
+                if pedido.estado == 'proceso':
                     pedido.estado = 'cancelado'
                     db.session.add(pedido)
                     db.session.commit()
@@ -105,6 +110,7 @@ class Pedidos(Resource):
         if request.args.get('direccion'):
             pedidos = pedidos.filter(PedidosModel.direccion.like("%"+request.args.get('direccion')+"%"))
 
+        pedidos = pedidos.order_by(desc(PedidosModel.created_at))
         pedidos = pedidos.paginate(page=page, per_page=per_page, error_out=False)
 
         return {'pedidos': [pedido.to_json_complete() for pedido in pedidos.items],
@@ -116,6 +122,9 @@ class Pedidos(Resource):
         
     @role_required(roles=["admin","user"])
     def post(self):
+        claims = get_jwt()
+        if not claims['alta']:
+            return 'El usuario no está dado de alta', 403
         data = request.get_json()
         productos_data = data.get('productos', [])  # lista de diccionarios
 

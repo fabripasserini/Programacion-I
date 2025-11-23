@@ -23,6 +23,7 @@ export class Register {
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       dni: ['', Validators.required],
+      telefono: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
     });

@@ -13,7 +13,7 @@ class Usuario(Resource):
     def get(self,id):
         usuario=db.session.query(UsuariosModel).get_or_404(id)
         current_identity = get_jwt_identity()
-        if current_identity == usuario.id:
+        if int(current_identity) == usuario.id:
             return usuario.to_json_complete() # solo cuando le pasemos el id va a mostar la notificacion
         else:
             return usuario.to_json() # solo cuando le pasemos el id va a mostar la notificacion

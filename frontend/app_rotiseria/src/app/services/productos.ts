@@ -8,12 +8,16 @@ export class Productos {
   private http = inject(HttpClient);
   private url = 'http://localhost:3000';
 
- getProductos(page: number, limit: number, nombre: string = '', criterio: string): Observable<any> {
+ getProductos(page: number, limit: number, nombre: string = '', criterio: string,sortby_calificaciones: boolean=false): Observable<any> {
     let params = new HttpParams()
       .set('page', page)
       .set('per_page', limit)
-      .set(criterio, nombre); // Use the selected criterion as the query parameter
-
+      .set(criterio, nombre);
+    
+      if (sortby_calificaciones) {
+        params = params.set('sortby_calificaciones', true);
+      }
+  
     return this.http.get(this.url + '/productos', { params });
   }
 

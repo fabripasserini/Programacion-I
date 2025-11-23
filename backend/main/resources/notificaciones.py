@@ -13,7 +13,11 @@ class Notificacion(Resource):
     def get(self,id):
         notificacion=db.session.query(NotificacionesModel).get_or_404(id)
         return notificacion.to_json()
-    
+    def delete(self,id):
+        notificacion=db.session.query(NotificacionesModel).get_or_404(id)
+        db.session.delete(notificacion)
+        db.session.commit()
+        return 'Notificacion eliminada',200 # [+]el codigo 204 no emite una respuesta en flask[+]
 class Notificaciones(Resource):
     @role_required(roles=["admin","user"])
     def get(self):
@@ -31,7 +35,9 @@ class Notificaciones(Resource):
             query = query.order_by(NotificacionesModel.created_at.asc())
         else:
             query = query.order_by(NotificacionesModel.created_at.desc())
-
+         
+        if request.args.get('id_usuario'):
+            query = query.filter(NotificacionesModel.id_usuario == int(request.args.get('id_usuario')))
         return [n.to_json() for n in query], 200
     @role_required(roles=["admin"])
     def post(self):
@@ -71,5 +77,5 @@ class Notificaciones(Resource):
             "cantidad": len(creadas),
             "usuarios": ids
         }, 201
-
+    
     

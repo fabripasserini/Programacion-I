@@ -24,13 +24,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-.bg-index {
-    background-image: url("bg-index.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+
 
 /* Fondo para usuario */
 .bg-user {

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Back } from '../../components/back/back';
-import { Titulos } from '../../components/titulos/titulos';
 import { Footerunico } from '../../components/footerunico/footerunico';
 import { Carrito } from '../../components/carrito/carrito';
 
@@ -11,7 +10,6 @@ import { Carrito } from '../../components/carrito/carrito';
   imports: [
     CommonModule,
     Back,
-    Titulos,
     Footerunico,
     Carrito
     

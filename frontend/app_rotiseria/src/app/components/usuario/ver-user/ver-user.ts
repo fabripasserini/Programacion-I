@@ -1,15 +1,15 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Usuarios } from '../../../services/usuarios';
 import { CommonModule } from '@angular/common';
 import { PaginationService } from '../../../services/pagination.service';
-
+import { GetUserInfo } from '../../../services/getuserinfo';
 @Component({
   selector: 'app-ver-user',
   standalone: true,
   imports: [
-    RouterLink,
+    
     FormsModule,
     CommonModule
   ],
@@ -25,7 +25,8 @@ export class VerUser {
   constructor(
     private router: Router,
     private usuarioSvc: Usuarios,
-    public paginationSvc: PaginationService
+    public paginationSvc: PaginationService,
+    private getUserInfo: GetUserInfo
   ) {}
 
   ngOnInit() {
@@ -78,5 +79,8 @@ export class VerUser {
 
   eliminarUsuario(usuario: any) {
     this.router.navigateByUrl(`/usuario/${usuario.id}/Eliminar`);
+  }
+  getRol() {
+    return this.getUserInfo.getRol();
   }
 }

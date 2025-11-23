@@ -6,6 +6,7 @@ import { GetUserInfo } from '../../../services/getuserinfo';
 import { Carritos as CarritosService } from '../../../services/carritos';
 import { Pedidos as PedidosService } from '../../../services/pedidos';
 import { Productos as ProductosService } from '../../../services/productos';
+import { Notificaciones as NotificacionesService } from '../../../services/notificaciones';
 import { PedidoCreate } from '../../../interfaces/PedidoCreate';
 import { Titulos } from '../../titulos/titulos';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ export class CrearPedido implements OnInit {
   private pedidosService = inject(PedidosService);
   private productosService = inject(ProductosService);
   private userInfo = inject(GetUserInfo);
+  private notificacionesService = inject(NotificacionesService);
   private router = inject(Router);
   formPedido: FormGroup = new FormGroup({
     direccion: new FormControl('', [Validators.required]),

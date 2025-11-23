@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Pedidos as PedidosService } from '../../services/pedidos';
 import { GetUserInfo } from '../../services/getuserinfo';
 import { Router } from '@angular/router';
+import { Notificaciones as NotificacionesService } from '../../services/notificaciones';
 @Component({
   selector: 'app-lista-pedidos',
   standalone: true,
@@ -21,7 +22,8 @@ export class ListaPedidos {
   modo: string= 'ver';
   private pedidosService = inject(PedidosService);
   constructor(private userInfo: GetUserInfo,
-    private router: Router
+    private router: Router,
+    private notificacionesService: NotificacionesService
   ) {}
 
   trackById(item: any) { 
@@ -29,7 +31,7 @@ export class ListaPedidos {
   }
 
   cancelarPedido(id: number) {
-    this.pedidosService.updatePedido({ id: id, estado: 'cancelado' }).subscribe({
+    this.pedidosService.cancelarPedido(id).subscribe({
       next: () => {
         alert('Pedido cancelado exitosamente');
         this.pedidos = this.pedidos.filter(p => p.id !== id);
@@ -40,27 +42,27 @@ export class ListaPedidos {
     });
   }
   completarPedido(id: number) {
+    const pedido = this.pedidos.find(p => p.id === id);
+    if (!pedido) return;
+
     this.pedidosService.updatePedido({ id: id, estado: 'completado' }).subscribe({
       next: () => {
         alert('Pedido completado exitosamente');
         this.pedidos = this.pedidos.filter(p => p.id !== id);
+        this.notificacionesService.createNotificacion({
+          usuarios: [pedido.id_usuario],
+          informacion: 'Pedido completado'
+        }).subscribe({
+          next: () => console.log('Notificación enviada'),
+          error: (err) => console.error('Error al enviar notificación', err)
+        });
       },
       error: (err) => {
         console.error('Error al completar el pedido', err);
       }
     });
   }
-  modificarPedido(id: number) {
-    this.pedidosService.updatePedido({ id: id, estado: 'proceso' }).subscribe({
-      next: () => {
-        alert('Pedido modificado exitosamente');
-        this.pedidos = this.pedidos.filter(p => p.id !== id);
-      },
-      error: (err) => {
-        console.error('Error al modificar el pedido', err);
-      }
-    });
-  }
+
   getRol() {
     return this.userInfo.getRol();
   }

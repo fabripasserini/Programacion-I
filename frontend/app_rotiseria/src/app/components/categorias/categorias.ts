@@ -38,7 +38,7 @@ export class Categorias {
     // Navegar directamente a productos con el categoryId
     this.router.navigate(['/productos'], { 
       queryParams: { 
-        categoria: categoryId 
+        id_categoria: categoryId 
       } 
     });
   }

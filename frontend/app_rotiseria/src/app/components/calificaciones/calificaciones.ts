@@ -7,12 +7,11 @@ import { Productos as ProductosService } from '../../services/productos';
 import { Usuarios as UsuariosService } from '../../services/usuarios'; // 👈 Agregar servicio de usuarios
 import { PaginationService } from '../../services/pagination.service';
 import { GetUserInfo } from '../../services/getuserinfo';
-import { Boton } from '../../components/boton/boton';
 
 @Component({
   selector: 'app-calificaciones',
   standalone: true,
-  imports: [CommonModule, FormsModule, Boton],
+  imports: [CommonModule, FormsModule],
   providers: [DatePipe],
   templateUrl: './calificaciones.html',
   styleUrls: ['./calificaciones.css']
@@ -141,6 +140,7 @@ export class Calificaciones implements OnInit {
         this.comentario = '';
         this.estrellas = 5;
         this.paginationSvc.setPage(1);
+        alert('¡Calificación guardada correctamente!');
         this.cargarCalificaciones();
       },
       error: err => console.error('Error al crear calificación:', err)

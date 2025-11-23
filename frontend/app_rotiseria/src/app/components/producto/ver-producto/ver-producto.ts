@@ -26,7 +26,7 @@ export class VerProducto implements OnInit, OnChanges {
   criterioBusqueda: string = 'nombre';
   arrayProductos: any[] = [];
   categoriasMap: any = {};
-
+  sortByCalificaciones: boolean = true;
   @Input() categoryId: number | null = null;  // ✔️ Permitir null
 
   constructor(
@@ -46,7 +46,6 @@ export class VerProducto implements OnInit, OnChanges {
     this.paginationSvc.setPage(1);
     this.cargarCategorias();
     this.loadCarrito();
-    this.cargarProductos();
   }
 
   // ---------------------------------------------------------
@@ -54,7 +53,7 @@ export class VerProducto implements OnInit, OnChanges {
   // ---------------------------------------------------------
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges triggered. Changes:', changes);
-    if (changes['categoryId'] && !changes['categoryId'].firstChange) {
+    if (changes['categoryId']) {
       console.log('Categoría cambiada desde Input:', this.categoryId);
       this.paginationSvc.setPage(1);
       this.cargarProductos();
@@ -80,7 +79,8 @@ export class VerProducto implements OnInit, OnChanges {
       this.paginationSvc.page,
       this.paginationSvc.itemsPerPage,
       valorBusqueda,
-      criterio
+      criterio,
+      this.sortByCalificaciones
     ).subscribe({
       next: (res: any) => {
         this.arrayProductos = res.productos;
@@ -111,6 +111,11 @@ export class VerProducto implements OnInit, OnChanges {
 
   trackById(item: any) {
     return item.id_producto;
+  }
+
+  toggleSortByCalificaciones() {
+    this.sortByCalificaciones = !this.sortByCalificaciones;
+    this.cargarProductos();
   }
 
   // ---------------------------------------------------------
@@ -177,6 +182,9 @@ export class VerProducto implements OnInit, OnChanges {
   // ---------------------------------------------------------
   getRol() {
     return this.userInfo.getRol();
+  }
+  userAlta() {
+    return this.userInfo.getAlta();
   }
   validarCantidad(producto: any) {
   if (producto.cantidad < 1) {

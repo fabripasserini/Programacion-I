@@ -1,0 +1,33 @@
+.logo-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.carousel-img {
+  height: 350px;
+  object-fit: cover;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .logo-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .carousel-img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .carousel-img {
+    height: 200px;
+  }
+}

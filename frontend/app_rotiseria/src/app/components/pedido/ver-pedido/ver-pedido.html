@@ -36,16 +36,17 @@
     
     <!-- CONTENIDO DE LAS PESTAÑAS -->
 
-<div class="d-flex mb-3">
-        <select class="form-select me-2" [(ngModel)]="criterioBusqueda">
+<div class="d-flex flex-wrap justify-content-center align-items-center gap-2 mb-3">
+          <select class="form-select form-select-sm me-2 w-auto" [(ngModel)]="criterioBusqueda">
           <option value=""> </option>
           <option value="productos">Cantidad de productos</option>
           <option value="sortby_productos">Productos</option>
           <option value="direccion">Direccion</option>
           <option value="id">ID pedido</option>
           <option value="fecha">Fecha</option>
+          @if (getRol() === 'admin' || getRol() === 'empleado') {
           <option value="id_usuario">ID Usuario</option>
-
+          }
         </select>
 
         @if (criterioBusqueda === 'fecha') {
@@ -68,9 +69,10 @@
 
           <input
           type="text"
-          class="form-control me-2 flex-grow-1"
+          class="form-control form-control-sm me-2"
           placeholder="Buscar pedido..."
           [(ngModel)]="nombre"
+          style="width: 180px;"
           (keyup.enter)="buscar()"
         />
         <button (click)="buscar()" class="btn btn-secondary" type="button">

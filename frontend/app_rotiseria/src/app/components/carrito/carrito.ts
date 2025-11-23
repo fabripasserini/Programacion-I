@@ -2,7 +2,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { GetUserInfo } from '../../services/getuserinfo';
 import { Carritos as CarritosService } from '../../services/carritos';
 import { Boton } from '../boton/boton';
@@ -11,7 +10,7 @@ import { Productos as ProductosService } from '../../services/productos';
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [CommonModule, RouterLink, Boton, FormsModule],
+  imports: [CommonModule, Boton, FormsModule],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css'
 })

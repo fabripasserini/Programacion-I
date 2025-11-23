@@ -212,6 +212,12 @@ getNotificacionesOrdenadas() {
     }
   });
 }
-
+eliminarNotificacion(id: number) {
+  this.notificacionesSvc.eliminarNotificacion(id).subscribe({
+    next: () => {
+      this.notificaciones = this.notificaciones.filter(n => n.id !== id);
+    }
+  });
+}
 
 }
