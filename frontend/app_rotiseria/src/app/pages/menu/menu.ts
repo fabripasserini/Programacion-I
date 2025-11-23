@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Back } from '../../components/back/back';
-import { Bienvenido } from '../../components/bienvenido/bienvenido';
-import { FooterCliente } from '../../components/footer-cliente/footer-cliente'; 
-import { CategoriasProductos } from '../../components/categorias-productos/categorias-productos';
+import { Categorias } from '../../components/categorias/categorias';
+import { Footerunico } from '../../components/footerunico/footerunico';
 
 @Component({
   selector: 'app-menu',
@@ -11,9 +10,8 @@ import { CategoriasProductos } from '../../components/categorias-productos/categ
   imports: [
     CommonModule,
     Back,
-    Bienvenido,
-    CategoriasProductos,
-    FooterCliente
+    Footerunico,
+    Categorias
   ],
   templateUrl: './menu.html',
   styleUrl: './menu.css'
@@ -21,3 +19,5 @@ import { CategoriasProductos } from '../../components/categorias-productos/categ
 export class Menu {
 
 }
+
+

@@ -1,0 +1,30 @@
+.responsive-svg {
+  width: 100%;
+  height: auto;
+  max-width: 800px; /* Based on the viewBox width */
+  display: block;
+  margin: 0 auto;
+}
+
+.error-page-main {
+  min-height: 100vh; /* Ensure the div takes full viewport height */
+}
+
+@media (max-width: 768px) {
+  .responsive-svg {
+    max-width: 600px;
+  }
+  .error-page-main {
+    /* background: #ffffff; White background for mobile */
+  }
+}
+
+@media (max-width: 576px) {
+  .responsive-svg {
+    max-width: 400px;
+  }
+}
+
+.error-page-main .container {
+  background-color: transparent;
+}

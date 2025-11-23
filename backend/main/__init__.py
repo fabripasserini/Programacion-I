@@ -6,6 +6,7 @@ import os
 import main.resources as resources
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 db = SQLAlchemy()
 jwt = JWTManager()
 #Importar Flask mail
@@ -19,7 +20,7 @@ def create_app():
     migrate = Migrate()
     
     load_dotenv()
-
+    CORS(app)
     # Ruta completa a la base de datos
     db_path = os.getenv('PATH_DB')
     db_name = os.getenv('NAME_DB')
@@ -57,6 +58,8 @@ def create_app():
     api.add_resource(resources.NotificacionesResource, '/notificaciones')
     api.add_resource(resources.CategoriaResource, '/categoria/<int:id>')
     api.add_resource(resources.CategoriasResource, '/categorias')
+    api.add_resource(resources.CarritoResource, '/carrito/<int:id>')
+    api.add_resource(resources.CarritosListResource, '/carritos/all')
 
     # Registrar Blueprint de autenticación
     from main.auth import routes

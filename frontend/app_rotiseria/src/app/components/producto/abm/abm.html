@@ -1,0 +1,187 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+
+            <!-- ============================= -->
+            <!--        CREAR PRODUCTO        -->
+            <!-- ============================= -->
+            @if (tipoOperacion === 'Crear') {
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Crear Producto</h2>
+
+                    <form [formGroup]="formProducto">
+
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre">
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" class="form-control" formControlName="descripcion" placeholder="Descripción">
+                        </div>
+
+                        <!-- Precio -->
+                        <div class="mb-3">
+                            <label class="form-label">Precio</label>
+                            <input type="number" class="form-control" formControlName="precio" placeholder="Precio">
+                        </div>
+
+                        <!-- Stock -->
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="number" class="form-control" formControlName="stock" placeholder="Cantidad disponible">
+                        </div>
+
+                        <!-- Categoría -->
+                        <div class="mb-3">
+                            <label class="form-label">Categoría</label>
+
+                            @if (!mostrarInputCategoria) {
+                            <div>
+                                <select class="form-select" formControlName="id_categoria">
+                                    @for (categoria of arrayCategorias; track trackById(categoria)) {
+                                    <option [value]="categoria.id">{{ categoria.nombre }}</option>
+                                    }
+                                </select>
+
+                                <div class="mt-2">
+                                    <span class="text-primary" style="cursor: pointer;"
+                                        (click)="mostrarInputCategoria = true">
+                                        + Agregar nueva categoría
+                                    </span>
+                                </div>
+                            </div>
+                            }
+
+                            @if (mostrarInputCategoria) {
+                            <div class="mt-2 d-flex gap-2">
+                                <input type="text" class="form-control"
+                                    placeholder="Nombre de la categoría"
+                                    [(ngModel)]="nuevaCategoria"
+                                    [ngModelOptions]="{standalone: true}">
+                                
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-success" (click)="agregarCategoria()">
+                                        Guardar
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" (click)="mostrarInputCategoria = false">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                            }
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" (click)="createProducto()" class="btn btn-success">
+                                Crear Producto
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            }
+
+            <!-- ============================= -->
+            <!--      MODIFICAR PRODUCTO      -->
+            <!-- ============================= -->
+            @if (tipoOperacion === 'Modificar') {
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Modificar Producto</h2>
+
+                    <form [formGroup]="formProducto">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" class="form-control" formControlName="descripcion">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Precio</label>
+                            <input type="number" class="form-control" formControlName="precio">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="number" class="form-control" formControlName="stock">
+                        </div>
+
+                        <!-- Categoría -->
+                        <div class="mb-3">
+                            <label class="form-label">Categoría</label>
+
+                            @if (!mostrarInputCategoria) {
+                            <div>
+                                <select class="form-select" formControlName="id_categoria">
+                                    @for (categoria of arrayCategorias; track trackById(categoria)) {
+                                    <option [value]="categoria.id">{{ categoria.nombre }}</option>
+                                    }
+                                </select>
+
+                                <div class="mt-2">
+                                    <span class="text-primary" style="cursor: pointer;"
+                                        (click)="mostrarInputCategoria = true">
+                                        + Agregar nueva categoría
+                                    </span>
+                                </div>
+                            </div>
+                            }
+
+                            @if (mostrarInputCategoria) {
+                            <div class="mt-2 d-flex gap-2">
+                                <input type="text" class="form-control"
+                                    placeholder="Nombre de la categoría"
+                                    [(ngModel)]="nuevaCategoria"
+                                    [ngModelOptions]="{standalone: true}">
+                                
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-success" (click)="agregarCategoria()">
+                                        Guardar
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" (click)="mostrarInputCategoria = false">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                            }
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" (click)="updateProducto(productoId)" routerLink="/productos" class="btn btn-primary">                                Modificar Producto
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            }
+
+            <!-- ============================= -->
+            <!--        ELIMINAR PRODUCTO     -->
+            <!-- ============================= -->
+            @if (tipoOperacion === 'Eliminar') {
+            <div class="card mt-4">
+                <div class="card-body text-center">
+                    <h2 class="card-title">Eliminar</h2>
+
+                    <button type="button" routerLink="/productos" class="btn btn-primary">Cancelar</button>
+                    <button type="button" (click)="deleteProducto(productoId)" routerLink="/productos"
+                        class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>

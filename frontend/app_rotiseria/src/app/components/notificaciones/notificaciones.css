@@ -1,0 +1,20 @@
+.notification-card .btn-danger {
+    transition: background-color 0.3s ease;
+}
+
+.notification-card .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.notification-content {
+    flex-grow: 1;
+    padding-right: 15px;
+    min-width: 0;
+}
+
+.notification-message {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
+}

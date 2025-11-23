@@ -1,0 +1,19 @@
+<!-- resumen-productos.html (versión simple) -->
+<div class="resumen-productos">
+  @if (productos.length > 0 && mostrarResumen) {
+    <h2>Resumen de Productos</h2>
+    <ul>
+      @for (producto of productos; track producto.id) {
+        <li>
+          <span>{{ producto.nombre }} (x{{ producto.cantidad }})</span>
+          <span>${{ producto.precio * producto.cantidad }}</span>
+        </li>
+      }
+    </ul>
+    <div class="totales">
+      <p>Total: <span>${{ total }}</span></p>
+    </div>
+  } @else {
+    <p>{{ mensajeVacio }}</p>
+  }
+</div>

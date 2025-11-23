@@ -1,0 +1,3 @@
+interface UserDelete {
+    id: number;
+}

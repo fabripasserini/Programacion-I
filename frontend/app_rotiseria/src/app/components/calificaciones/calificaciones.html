@@ -1,0 +1,153 @@
+<div class="main-container fondo body-user">
+
+    <!-- Header rojo -->
+
+  
+    <div class="container mt-4">
+        @if (modo === 'crear') {
+        <!-- Título comentario -->
+        <h4 class="text-center fw-bold mb-4 text-dark">Déjanos un comentario!!</h4>
+
+        <!-- Producto REPETIDO aquí -->
+        @if (producto) {
+            <div class="text-center mb-4 p-3 rounded-3">
+    <h5 class="fw-bold mb-1 text-dark">{{ producto.nombre }}</h5>
+    <p class="text-muted mb-3 small">Queremos saber tu opinión</p>
+
+    <img src="assets/hamburguesas.png"
+         class="img-fluid rounded"
+         alt="{{ producto.nombre }}"
+         style="width: 120px; height: 120px; object-fit: cover;">
+</div>
+
+        }
+
+        <!-- Estrellas MÁS GRANDES -->
+        <div class="mb-4 text-center">
+            <label class="form-label fw-bold text-dark mb-3 d-block fs-5">Calificación</label>
+
+            <div class="estrellas-selector-grandes mb-3">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                    <span 
+                        class="estrella-clickable-grande"
+                        [class.filled]="star <= estrellas"
+                        (click)="setEstrellas(star)"
+                    >
+                        {{ star <= estrellas ? '★' : '☆' }}
+                    </span>
+                }
+            </div>
+
+            <span class="text-muted fw-medium fs-6">
+                ({{ estrellas }} estrella{{ estrellas !== 1 ? 's' : '' }})
+            </span>
+        </div>
+
+        <!-- Comentario -->
+        <div class="mb-4">
+            <label class="form-label fw-bold text-dark mb-3 d-block fs-5">Tu opinión</label>
+            <textarea 
+                class="form-control"
+                rows="4"
+                [(ngModel)]="comentario"
+                placeholder="..."
+                maxlength="500"
+                style="border-radius: 8px; resize: none; font-size: 1rem;"
+            ></textarea>
+            <small class="text-muted d-block text-end mt-1">{{ comentario.length }}/500 caracteres</small>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex justify-content-center my-4 text-center">
+         
+            
+            <button
+                class="btn btn-success w-50 m-2 fw-bold py-2 button"
+                (click)="crearCalificacion()"
+                [disabled]="!comentario.trim() || estrellas < 1"
+                style="border-radius: 8px; font-size: 1.1rem;"
+            >
+                Confirmar
+            </button>
+        </div>
+        }
+        @if (modo === 'ver') {
+            <!-- Lista de reseñas existentes -->
+<div class="card shadow-sm mt-4">
+  <div class="card-body">
+    <h4 class="fw-bold mb-4">
+      <i class="fa-solid fa-comments"></i> 
+      Reseñas
+    </h4>
+
+    @if (arrayCalificaciones && arrayCalificaciones.length > 0) {
+      <div class="resenas-list">
+        @for (calificacion of arrayCalificaciones; track calificacion.id) {
+          <div class="resena-item mb-4 p-3 border rounded">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="flex-grow-1">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <div class="text-dark">
+                    <i class="fa-solid fa-user"></i>
+                  </div>
+                  <div>
+                    <!-- 👈 Mostrar nombre y apellido -->
+                    <h6 class="mb-0 fw-bold text-dark">
+                      {{ getNombreUsuario(calificacion.id_usuario) }}
+                    </h6>
+                    <small class="text-muted">
+                      {{ calificacion.created_at | date:'medium' }}
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 👈 Estrellas más grandes -->
+              <div class="estrellas-grandes">
+                @for (estrella of getEstrellas(calificacion.estrellas); track $index) {
+                  <span 
+                    class="estrella-resena" 
+                    [class.filled]="estrella === '★'"
+                  >
+                    {{ estrella }}
+                  </span>
+                }
+              </div>
+            </div>
+
+            <p class="mb-0 text-dark lh-base mt-2">{{ calificacion.descripcion }}</p>
+          </div>
+        }
+      </div>
+
+      <!-- PAGINACIÓN -->
+      <div class="d-flex justify-content-center mt-4 py-5">
+        <nav>
+          <ul class="pagination">
+            <li class="page-item" [class.disabled]="paginationSvc.page === 1">
+              <a class="page-link" href="#" (click)="onPageChange(paginationSvc.page - 1, $event)">&laquo;</a>
+            </li>
+            @for (page of getPages(); track page) {
+              <li class="page-item" [class.active]="page === paginationSvc.page">
+                <a class="page-link" href="#" (click)="onPageChange(page, $event)">{{ page }}</a>
+              </li>
+            }
+            <li class="page-item" [class.disabled]="paginationSvc.page === paginationSvc.getTotalPages()">
+              <a class="page-link" href="#" (click)="onPageChange(paginationSvc.page + 1, $event)">&raquo;</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    } @else {
+      <div class="text-center py-5">
+        <i class="fa-solid fa-inbox fa-3x text-muted mb-3"></i>
+        <h5 class="text-muted">No hay reseñas todavía</h5>
+        <p class="text-muted">¡Sé el primero en dejar una reseña!</p>
+      </div>
+    }
+  </div>
+</div>
+        }
+    </div>
+
+</div>

@@ -35,21 +35,26 @@ class Calificaciones(Resource):
         
 
         
-        if request.args.get('sortby_estrellas'):
-            calificaciones=calificaciones.order_by(desc(CalificacionesModel.estrellas))
         # funciona  
-        if request.args.get('sortby_productos'):
-            calificaciones = calificaciones.join(CalificacionesModel.producto).filter(ProductosModel.id== request.args.get('sortby_productos'))
-        
+        if request.args.get('id_producto'):
+            calificaciones = calificaciones.join(CalificacionesModel.producto).filter(ProductosModel.id== request.args.get('id_producto'))
+        if request.args.get('sortby_calificaciones'):
+            calificaciones = (
+                calificaciones
+                .join(CalificacionesModel.producto)
+                .group_by(CalificacionesModel.id_producto)
+                .order_by(func.count(CalificacionesModel.id).desc())
+        )
+
         calificaciones = calificaciones.paginate(page=page, per_page=per_page, error_out=False)
         
-        return {'calificaciones  ': [calificacion.to_json() for calificacion in calificaciones],
+        return {'calificaciones': [calificacion.to_json() for calificacion in calificaciones],
                   'total': calificaciones.total,
                   'pages': calificaciones.pages,
                   'page': page
                 }
     
-    @role_required(roles=["admin","usuarios"])
+    @role_required(roles=["admin","user"])
     def post(self):
         data_usuario = CalificacionesModel.from_json(request.get_json())
         db.session.add(data_usuario)

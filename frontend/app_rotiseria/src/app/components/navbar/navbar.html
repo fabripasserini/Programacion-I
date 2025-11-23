@@ -7,12 +7,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <!-- <a class="nav-link" href="productos.html">Productos</a>
-                    <a class="nav-link" href="usuarios.html">Usuarios</a> -->
-                    @if (ver){
-                        <a class="nav-link"  href="#" routerLink="/login">Login</a>
+                    @if (!isToken()){
+                        <a class="nav-link"  href="#" routerLink="/login"></a>
+                        <a class="nav-link" href="#"  (click)="logout()" routerLink="/login">Login</a>
+                        <a class="nav-link"  href="#" routerLink="/register">Registro</a>
                     }
-                    <a class="nav-link"  href="#" routerLink="/register">Registro</a>
+                    @if (hasRights() && isToken()){
+                        <a class="nav-link" href="#"  routerLink="/inicio">Panel</a>
+                        <a class="nav-link" href="#"  (click)="logout()" routerLink="/login">Logout</a>
+                    }@if ( isToken() && !hasRights()){
+                        <a class="nav-link" href="#"  routerLink="/menu">Panel</a>
+                        <a class="nav-link" href="#"  (click)="logout()" routerLink="/login">Logout</a>
+
+                    }
+
                     <a class="nav-link" href="#" routerLink="/contacto">Contacto</a>
 
                 </div>

@@ -13,7 +13,7 @@ class Usuario(Resource):
     def get(self,id):
         usuario=db.session.query(UsuariosModel).get_or_404(id)
         current_identity = get_jwt_identity()
-        if current_identity == usuario.id:
+        if int(current_identity) == usuario.id:
             return usuario.to_json_complete() # solo cuando le pasemos el id va a mostar la notificacion
         else:
             return usuario.to_json() # solo cuando le pasemos el id va a mostar la notificacion
@@ -23,7 +23,7 @@ class Usuario(Resource):
     def delete(self,id):
         usuario=db.session.query(UsuariosModel).get_or_404(id)
         rol=get_jwt().get('rol')
-        if rol=='users' and usuario.id != get_jwt_identity():
+        if rol=='usuario' and usuario.id != get_jwt_identity():
             return "No tienes permisos para ultilizar este recurso",403
         db.session.delete(usuario)
         db.session.commit()
@@ -43,7 +43,7 @@ class Usuario(Resource):
 
 
 class Usuarios(Resource):
-    @role_required(roles=["admin"])
+    @role_required(roles=["admin","empleado"])
     def get(self):
         page=1
         per_page=20
@@ -77,24 +77,25 @@ class Usuarios(Resource):
         if request.args.get('usuario'):
             usuarios = usuarios.filter(UsuariosModel.nombre.like("%"+ request.args.get('usuario') + "%"))
         if request.args.get('email'):
-            usuarios = usuarios.filter(UsuariosModel.email.like("%"+ request.args.get('email') + "%"))
+            usuarios = usuarios.filter(UsuariosModel.email ==request.args.get('email'))
         # Ordeno los usuarios por rol de forma descendiente - funciona
         if request.args.get('is_admin'):
             usuarios = usuarios.filter(UsuariosModel.rol == 'admin')
         if request.args.get('dni'):
             usuarios=usuarios.filter(UsuariosModel.dni==request.args.get('dni'))
-            
+        if request.args.get('id'):
+            usuarios=usuarios.filter(UsuariosModel.id==request.args.get('id'))
         ##email y nombre
         #Obtener valor paginado
         usuarios = usuarios.paginate(page=page, per_page=per_page, error_out=False)
 
-        return {'usuarios': [pedido.to_json() for pedido in usuarios],
+        return {'usuarios': [usuario.to_json() for usuario in usuarios.items],
                   'total': usuarios.total,
                   'pages': usuarios.pages,
                   'page': page
                 }
         
-    @role_required(roles=["admin"])
+    @role_required(roles=["admin","empleado"])
     def post(self):
         data_usuario = UsuariosModel.from_json(request.get_json())
         db.session.add(data_usuario)

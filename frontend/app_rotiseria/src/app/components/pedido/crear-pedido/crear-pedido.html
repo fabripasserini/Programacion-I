@@ -1,0 +1,65 @@
+<!-- pedidos-crear.component.html -->
+<div class="container mt-3 mb-5">
+
+  <!-- 🔽 Título ABAJO del header -->
+  <app-titulos 
+    [titulo]="'Confirmar pedido'">
+  </app-titulos>
+
+  <form [formGroup]="formPedido">
+
+    <div class="mb-3">
+      <h2 for="direccion" class="form-label">Direccion</h2>
+      <input 
+        type="text" 
+        class="form-control" 
+        formControlName="direccion" 
+        id="direccion" 
+        placeholder="Direccion" 
+        required
+      >
+    </div>
+
+    <div class="mb-3">
+      <h2 for="descripcion" class="form-label">Descripcion</h2>
+      <textarea 
+        class="form-control" 
+        formControlName="descripcion" 
+        id="descripcion" 
+        placeholder="Descripcion" 
+        required
+      ></textarea>
+    </div>
+
+  </form>
+
+  <!-- 📦 Resumen de productos (SOLO LECTURA) -->
+  <app-resumen-productos
+    [productos]="productos"
+    [total]="total"
+    [mostrarResumen]="true"
+    [mensajeVacio]="'No hay productos para confirmar'"
+  >
+  </app-resumen-productos>
+
+  <!-- 💳 Botones -->
+  @if (productos.length > 0) {
+
+    <button 
+      class="btn btn-success w-100 mt-3 fw-bold py-3"
+      (click)="confirmarPedido()"
+      [disabled]="formPedido.invalid" 
+    >
+      <i class="fa-solid fa-check-circle"></i> Confirmar y Realizar Pedido
+    </button>
+
+    <button 
+      class="btn btn-outline-secondary w-100 mt-2"
+      (click)="volverAlCarrito()"
+    >
+      <i class="fa-solid fa-arrow-left"></i> Volver al carrito
+    </button>
+
+  }
+
+</div>

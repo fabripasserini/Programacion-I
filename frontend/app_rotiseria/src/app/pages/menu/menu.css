@@ -1,0 +1,4 @@
+.categorias-section {
+  max-height: calc(100vh - 360px); /* Adjust this value as needed */
+  overflow-y: auto;
+}

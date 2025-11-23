@@ -1,0 +1,74 @@
+<div class="container-flex content background-image">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2 class="text-center mb-4">Lista de Usuarios</h2>
+
+      <div class="d-flex mb-3">
+        <select class="form-select me-2" [(ngModel)]="criterioBusqueda">
+          <option value="dni">DNI</option>
+          <option value="email">Email</option>
+          <option value="id">ID</option>
+        </select>
+        <input
+          type="text"
+          class="form-control me-2 flex-grow-1"
+          placeholder="Buscar usuario..."
+          [(ngModel)]="nombre"
+          (keyup.enter)="buscar()"
+        />
+        <button (click)="buscar()" class="btn btn-secondary" type="button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <!-- <a class="btn btn-primary ms-2" routerLink="/usuario/null/Crear">
+          <i class="fa-solid fa-plus"></i>
+        </a> -->
+      </div>
+
+      <ul class="list-group">
+  @for (usuario of arrayUsuarios; track trackById($index)) {
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{ usuario.id }} - {{ usuario.email }}
+      <div class="d-flex gap-2 align-items-center">
+        <button
+          type="button"
+          (click)="editarUsuario(usuario)"
+          class="btn btn-primary btn-sm me-2"
+        >
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+      @if (getRol() === 'admin') {
+        <button
+          type="button"
+          (click)="eliminarUsuario(usuario)"
+          class="btn btn-danger btn-sm"
+        >
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      }
+      </div>
+    </li>
+  }
+</ul>
+
+
+      <!-- Paginación -->
+  <div class="d-flex justify-content-center mt-4">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="paginationSvc.page === 1">
+          <a class="page-link" href="#" (click)="onPageChange(paginationSvc.page - 1, $event)">&laquo;</a>
+        </li>
+        @for (page of getPages(); track page) {
+          <li class="page-item" [class.active]="page === paginationSvc.page">
+            <a class="page-link" href="#" (click)="onPageChange(page, $event)">{{ page }}</a>
+          </li>
+        }
+        <li class="page-item" [class.disabled]="paginationSvc.page === paginationSvc.getTotalPages()">
+          <a class="page-link" href="#" (click)="onPageChange(paginationSvc.page + 1, $event)">&raquo;</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+    </div>
+  </div>
+</div>
