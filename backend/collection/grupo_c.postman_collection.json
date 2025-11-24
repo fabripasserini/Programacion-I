@@ -18,7 +18,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0ODk5NTQ1NywianRpIjoiOTE4YjgwMWQtNzMzNS00ZmE2LWI5ODktMTEzZjRhNWZlYjRmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDg5OTU0NTcsImNzcmYiOiJkYzRlZDhjNy05ZDcxLTRkNzMtYmNmMi0xZjRmNDc0MjA5YTQiLCJleHAiOjE3NDg5OTkwNTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.zJlaTnHo1xUre0-dRn0hNLIZ1-OSwpgjCXmNerlz0YE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzgzMjczNSwianRpIjoiYTFjM2JmYjUtMjU4NC00ZjJmLWJmMmQtZWUzYTdmZTVjYjEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjM4MzI3MzUsImNzcmYiOiIxMWNmMjU5Yy01ZjUxLTQ3NjctOTY3YS02NjA4ZjJiMmVmOWYiLCJleHAiOjUzNjM4MzI3MzUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.1Uns9Jz46Q8QWWW5tgEDqSdkrKs5H_b0iX8C4iKtNvg",
 									"type": "string"
 								}
 							]
@@ -26,7 +26,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/usuarios?dni=12345678",
+							"raw": "http://127.0.0.1:3000/usuarios",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -34,7 +34,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"usuarios"
 							],
@@ -65,18 +65,9 @@
 									"disabled": true
 								},
 								{
-									"key": "email",
-									"value": "ad",
-									"disabled": true
-								},
-								{
 									"key": "notificaciones",
 									"value": "1",
 									"disabled": true
-								},
-								{
-									"key": "dni",
-									"value": "12345678"
 								}
 							]
 						}
@@ -91,7 +82,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTM0NTg0NywianRpIjoiMjIwZmM4MDAtNjNiMC00ZGUxLTk5YTktODBkMTZiM2IwMTU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE3IiwibmJmIjoxNzYxMzQ1ODQ3LCJjc3JmIjoiMmU2NjcyMjEtY2M2Yy00ZWY1LWJmOTYtNTM0ZTc4NDE2ZWM2IiwiZXhwIjoxNzYxMzgxODQ3LCJyb2wiOiJhZG1pbiIsImlkIjoxNywiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20ifQ.-pOplyWNy94nJlLVfY_mocJhsja5Tc6qBzLMNJ62mcA",
 									"type": "string"
 								}
 							]
@@ -100,7 +91,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"nombre\": \"z\",\n  \"apellido\": \"fabio\",\n  \"email\":\"a@a.com\",\n  \"password\":\"teging\",\n  \"rol\":\"noadmin\", \n  \"dni\":\"4534343444445\"\n\n}\n",
+							"raw": "{\n  \"nombre\": \"admin\",\n  \"apellido\": \"empleado\",\n  \"email\":\"admin@empleado.com\",\n  \"password\":\"admin\",\n  \"rol\":\"admin\", \n  \"dni\":\"4534343444445\"\n\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -108,7 +99,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/usuarios",
+							"raw": "http://127.0.0.1:3000/usuarios",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -116,7 +107,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"usuarios"
 							]
@@ -140,7 +131,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/usuario/3",
+							"raw": "http://127.0.0.1:3000/usuario/3",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -148,7 +139,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"usuario",
 								"3"
@@ -160,6 +151,16 @@
 				{
 					"name": "usuario",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTM0NTg0NywianRpIjoiMjIwZmM4MDAtNjNiMC00ZGUxLTk5YTktODBkMTZiM2IwMTU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE3IiwibmJmIjoxNzYxMzQ1ODQ3LCJjc3JmIjoiMmU2NjcyMjEtY2M2Yy00ZWY1LWJmOTYtNTM0ZTc4NDE2ZWM2IiwiZXhwIjoxNzYxMzgxODQ3LCJyb2wiOiJhZG1pbiIsImlkIjoxNywiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20ifQ.-pOplyWNy94nJlLVfY_mocJhsja5Tc6qBzLMNJ62mcA",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -172,7 +173,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/usuario/1",
+							"raw": "http://127.0.0.1:3000/usuario/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -180,7 +181,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"usuario",
 								"1"
@@ -197,7 +198,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTM0NTg0NywianRpIjoiMjIwZmM4MDAtNjNiMC00ZGUxLTk5YTktODBkMTZiM2IwMTU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE3IiwibmJmIjoxNzYxMzQ1ODQ3LCJjc3JmIjoiMmU2NjcyMjEtY2M2Yy00ZWY1LWJmOTYtNTM0ZTc4NDE2ZWM2IiwiZXhwIjoxNzYxMzgxODQ3LCJyb2wiOiJhZG1pbiIsImlkIjoxNywiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20ifQ.-pOplyWNy94nJlLVfY_mocJhsja5Tc6qBzLMNJ62mcA",
 									"type": "string"
 								}
 							]
@@ -205,7 +206,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/usuario/1",
+							"raw": "http://127.0.0.1:3000/usuario/18",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -213,10 +214,10 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"usuario",
-								"1"
+								"18"
 							]
 						}
 					},
@@ -229,21 +230,33 @@
 			"item": [
 				{
 					"name": "productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0ODk5NTQ1NywianRpIjoiOTE4YjgwMWQtNzMzNS00ZmE2LWI5ODktMTEzZjRhNWZlYjRmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDg5OTU0NTcsImNzcmYiOiJkYzRlZDhjNy05ZDcxLTRkNzMtYmNmMi0xZjRmNDc0MjA5YTQiLCJleHAiOjE3NDg5OTkwNTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.zJlaTnHo1xUre0-dRn0hNLIZ1-OSwpgjCXmNerlz0YE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzgzMTQ4NiwianRpIjoiYzBhYjM4OGUtYjI1NS00YTQzLWEyNTgtNDYzNjY1OGI2OTVjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NjM4MzE0ODYsImNzcmYiOiI2MTMwZTE5Yy0zZGJkLTQwZjAtOTEzMS01OWYwMTVlYTcwMDciLCJleHAiOjUzNjM4MzE0ODYsInJvbCI6InVzZXIiLCJpZCI6MiwiZW1haWwiOiJ1c2VyQHVzZXIuY29tIn0.rR8NMROCKQYP4YiVOZTHV2X8OVngFOjx92O8dinZkvY",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/productos",
+							"raw": "http://127.0.0.1:3000/productos?page=1&per_page=10&categoria=3&sortby_calificaciones=true",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -251,14 +264,14 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"productos"
 							],
 							"query": [
 								{
 									"key": "categoria_id",
-									"value": "1",
+									"value": "2",
 									"disabled": true
 								},
 								{
@@ -273,13 +286,39 @@
 								},
 								{
 									"key": "productos",
-									"value": "a",
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "categoria",
 									"value": "entrada",
 									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "per_page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								},
+								{
+									"key": "categoria",
+									"value": "3"
+								},
+								{
+									"key": "sortby_calificaciones",
+									"value": "true"
 								}
 							]
 						}
@@ -294,7 +333,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0ODk5NTQ1NywianRpIjoiOTE4YjgwMWQtNzMzNS00ZmE2LWI5ODktMTEzZjRhNWZlYjRmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDg5OTU0NTcsImNzcmYiOiJkYzRlZDhjNy05ZDcxLTRkNzMtYmNmMi0xZjRmNDc0MjA5YTQiLCJleHAiOjE3NDg5OTkwNTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.zJlaTnHo1xUre0-dRn0hNLIZ1-OSwpgjCXmNerlz0YE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzQwMDkyNiwianRpIjoiZjk4ZDc2YmMtM2FmNS00YzM4LThiNzItOGUxNTZiNWJkOWQyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjM0MDA5MjYsImNzcmYiOiIyYTI4YjMwMi0yODM0LTQ2N2MtOTRiNy1lYjE5NzMyNzAxNTkiLCJleHAiOjUzNjM0MDA5MjYsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.uuq_s2vNk8NHFH4F5GkLW73O3Rz6DqDxZG7sanMbNpA",
 									"type": "string"
 								}
 							]
@@ -303,7 +342,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_categoria\":2,\n    \"nombre\":\"test\",\n    \"descripcion\":\"con carne\",\n    \"precio\":3.00,\n    \"stock\":10\n\n}",
+							"raw": "{\n    \"id_categoria\":1,\n    \"nombre\":\"hamburguesa\",\n    \"descripcion\":\"sin carne\",\n    \"precio\":12.50,\n    \"stock\":10\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -311,7 +350,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/productos",
+							"raw": "http://127.0.0.1:3000/productos",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -319,7 +358,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"productos"
 							]
@@ -343,7 +382,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/producto/4",
+							"raw": "http://127.0.0.1:3000/producto/4",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -351,7 +390,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"producto",
 								"4"
@@ -368,7 +407,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzMxOTg5NCwianRpIjoiMGFiYmMwYjktODQwNy00ZjFlLWEzZTUtZmJjMjBiN2E3NWRhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjMzMTk4OTQsImNzcmYiOiIzYjRkN2VhMy05ODg0LTQwN2EtOTVjYS0xMjljMmE5ODhkZTkiLCJleHAiOjUzNjMzMTk4OTQsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.v1uta7O_d5FDxgM0MAGlqoPajmB5V04a7aiWvuy1ocU",
 									"type": "string"
 								}
 							]
@@ -377,7 +416,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\":\"pancho\"\n}",
+							"raw": "{\n    \"nombre\":\"pancho\",\n    \"stock\":100\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -385,7 +424,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/producto/3",
+							"raw": "http://127.0.0.1:3000/producto/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -393,10 +432,10 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"producto",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -404,21 +443,33 @@
 				},
 				{
 					"name": "producto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTM0NTg0NywianRpIjoiMjIwZmM4MDAtNjNiMC00ZGUxLTk5YTktODBkMTZiM2IwMTU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE3IiwibmJmIjoxNzYxMzQ1ODQ3LCJjc3JmIjoiMmU2NjcyMjEtY2M2Yy00ZWY1LWJmOTYtNTM0ZTc4NDE2ZWM2IiwiZXhwIjoxNzYxMzgxODQ3LCJyb2wiOiJhZG1pbiIsImlkIjoxNywiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20ifQ.-pOplyWNy94nJlLVfY_mocJhsja5Tc6qBzLMNJ62mcA",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/producto/1",
+							"raw": "http://127.0.0.1:3000/producto/4",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -426,10 +477,10 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"producto",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -448,7 +499,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0ODk5MTc3MywianRpIjoiMTAzZTMyNzQtODJhYy00NzM4LThkYjgtNGM2ZmM0Yzc5ODQ5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDg5OTE3NzMsImNzcmYiOiI0OTE0Zjg5Ni0wNGZiLTRjZGEtYmJjOC05MjQ3ODM3MTYxNzMiLCJleHAiOjE3NDg5OTUzNzMsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.-_D2NwzOg3V_dUwnfl9vXdQ-SY52dXQQ4wWBpZNBtI4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzY0OTQ2NSwianRpIjoiNDM2YTM5YjUtM2FkYi00NmM1LTkyOTctNTJiZmYwNmE2MDBhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NjM2NDk0NjUsImNzcmYiOiJmZTMyYmIzYS03ZmRmLTRkMTEtOTliNi1jYjIxYWFlMmFkMTgiLCJleHAiOjUzNjM2NDk0NjUsInJvbCI6InVzZXIiLCJpZCI6MiwiZW1haWwiOiJ1c2VyQHVzZXIuY29tIn0.sko6SLZID5t6GJOBX_tnkgrd5Gc6sn0xg_q__cOmEJU",
 									"type": "string"
 								}
 							]
@@ -456,7 +507,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedidos",
+							"raw": "http://127.0.0.1:3000/pedidos?id_usuario=2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -464,16 +515,11 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"pedidos"
 							],
 							"query": [
-								{
-									"key": "usuario",
-									"value": "Testing",
-									"disabled": true
-								},
 								{
 									"key": "usuario",
 									"value": "admin",
@@ -486,18 +532,22 @@
 								},
 								{
 									"key": "sortby_precio",
-									"value": null,
+									"value": "True",
 									"disabled": true
 								},
 								{
 									"key": "sortby_productos",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "productos",
 									"value": "1",
 									"disabled": true
+								},
+								{
+									"key": "id_usuario",
+									"value": "2"
 								}
 							]
 						}
@@ -512,7 +562,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0ODk5MTc3MywianRpIjoiMTAzZTMyNzQtODJhYy00NzM4LThkYjgtNGM2ZmM0Yzc5ODQ5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDg5OTE3NzMsImNzcmYiOiI0OTE0Zjg5Ni0wNGZiLTRjZGEtYmJjOC05MjQ3ODM3MTYxNzMiLCJleHAiOjE3NDg5OTUzNzMsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.-_D2NwzOg3V_dUwnfl9vXdQ-SY52dXQQ4wWBpZNBtI4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzM5NjcxNCwianRpIjoiMWM0ZDczMDgtM2Q4MC00NjcyLTkxMWQtYzMzNzAwZDM3ZmZkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjMzOTY3MTQsImNzcmYiOiJjMDY0N2FlZi02OGJhLTRhYTgtYmRmYy0yN2NmZjEwZWE1YzciLCJleHAiOjUzNjMzOTY3MTQsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ifl7lpAz0Zcy4zYGk-WA8b7AEfnh5yp46kEqf9LPn7o",
 									"type": "string"
 								}
 							]
@@ -521,7 +571,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_usuario\":1,\n    \"descripcion\":\"Testing\",\n    \"direccion\":\"suipacha\",\n    \"precio\":777,\n    \"productos\": [\n    {\"id\": 1},\n    {\"id\": 2, \"cantidad\": 5}\n    ]\n}",
+							"raw": "{\n    \"id_usuario\":2,\n    \"descripcion\":\"aaa\",\n    \"direccion\":\"suipacffha\",\n    \"productos\": [\n    {\"id_producto\": 1},\n    {\"id_producto\": 2, \"cantidad\": 5}\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -529,7 +579,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedidos",
+							"raw": "http://127.0.0.1:3000/pedidos",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -537,7 +587,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"pedidos"
 							]
@@ -561,7 +611,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedido/2",
+							"raw": "http://127.0.0.1:3000/pedido/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -569,7 +619,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"pedido",
 								"2"
@@ -586,7 +636,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMjExNSwianRpIjoiZTU4NDJiYjYtZDRlYy00M2M2LWE0MzYtMThkZjRiM2JjZTU1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzIxMTUsImNzcmYiOiJlNTY1M2E3NS00ZTVkLTRmYmEtYWIzNS1lZDUzMmFlNjljYjEiLCJleHAiOjE3NDY3MzU3MTUsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.ZG2ljd_wHjQwQOQaNwsU90SBiGQvBEfumHWKqbxM77g",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTM0MjAzNCwianRpIjoiYjM4ODVlMjMtNGZhMC00MTY4LWIwZjEtYmM0MGU1NWNmNTA2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE3IiwibmJmIjoxNzYxMzQyMDM0LCJjc3JmIjoiYzk1ZmZlODMtMGZlMS00ODI4LWE1NDUtMWJmN2ZjOGM5NzVlIiwiZXhwIjoxNzYxMzc4MDM0LCJyb2wiOiJhZG1pbiIsImlkIjoxNywiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20ifQ.qEVMhlCTPI6SaRU4fj_D-jHovaU9iCOTTVlJ-VEE8Sw",
 									"type": "string"
 								}
 							]
@@ -603,7 +653,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedido/1",
+							"raw": "http://127.0.0.1:3000/pedido/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -611,7 +661,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"pedido",
 								"1"
@@ -628,7 +678,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0ODk5MTc3MywianRpIjoiMTAzZTMyNzQtODJhYy00NzM4LThkYjgtNGM2ZmM0Yzc5ODQ5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDg5OTE3NzMsImNzcmYiOiI0OTE0Zjg5Ni0wNGZiLTRjZGEtYmJjOC05MjQ3ODM3MTYxNzMiLCJleHAiOjE3NDg5OTUzNzMsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.-_D2NwzOg3V_dUwnfl9vXdQ-SY52dXQQ4wWBpZNBtI4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzIyMDg2MywianRpIjoiOWRkNjBiODItNDVkMi00MThmLTlhMzgtNTFlNjU0NmViMWYxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjMyMjA4NjMsImNzcmYiOiJhN2VkMzUwZC03ZWM3LTQxM2UtYWY4MC1mZDU3ODFmMjBkMjciLCJleHAiOjE3NjMyNTY4NjMsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.hMx86ODQG2cENQQUQhKm9y5fB5zQVwwsRd1mCdPgUDo",
 									"type": "string"
 								}
 							]
@@ -636,7 +686,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/pedido/1",
+							"raw": "http://127.0.0.1:3000/pedido/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -644,7 +694,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"pedido",
 								"1"
@@ -674,7 +724,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/notificacion/1",
+							"raw": "http://127.0.0.1:3000/notificacion/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -682,7 +732,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"notificacion",
 								"1"
@@ -699,7 +749,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzU2NjA3MywianRpIjoiNjdkZGRlNWYtYjU2Ni00NmQ3LTljM2YtMTE3MDlmNzI5OWJmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjM1NjYwNzMsImNzcmYiOiI1MDNjMWI0Ny02NDVkLTQ1ZTQtYjZkOC04YTI3ZjBiNzRiYWEiLCJleHAiOjUzNjM1NjYwNzMsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.FNdA75h_lssWynzZnmAnYSXAmdtMh-UTm5s19DwfvRk",
 									"type": "string"
 								}
 							]
@@ -708,7 +758,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_usuario\":1,\n    \"informacion\":\"mensaje 2\"\n    \n\n}",
+							"raw": "{\n    \"usuarios\":[1,2],\n    \"informacion\":\"mensaje 2\"\n    \n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -716,7 +766,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/notificaciones",
+							"raw": "http://127.0.0.1:3000/notificaciones",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -724,7 +774,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"notificaciones"
 							]
@@ -740,7 +790,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzU3OTk1NywianRpIjoiNDA5MjA0Y2EtYmIyNi00OWQzLTg2NGItMmM2ZTQ5MjQyNTQ1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjM1Nzk5NTcsImNzcmYiOiJmYTg2MzljMi1jYzNlLTQyZWYtYjZkMy05MDBmYjE2OTNlYjQiLCJleHAiOjUzNjM1Nzk5NTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.HsZqpfQgcvdEHk84jrj2zfmSJ5vYO6aiVS3KtQ4NkGM",
 									"type": "string"
 								}
 							]
@@ -748,7 +798,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/notificaciones",
+							"raw": "http://127.0.0.1:3000/notificaciones",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -756,9 +806,32 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/notificacion/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"notificacion",
+								"1"
 							]
 						}
 					},
@@ -777,7 +850,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzY1MzA1OCwianRpIjoiNGM3MWUzNTctODhlNi00OGI1LTkwZGQtYTUyOWU1MDYzNDk2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjM2NTMwNTgsImNzcmYiOiIxNzYxMjVmZi0yNWJkLTQxNjctOWJmZC1hNjBkZmIyMTcwYTMiLCJleHAiOjUzNjM2NTMwNTgsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.Lz1UqmDqgVt9eUeavcw29GyqDby4-1yLGKPF4YmtrFo",
 									"type": "string"
 								}
 							]
@@ -786,7 +859,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_producto\": 1,\n    \"id_usuario\": 2,\n    \"descripcion\": \"Horrible producto\",\n    \"estrellas\": 4\n}",
+							"raw": "{\n    \"id_producto\": 1,\n    \"id_usuario\": 1,\n    \"descripcion\": \"Horrible producto\",\n    \"estrellas\": 3\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -794,7 +867,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/calificaciones",
+							"raw": "http://127.0.0.1:3000/calificaciones",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -802,7 +875,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"calificaciones"
 							]
@@ -818,7 +891,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NjczMzkxNywianRpIjoiYzliMjliZWYtYTg2NC00MGJiLTkzODYtNjMwMDNiNzVhNzFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDY3MzM5MTcsImNzcmYiOiIxNGE2NTczMS1hNjkyLTQ5MTgtYjJiMS1jNGIyMjQxMTYwNDIiLCJleHAiOjE3NDY3Mzc1MTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.lInwJPoSaARg0zcFu-O4SdGYXvlPAkkaFHloQSanJlY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MTM0MjAzNCwianRpIjoiYjM4ODVlMjMtNGZhMC00MTY4LWIwZjEtYmM0MGU1NWNmNTA2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE3IiwibmJmIjoxNzYxMzQyMDM0LCJjc3JmIjoiYzk1ZmZlODMtMGZlMS00ODI4LWE1NDUtMWJmN2ZjOGM5NzVlIiwiZXhwIjoxNzYxMzc4MDM0LCJyb2wiOiJhZG1pbiIsImlkIjoxNywiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20ifQ.qEVMhlCTPI6SaRU4fj_D-jHovaU9iCOTTVlJ-VEE8Sw",
 									"type": "string"
 								}
 							]
@@ -826,7 +899,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/calificacion/1",
+							"raw": "http://127.0.0.1:3000/calificacion/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -834,7 +907,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"calificacion",
 								"1"
@@ -846,10 +919,20 @@
 				{
 					"name": "calificaciones",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzY1MzA1OCwianRpIjoiNGM3MWUzNTctODhlNi00OGI1LTkwZGQtYTUyOWU1MDYzNDk2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjM2NTMwNTgsImNzcmYiOiIxNzYxMjVmZi0yNWJkLTQxNjctOWJmZC1hNjBkZmIyMTcwYTMiLCJleHAiOjUzNjM2NTMwNTgsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.Lz1UqmDqgVt9eUeavcw29GyqDby4-1yLGKPF4YmtrFo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/calificaciones?sortby_productos=1",
+							"raw": "http://127.0.0.1:3000/calificaciones?id_producto=1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -857,13 +940,13 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"calificaciones"
 							],
 							"query": [
 								{
-									"key": "sortby_productos",
+									"key": "id_producto",
 									"value": "1"
 								}
 							]
@@ -882,7 +965,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/categoria/1",
+							"raw": "http://127.0.0.1:3000/categoria/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -890,7 +973,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"categoria",
 								"1"
@@ -957,7 +1040,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/categoria/1",
+							"raw": "http://127.0.0.1:3000/categoria/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -965,7 +1048,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"categoria",
 								"1"
@@ -982,7 +1065,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0ODk5NTQ1NywianRpIjoiOTE4YjgwMWQtNzMzNS00ZmE2LWI5ODktMTEzZjRhNWZlYjRmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDg5OTU0NTcsImNzcmYiOiJkYzRlZDhjNy05ZDcxLTRkNzMtYmNmMi0xZjRmNDc0MjA5YTQiLCJleHAiOjE3NDg5OTkwNTcsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.zJlaTnHo1xUre0-dRn0hNLIZ1-OSwpgjCXmNerlz0YE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzQwMDkyNiwianRpIjoiZjk4ZDc2YmMtM2FmNS00YzM4LThiNzItOGUxNTZiNWJkOWQyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjM0MDA5MjYsImNzcmYiOiIyYTI4YjMwMi0yODM0LTQ2N2MtOTRiNy1lYjE5NzMyNzAxNTkiLCJleHAiOjUzNjM0MDA5MjYsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.uuq_s2vNk8NHFH4F5GkLW73O3Rz6DqDxZG7sanMbNpA",
 									"type": "string"
 								}
 							]
@@ -990,7 +1073,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:1234/categorias",
+							"raw": "http://127.0.0.1:3000/categorias",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -998,7 +1081,7 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"categorias"
 							]
@@ -1014,7 +1097,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0ODk5MTc3MywianRpIjoiMTAzZTMyNzQtODJhYy00NzM4LThkYjgtNGM2ZmM0Yzc5ODQ5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDg5OTE3NzMsImNzcmYiOiI0OTE0Zjg5Ni0wNGZiLTRjZGEtYmJjOC05MjQ3ODM3MTYxNzMiLCJleHAiOjE3NDg5OTUzNzMsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.-_D2NwzOg3V_dUwnfl9vXdQ-SY52dXQQ4wWBpZNBtI4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzQwMDkyNiwianRpIjoiZjk4ZDc2YmMtM2FmNS00YzM4LThiNzItOGUxNTZiNWJkOWQyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjM0MDA5MjYsImNzcmYiOiIyYTI4YjMwMi0yODM0LTQ2N2MtOTRiNy1lYjE5NzMyNzAxNTkiLCJleHAiOjUzNjM0MDA5MjYsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.uuq_s2vNk8NHFH4F5GkLW73O3Rz6DqDxZG7sanMbNpA",
 									"type": "string"
 								}
 							]
@@ -1023,7 +1106,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\":\"postre\"\n}",
+							"raw": "{\n    \"nombre\":\"bebidas\"\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1031,7 +1114,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:1234/categorias",
+							"raw": "http://127.0.0.1:3000/categorias",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1039,9 +1122,197 @@
 								"0",
 								"1"
 							],
-							"port": "1234",
+							"port": "3000",
 							"path": [
 								"categorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "carritos",
+			"item": [
+				{
+					"name": "carritos/all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzQ5MjE2NCwianRpIjoiZjFmNTM3YjYtNDVhNC00MDAwLWE1ZjAtNmQ2YmI2MzM1M2FlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NjM0OTIxNjQsImNzcmYiOiIyNTVlZTJiZS0xYjU0LTRmMDUtOWQyOS02YjI0MTgxNWJmZjciLCJleHAiOjUzNjM0OTIxNjQsInJvbCI6InVzZXIiLCJpZCI6MiwiZW1haWwiOiJ1c2VyQHVzZXIuY29tIn0.OGbtucnS3dEtz0WbqTvK52PyGwi8PynrVK7KH1eZ8XE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/carritos/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"carritos",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "hMx86ODQG2cENQQUQhKm9y5fB5zQVwwsRd1mCdPgUDo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/carrito/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"carrito",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzMxOTg5NCwianRpIjoiMGFiYmMwYjktODQwNy00ZjFlLWEzZTUtZmJjMjBiN2E3NWRhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjMzMTk4OTQsImNzcmYiOiIzYjRkN2VhMy05ODg0LTQwN2EtOTVjYS0xMjljMmE5ODhkZTkiLCJleHAiOjUzNjMzMTk4OTQsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.v1uta7O_d5FDxgM0MAGlqoPajmB5V04a7aiWvuy1ocU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/carrito/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"carrito",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzQ5MjE2NCwianRpIjoiZjFmNTM3YjYtNDVhNC00MDAwLWE1ZjAtNmQ2YmI2MzM1M2FlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NjM0OTIxNjQsImNzcmYiOiIyNTVlZTJiZS0xYjU0LTRmMDUtOWQyOS02YjI0MTgxNWJmZjciLCJleHAiOjUzNjM0OTIxNjQsInJvbCI6InVzZXIiLCJpZCI6MiwiZW1haWwiOiJ1c2VyQHVzZXIuY29tIn0.OGbtucnS3dEtz0WbqTvK52PyGwi8PynrVK7KH1eZ8XE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_producto\":1,\n    \"cantidad\":5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/carrito/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"carrito",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzMxOTg5NCwianRpIjoiMGFiYmMwYjktODQwNy00ZjFlLWEzZTUtZmJjMjBiN2E3NWRhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NjMzMTk4OTQsImNzcmYiOiIzYjRkN2VhMy05ODg0LTQwN2EtOTVjYS0xMjljMmE5ODhkZTkiLCJleHAiOjUzNjMzMTk4OTQsInJvbCI6ImFkbWluIiwiaWQiOjEsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIn0.v1uta7O_d5FDxgM0MAGlqoPajmB5V04a7aiWvuy1ocU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_producto\":2,\n    \"cantidad\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/carrito/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"carrito",
+								"1"
 							]
 						}
 					},
@@ -1056,7 +1327,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"user1\",\n    \"apellido\":\"sdf\",\n    \"email\": \"emanuelyudica5@gmail.com\",\n    \"password\": \"user1\",\n    \"dni\": \"123456478\"\n}\n",
+					"raw": "{\n    \"nombre\":\"empleado\",\n    \"apellido\":\"empleado\",\n    \"email\": \"empleado@empleado.com\",\n    \"password\": \"empleado\",\n    \"telefono\":\"5243534343\",\n    \"rol\": \"empleado\",\n    \"dni\": \"123456478\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1064,7 +1335,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:1234/auth/register",
+					"raw": "http://127.0.0.1:3000/auth/register",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -1072,7 +1343,7 @@
 						"0",
 						"1"
 					],
-					"port": "1234",
+					"port": "3000",
 					"path": [
 						"auth",
 						"register"
@@ -1091,7 +1362,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\":\"admin@admin.com\",\n    \"password\":\"admin\"\n}",
+					"raw": "{\n    \"email\":\"ab@edu.ar\",\n    \"password\":\"fabri\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1099,7 +1370,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:1234/auth/login",
+					"raw": "http://127.0.0.1:3000/auth/login",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -1107,7 +1378,7 @@
 						"0",
 						"1"
 					],
-					"port": "1234",
+					"port": "3000",
 					"path": [
 						"auth",
 						"login"
