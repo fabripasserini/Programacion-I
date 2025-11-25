@@ -186,6 +186,9 @@ export class VerProducto implements OnInit, OnChanges {
   userAlta() {
     return this.userInfo.getAlta();
   }
+  getBloqueado() {
+    return this.userInfo.getBloqueado();
+  }
   validarCantidad(producto: any) {
   if (producto.cantidad < 1) {
     producto.cantidad = 1;

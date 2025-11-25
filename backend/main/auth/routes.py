@@ -44,8 +44,13 @@ def register():
             db.session.add(usuario)
             db.session.commit()
             send = sendMail([usuario.email],"¡Bienvenido/a!",'register',usuario = usuario)
-       
+            if send is not True:
+                response = usuario.to_json()
+                response['mail_status'] = 'failed'
+                return response, 201
         except Exception as error:
             db.session.rollback()
             return str(error), 409
-        return usuario.to_json() , 201
+        response = usuario.to_json()
+        response['mail_status'] = 'success'
+        return response , 201

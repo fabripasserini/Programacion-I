@@ -83,7 +83,7 @@
                   </div>
                   }
 
-                  @if(getRol() === 'user') {
+                  @if((getRol() === 'user') && (getBloqueado() === false)) {
 
             
                     @if(userAlta() && producto.stock > 0) {

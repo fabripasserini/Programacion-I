@@ -15,5 +15,5 @@ def sendMail(to, subject, template, **kwargs):
         result = mailsender.send(msg)
     except SMTPException as e:
         print(str(e))
-        return "Mail deliver failed"
+        return False
     return True
