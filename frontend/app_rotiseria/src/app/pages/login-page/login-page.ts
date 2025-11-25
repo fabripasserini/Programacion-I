@@ -21,8 +21,10 @@ export class LoginPage {
     private formBuilder: FormBuilder
   ) {
     this.loginForm = this.formBuilder.group({
-      email: ['admin@admin.com', Validators.required],
-      password: ['admin', Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+      // email: ['admin@admin.com', Validators.required],
+      // password: ['admin', Validators.required]
     });
   }
 

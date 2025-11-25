@@ -85,10 +85,13 @@ class Productos(Resource):
             productos_query = productos_query.filter(ProductosModel.stock >= int(request.args.get('stock')))
         
 
+        if request.args.get('categoria_nombre'):
+            productos_query = productos_query.join(CategoriasModel).filter(CategoriasModel.nombre.like("%"+ request.args.get('categoria_nombre') + "%"))
 
         # Ordeno los productos por precion de forma descendiente - funciona
         if request.args.get('precio'):
             productos_query=productos_query.filter(ProductosModel.precio <= int(request.args.get('precio')))
+        
         # funciona  
         if request.args.get('categoria'):
             productos_query = productos_query.filter(ProductosModel.id_categoria == int(request.args.get('categoria')))

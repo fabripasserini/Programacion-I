@@ -93,7 +93,7 @@ class CarritoResource(Resource):
 
     @jwt_required()
     def delete(self, id):
-    # Si envían JSON, eliminar un solo producto
+        # Si envían JSON, eliminar un solo producto
         if request.is_json:
             data = request.get_json()
             product_id = data.get('id_producto')
@@ -101,12 +101,11 @@ class CarritoResource(Resource):
             if not product_id:
                 return {'message': 'id_producto es requerido'}, 400
 
-            carrito = db.session.query(CarritosModel).filter_by(id_usuario=id).first()
-            if not carrito:
-                return {'message': 'Carrito no encontrado'}, 404
+            # El 'id' de la URL es el 'id_carrito'
+            id_carrito = id
 
             carrito_producto = db.session.query(CarritoProductoModel).filter_by(
-                id_carrito=carrito.id,
+                id_carrito=id_carrito,
                 id_producto=product_id
             ).first()
 

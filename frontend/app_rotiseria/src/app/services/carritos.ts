@@ -22,20 +22,20 @@ export class Carritos {
   }
 
   // Eliminar un producto del carrito
-  deleteProducto(id_usuario: number, id_producto: number): Observable<any> {
-    return this.http.delete(`${this.url}/carrito/${id_usuario}`, {
+  deleteProducto(id_carrito: number, id_producto: number): Observable<any> {
+    return this.http.delete(`${this.url}/carrito/${id_carrito}`, {
       body: { id_producto }
     });
   }
 
   // Actualizar cantidad de un producto
-  updateProducto(id_usuario: number, data: { id_producto: number, cantidad: number }): Observable<any> {
-    return this.http.put(`${this.url}/carrito/${id_usuario}`, data);
+  updateProducto(id_carrito: number, data: { id_producto: number, cantidad: number }): Observable<any> {
+    return this.http.put(`${this.url}/carrito/${id_carrito}`, data);
   }
 
   // Vaciar todo el carrito
-  limpiarCarrito(id_usuario: number): Observable<any> {
-    return this.http.delete(`${this.url}/carrito/${id_usuario}`);
+  limpiarCarrito(id_carrito: number): Observable<any> {
+    return this.http.delete(`${this.url}/carrito/${id_carrito}`);
   }
 
   // Obtener un producto puntual (opcional)
